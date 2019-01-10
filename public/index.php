@@ -6,4 +6,10 @@
  * Time: 08:28
  */
 
-echo 'Hello from public';
+require '../core/config.php';
+
+echo constant('PATH_REQUIRE');
+
+echo '<br/>';
+
+echo constant('PATH');
