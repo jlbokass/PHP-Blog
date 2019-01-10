@@ -7,9 +7,16 @@
  */
 
 require '../core/config.php';
+require '../core/db.php';
+require '../core/Model.php';
 
 echo constant('PATH_REQUIRE');
 
 echo '<br/>';
 
 echo constant('PATH');
+
+echo '<br/>';
+
+$db = new \Core\Model();
+$db->getConnection();
