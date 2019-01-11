@@ -1,0 +1,168 @@
+<!doctype html>
+<html lang="fr">
+
+<head>
+    <!-- Meta Tags -->
+    <meta charset="UTF-8"/>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <meta name="viewport" content="width=device-width, user-scalable=0, maximum-scale=1, initial-scale=1.0, maximum-scale=1">
+    <meta name="author" content="<?= WEBSITE_AUTHOR?>">
+    <meta name="description" content="<?= WEBSITE_DESCRIPTION?>" />
+    <meta name=”keywords” content="<?= WEBSITE_KEYWORDS?>"/>
+    <meta name="Reply-to" content="<?= WEBSITE_AUTHOR_MAIL?>">
+    <meta name="Copyright" content="<?= WEBSITE_AUTHOR?>">
+    <meta name="Language" content="<?= WEBSITE_LANGUAGE?>">
+
+    <!-- Open Graph tags -->
+    <meta property="og:type"              content="website" />
+    <meta property="og:url"               content="<?= WEBSITE_FACEBOOK_URL?>" />
+    <meta property="og:title"             content="<?= WEBSITE_FACEBOOK_NAME?>" />
+    <meta property="og:description"       content="<?= WEBSITE_FACEBOOK_DESCRIPTION?>" />
+    <meta property="og:image"             content="<?= WEBSITE_FACEBOOK_IMAGE?>" />
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+    <!-- Custom styles for this template -->
+    <link href="https://fonts.googleapis.com/css?family=Playfair+Display:700,900" rel="stylesheet">
+    <link href="public/css/blog.css" rel="stylesheet">
+
+    <!-- favicon du site -->
+    <link rel="icon" href="">
+
+    {% block head %} {% endblock %}
+
+</head>
+
+<body>
+
+<div class="container">
+    <div class="d-none d-sm-block">
+        <header class="blog-header py-3">
+            <div class="row flex-nowrap justify-content-between align-items-center">
+                <div class="col-3 pt-1">
+                    <a class="text-muted" href="index.php?route=inscription">S'inscrire</a>
+                </div>
+                <div class="col-6 text-center">
+                    <a class="blog-header-logo text-dark" href="index.php?route=home">Développeur Web <span class="small">| My Blog</span></a>
+                </div>
+                <div class="col-3 d-flex justify-content-end align-items-center">
+                    <a class="btn btn-sm btn-outline-secondary" href="index.php?route=connexion">Connexion</a>
+                </div>
+            </div>
+        </header>
+
+        <div class="nav-scroller py-1 mb-2">
+            <nav class="nav d-flex justify-content-end">
+                <a class="p-2 text-muted" href="index.php?route=home">Accueil</a>
+                <a class="p-2 text-muted" href="index.php?route=posts">Blog</a>
+                <a class="p-2 text-muted" href="index.php?route=cv">CV</a>
+                <a class="p-2 text-muted" href="index.php?route=contact">Contact</a>
+            </nav>
+        </div>
+    </div>
+
+    <!-- Menu pour les mobiles -->
+    <nav class="navbar navbar-expand-md bg-dark navbar-dark d-block d-sm-none mb-4 pb-3 rounded-bottom">
+        <a class="navbar-brand" href="#">Jean le Grand Bokassa | Blog</a>
+        <button class="navbar-toggler float-right" type="button" data-toggle="collapse" data-target="#collapsibleNavbar">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="collapsibleNavbar">
+            <ul class="navbar-nav">
+                <li class="nav-item">
+                    <a class="nav-link" href="index.php?route=home">Accueil</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="index.php?route=posts">Blog</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="index.php?route=cv">CV</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="index.php?route=contact">Contact</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="index.php?route=inscription">Inscription</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="index.php?route=connexion">Connexion</a>
+                </li>
+            </ul>
+        </div>
+    </nav>
+
+    <div class="jumbotron p-3 p-md-5 rounded bg-dark">
+        <div class="col-md-6 px-0 text-body">
+            <h1 class="display-4 font-italic text-body">Développeur web PHP/SYMFONY</h1>
+            <p class="lead my-3 text-body bg-light p-3">Se n'est pas au nombre de lignes de codes que l'on juge un bon développeur, mais à sa capactié à comprendre le besoin client, rédiger un code lisible et à communiquer</p>
+            <p class="lead mb-0"><span class="text-body font-weight-bold">work in progress !</span></p>
+        </div>
+    </div>
+
+</div>
+
+<main role="main" class="container">
+    <div class="row">
+        <div class="col-md-8 blog-main">
+            <!-- content -->
+            <h2 class="blog-post-title pb-2 mb-5 border-bottom">{% block pageTtitle %}{% endblock %}</h2>
+
+            <div class="blog-post">
+
+                {% block content %}
+                {% endblock %}
+
+            </div>
+            <!-- /.blog-post -->
+
+        </div><!-- /.blog-main -->
+
+        <aside class="col-md-4 blog-sidebar">
+            <div class="p-3 mb-3 bg-light rounded">
+                <h4 class="font-italic">Citations</h4>
+                <p class="mb-0">Etiam porta <em>sem malesuada magna</em> mollis euismod. Cras mattis consectetur purus sit amet fermentum. Aenean lacinia bibendum nulla sed consectetur.</p>
+            </div>
+
+            <div class="p-3">
+                <h4 class="font-italic">Suivez moi</h4>
+                <ol class="list-unstyled">
+                    <li><a href="https://github.com/jlbokass" target="_blank">GitHub</a></li>
+                    <li><a href="https://www.linkedin.com/in/jean-le-grand-bokassa/" target="_blank">LinkedIn</a></li>
+                    <li><a href="https://twitter.com/LeBokassa" target="_blank">Twitter</a></li>
+                    <li><a href="https://www.facebook.com/jlbokass" target="_blank">Facebook</a></li>
+                </ol>
+            </div>
+
+            <div class="p-3">
+                <h4 class="font-italic">Archives</h4>
+                <ol class="list-unstyled mb-0">
+                    <li><a href="#">Novembre 2018</a></li>
+                    <li><a href="#">Octobre 2018</a></li>
+                    <li><a href="#">Septembre 2018</a></li>
+                    <li><a href="#">Aout 2018</a></li>
+                    <li><a href="#">Juillet 2018</a></li>
+                    <li><a href="#">Juin 2018</a></li>
+                </ol>
+            </div>
+        </aside><!-- /.blog-sidebar -->
+
+    </div><!-- /.row -->
+
+</main><!-- /.container -->
+
+<!--<p><a href="#">Back to top</a></p>-->
+<footer class="blog-footer">
+    Copyright © 2019 Conception by <a href="https://getbootstrap.com/">John Bokassa</a>. <a href="https://twitter.com/mdo">Administration</a>
+    <!--<p>Blog template built for <a href="https://getbootstrap.com/">Bootstrap</a> by <a href="https://twitter.com/mdo">@mdo</a>.</p>-->
+</footer>
+
+
+
+<!-- Optional JavaScript -->
+<!-- jQuery first, then Popper.js, then Bootstrap JS -->
+<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
+</body>
+
+</html>
