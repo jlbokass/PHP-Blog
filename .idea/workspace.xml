@@ -2,8 +2,6 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="b16c20f8-e894-477d-bcab-1ecec157e328" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/PHP-Blog.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/PHP-Blog.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/php.xml" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -43,11 +41,11 @@
         <counts>
           <entry key="css" value="1" />
           <entry key="gitignore" value="2" />
-          <entry key="htaccess" value="2" />
+          <entry key="htaccess" value="4" />
           <entry key="html" value="2" />
           <entry key="json" value="2" />
           <entry key="md" value="5" />
-          <entry key="php" value="46" />
+          <entry key="php" value="47" />
           <entry key="sql" value="4" />
           <entry key="twig" value="25" />
         </counts>
@@ -58,22 +56,22 @@
           <entry key="HTML" value="2" />
           <entry key="JSON" value="2" />
           <entry key="Markdown" value="5" />
-          <entry key="PHP" value="46" />
+          <entry key="PHP" value="47" />
           <entry key="PLAIN_TEXT" value="2" />
           <entry key="SQL" value="3" />
           <entry key="Scratch" value="1" />
           <entry key="Twig" value="25" />
-          <entry key="htaccess" value="2" />
+          <entry key="htaccess" value="4" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.extensions.edit">
         <counts>
           <entry key="css" value="1" />
           <entry key="gitignore" value="13" />
-          <entry key="htaccess" value="208" />
+          <entry key="htaccess" value="358" />
           <entry key="html" value="140" />
           <entry key="md" value="377" />
-          <entry key="php" value="2325" />
+          <entry key="php" value="2392" />
           <entry key="sql" value="83" />
           <entry key="twig" value="611" />
           <entry key="txt" value="18" />
@@ -84,11 +82,11 @@
           <entry key="CSS" value="1" />
           <entry key="HTML" value="142" />
           <entry key="Markdown" value="377" />
-          <entry key="PHP" value="2323" />
+          <entry key="PHP" value="2390" />
           <entry key="PLAIN_TEXT" value="31" />
           <entry key="SQL" value="83" />
           <entry key="Twig" value="611" />
-          <entry key="htaccess" value="208" />
+          <entry key="htaccess" value="358" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.php.new.class">
@@ -99,7 +97,26 @@
     </session>
   </component>
   <component name="FileEditorManager">
-    <leaf SIDE_TABS_SIZE_LIMIT_KEY="300" />
+    <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/public/index.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="75">
+              <caret line="10" column="49" selection-start-line="10" selection-start-column="49" selection-end-line="10" selection-end-column="49" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/public/.htaccess">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="60">
+              <caret line="4" column="34" selection-start-line="4" selection-start-column="34" selection-end-line="4" selection-end-column="34" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+    </leaf>
   </component>
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
@@ -126,7 +143,6 @@
     <option name="CHANGED_PATHS">
       <list>
         <option value="$PROJECT_DIR$/.htaccess" />
-        <option value="$PROJECT_DIR$/public/.htaccess" />
         <option value="$PROJECT_DIR$/Core/blog.sql" />
         <option value="$PROJECT_DIR$/ressources/db/db.sql" />
         <option value="$PROJECT_DIR$/core/config.php" />
@@ -158,9 +174,10 @@
         <option value="$PROJECT_DIR$/app/view/front/frontLayout.twig" />
         <option value="$PROJECT_DIR$/app/controller/FrontController.php" />
         <option value="$PROJECT_DIR$/core/View.php" />
-        <option value="$PROJECT_DIR$/public/index.php" />
         <option value="$PROJECT_DIR$/README.md" />
         <option value="$PROJECT_DIR$/core/Router.php" />
+        <option value="$PROJECT_DIR$/public/index.php" />
+        <option value="$PROJECT_DIR$/public/.htaccess" />
       </list>
     </option>
   </component>
@@ -193,6 +210,11 @@
             <path>
               <item name="PHP-Blog" type="b2602c69:ProjectViewProjectNode" />
               <item name="PHP-Blog" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="PHP-Blog" type="b2602c69:ProjectViewProjectNode" />
+              <item name="PHP-Blog" type="462c0819:PsiDirectoryNode" />
+              <item name="public" type="462c0819:PsiDirectoryNode" />
             </path>
           </expand>
           <select />
@@ -240,12 +262,12 @@
       <workItem from="1546586761384" duration="9327000" />
       <workItem from="1547135718032" duration="10795000" />
       <workItem from="1547168741072" duration="16911000" />
-      <workItem from="1547244483837" duration="1359000" />
+      <workItem from="1547244483837" duration="2870000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="38392000" />
+    <option name="totallyTimeSpent" value="39903000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="1123" y="28" width="1425" height="1173" extended-state="0" />
@@ -299,13 +321,6 @@
     <option name="myLimit" value="2678400000" />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/public/.htaccess">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="60">
-          <caret line="4" column="64" selection-end-line="4" selection-end-column="64" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/.htaccess">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="15">
@@ -481,8 +496,15 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/public/index.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="135">
-          <caret line="9" column="25" selection-start-line="9" selection-start-column="25" selection-end-line="9" selection-end-column="25" />
+        <state relative-caret-position="75">
+          <caret line="10" column="49" selection-start-line="10" selection-start-column="49" selection-end-line="10" selection-end-column="49" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/public/.htaccess">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="60">
+          <caret line="4" column="34" selection-start-line="4" selection-start-column="34" selection-end-line="4" selection-end-column="34" />
         </state>
       </provider>
     </entry>
