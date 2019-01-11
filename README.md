@@ -1,6 +1,6 @@
-#My PHP Blog
+# My PHP Blog
 
-##Web server configuration
+## Web server configuration
 If your server runs on nginx :  
 - first, replace the .htaccess of the root with:  
 RewriteEngine On
@@ -18,5 +18,5 @@ You can find all the scripts in resource folder.
 
 - of corse, you can set your own configuration to redirect to public folder  
 
-#Data base configuration
+# Data base configuration
 Remplace setting connection with your own by using the db.php in the config folder.
