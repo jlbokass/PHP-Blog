@@ -7,3 +7,5 @@
  */
 
 echo 'Hello from public';
+
+echo 'REQUEST URL : ' . $_SERVER['QUERY_STRING'];
