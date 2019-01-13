@@ -5,35 +5,36 @@
  * Date: 11/01/2019
  * Time: 23:39
  */
-
-//echo 'REQUEST URL : ' . $_SERVER['QUERY_STRING'];
-
 require '../core/Router.php';
+require '../app/controller/PostController.php';
 
-$route = new Router();
+
+$router = new Router();
 
 //echo get_class($route);
 
 // Add the routes
-$route->add('', ['controller' => 'Home', 'action' => 'index']);
-$route->add('posts', ['controller' => 'Posts', 'action' => 'index']);
-$route->add('{controller}/{action}');
-$route->add('{controller}/{id:\d+}/{action}');
+$router->add('', ['controller' => 'Home', 'action' => 'index']);
+$router->add('{controller}/{action}');
+$router->add('{controller}/{id:\d+}/{action}');
 
+/*
 // Display the routing table
 echo '<pre>';
 //var_dump($router->getRoutes());
-echo htmlspecialchars(print_r($route->getRoutes(), true));
+echo htmlspecialchars(print_r($router->getRoutes(), true));
 echo '</pre>';
 
 
 // Match the requested route
 $url = $_SERVER['QUERY_STRING'];
 
-if ($route->match($url)) {
+if ($router->match($url)) {
     echo '<pre>';
-    var_dump($route->getParams());
+    var_dump($router->getParams());
     echo '</pre>';
 } else {
     echo "No route found for URL '$url'";
 }
+*/
+$router->dispatch($_SERVER['QUERY_STRING']);
