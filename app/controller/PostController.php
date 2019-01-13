@@ -6,16 +6,17 @@
  * Time: 04:28
  */
 
+namespace App\Controller;
 
-class Posts
+class PostController
 {
     public function index()
     {
-        echo 'Hello from the index action in the Posts ';
+        echo 'Hello from the index action in the PostController ';
     }
 
     public function addNew()
     {
-        echo 'hello from the addnew action in the Posts';
+        echo 'hello from the addnew action in the PostController';
     }
 }
