@@ -11,5 +11,8 @@ namespace app\controller;
 
 class HomeController
 {
-
+    public function index()
+    {
+        echo 'Hello from the index in the HomController!';
+    }
 }

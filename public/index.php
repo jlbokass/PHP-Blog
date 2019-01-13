@@ -5,16 +5,28 @@
  * Date: 11/01/2019
  * Time: 23:39
  */
-require '../core/Router.php';
-require '../app/controller/PostController.php';
+//require '../core/Router.php';
+//require '../app/controller/PostController.php';
 
 
-$router = new Router();
+/*
+ * Autoloader
+ */
+
+spl_autoload_register(function ($class) {
+    $root = dirname(__DIR__);   // get the parent directory
+    $file = $root . '/' . str_replace('\\', '/', $class) . '.php';
+    if (is_readable($file)) {
+        require $root . '/' . str_replace('\\', '/', $class) . '.php';
+    }
+});
+
+$router = new \Core\Router();
 
 //echo get_class($route);
 
 // Add the routes
-$router->add('', ['controller' => 'Home', 'action' => 'index']);
+$router->add('', ['controller' => 'HomeController', 'action' => 'index']);
 $router->add('{controller}/{action}');
 $router->add('{controller}/{id:\d+}/{action}');
 

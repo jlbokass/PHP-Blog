@@ -2,9 +2,10 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="b16c20f8-e894-477d-bcab-1ecec157e328" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/app/controller/HomeController.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/controller/PostController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/controller/PostController.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/core/Router.php" beforeDir="false" afterPath="$PROJECT_DIR$/core/Router.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/index.php" beforeDir="false" afterPath="$PROJECT_DIR$/public/index.php" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -47,7 +48,7 @@
           <entry key="html" value="2" />
           <entry key="json" value="2" />
           <entry key="md" value="5" />
-          <entry key="php" value="49" />
+          <entry key="php" value="50" />
           <entry key="sql" value="4" />
           <entry key="twig" value="25" />
         </counts>
@@ -58,7 +59,7 @@
           <entry key="HTML" value="2" />
           <entry key="JSON" value="2" />
           <entry key="Markdown" value="5" />
-          <entry key="PHP" value="49" />
+          <entry key="PHP" value="50" />
           <entry key="PLAIN_TEXT" value="2" />
           <entry key="SQL" value="3" />
           <entry key="Scratch" value="1" />
@@ -74,7 +75,7 @@
           <entry key="htaccess" value="358" />
           <entry key="html" value="140" />
           <entry key="md" value="377" />
-          <entry key="php" value="4037" />
+          <entry key="php" value="4194" />
           <entry key="sql" value="83" />
           <entry key="twig" value="611" />
           <entry key="txt" value="18" />
@@ -85,7 +86,7 @@
           <entry key="CSS" value="1" />
           <entry key="HTML" value="142" />
           <entry key="Markdown" value="377" />
-          <entry key="PHP" value="4035" />
+          <entry key="PHP" value="4192" />
           <entry key="PLAIN_TEXT" value="32" />
           <entry key="SQL" value="83" />
           <entry key="Twig" value="611" />
@@ -94,7 +95,7 @@
       </usages-collector>
       <usages-collector id="statistics.php.new.class">
         <counts>
-          <entry key="PHP Class.type" value="13" />
+          <entry key="PHP Class.type" value="14" />
         </counts>
       </usages-collector>
     </session>
@@ -104,8 +105,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/public/index.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="105">
-              <caret line="7" column="29" selection-start-line="7" selection-start-column="29" selection-end-line="7" selection-end-column="29" />
+            <state relative-caret-position="139">
+              <caret line="23" column="28" selection-start-line="23" selection-start-column="28" selection-end-line="23" selection-end-column="28" />
             </state>
           </provider>
         </entry>
@@ -114,7 +115,7 @@
         <entry file="file://$PROJECT_DIR$/app/controller/PostController.php">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="45">
-              <caret line="8" lean-forward="true" selection-start-line="8" selection-end-line="8" />
+              <caret line="8" column="25" selection-start-line="8" selection-start-column="25" selection-end-line="8" selection-end-column="25" />
             </state>
           </provider>
         </entry>
@@ -122,8 +123,17 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/core/Router.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="45">
-              <caret line="8" lean-forward="true" selection-start-line="8" selection-end-line="8" />
+            <state relative-caret-position="224">
+              <caret line="109" column="32" selection-start-line="109" selection-start-column="32" selection-end-line="109" selection-end-column="32" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app/controller/HomeController.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="150">
+              <caret line="15" column="58" selection-start-line="15" selection-start-column="58" selection-end-line="15" selection-end-column="58" />
             </state>
           </provider>
         </entry>
@@ -189,9 +199,10 @@
         <option value="$PROJECT_DIR$/README.md" />
         <option value="$PROJECT_DIR$/public/.htaccess" />
         <option value="$PROJECT_DIR$/app/controller/PostManager.php" />
-        <option value="$PROJECT_DIR$/public/index.php" />
         <option value="$PROJECT_DIR$/app/controller/Posts.php" />
         <option value="$PROJECT_DIR$/app/controller/PostController.php" />
+        <option value="$PROJECT_DIR$/app/controller/HomeController.php" />
+        <option value="$PROJECT_DIR$/public/index.php" />
         <option value="$PROJECT_DIR$/core/Router.php" />
       </list>
     </option>
@@ -284,18 +295,18 @@
       <workItem from="1546586761384" duration="9327000" />
       <workItem from="1547135718032" duration="10795000" />
       <workItem from="1547168741072" duration="16911000" />
-      <workItem from="1547244483837" duration="10884000" />
+      <workItem from="1547244483837" duration="12266000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="47917000" />
+    <option name="totallyTimeSpent" value="49299000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="1135" y="191" width="1425" height="1173" extended-state="0" />
     <editor active="true" />
     <layout>
-      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.20896602" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.20896602" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Favorites" order="2" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
@@ -526,22 +537,29 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/public/index.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="105">
-          <caret line="7" column="29" selection-start-line="7" selection-start-column="29" selection-end-line="7" selection-end-column="29" />
+        <state relative-caret-position="139">
+          <caret line="23" column="28" selection-start-line="23" selection-start-column="28" selection-end-line="23" selection-end-column="28" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/controller/HomeController.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="150">
+          <caret line="15" column="58" selection-start-line="15" selection-start-column="58" selection-end-line="15" selection-end-column="58" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/app/controller/PostController.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="45">
-          <caret line="8" lean-forward="true" selection-start-line="8" selection-end-line="8" />
+          <caret line="8" column="25" selection-start-line="8" selection-start-column="25" selection-end-line="8" selection-end-column="25" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/core/Router.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="45">
-          <caret line="8" lean-forward="true" selection-start-line="8" selection-end-line="8" />
+        <state relative-caret-position="224">
+          <caret line="109" column="32" selection-start-line="109" selection-start-column="32" selection-end-line="109" selection-end-column="32" />
         </state>
       </provider>
     </entry>
