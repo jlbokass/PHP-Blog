@@ -2,9 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="b16c20f8-e894-477d-bcab-1ecec157e328" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/core/Router.php" beforeDir="false" afterPath="$PROJECT_DIR$/core/Router.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/index.php" beforeDir="false" afterPath="$PROJECT_DIR$/public/index.php" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -73,7 +71,7 @@
           <entry key="htaccess" value="358" />
           <entry key="html" value="140" />
           <entry key="md" value="377" />
-          <entry key="php" value="3050" />
+          <entry key="php" value="3318" />
           <entry key="sql" value="83" />
           <entry key="twig" value="611" />
           <entry key="txt" value="18" />
@@ -84,7 +82,7 @@
           <entry key="CSS" value="1" />
           <entry key="HTML" value="142" />
           <entry key="Markdown" value="377" />
-          <entry key="PHP" value="3048" />
+          <entry key="PHP" value="3316" />
           <entry key="PLAIN_TEXT" value="31" />
           <entry key="SQL" value="83" />
           <entry key="Twig" value="611" />
@@ -112,8 +110,8 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/core/Router.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="495">
-              <caret line="38" column="29" selection-start-line="38" selection-start-column="29" selection-end-line="38" selection-end-column="29" />
+            <state relative-caret-position="915">
+              <caret line="66" column="28" lean-forward="true" selection-start-line="66" selection-start-column="28" selection-end-line="66" selection-end-column="28" />
             </state>
           </provider>
         </entry>
@@ -178,8 +176,8 @@
         <option value="$PROJECT_DIR$/core/View.php" />
         <option value="$PROJECT_DIR$/README.md" />
         <option value="$PROJECT_DIR$/public/.htaccess" />
-        <option value="$PROJECT_DIR$/core/Router.php" />
         <option value="$PROJECT_DIR$/public/index.php" />
+        <option value="$PROJECT_DIR$/core/Router.php" />
       </list>
     </option>
   </component>
@@ -265,12 +263,12 @@
       <workItem from="1546586761384" duration="9327000" />
       <workItem from="1547135718032" duration="10795000" />
       <workItem from="1547168741072" duration="16911000" />
-      <workItem from="1547244483837" duration="5562000" />
+      <workItem from="1547244483837" duration="6692000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="42595000" />
+    <option name="totallyTimeSpent" value="43725000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="1135" y="185" width="1425" height="1173" extended-state="0" />
@@ -514,8 +512,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/core/Router.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="495">
-          <caret line="38" column="29" selection-start-line="38" selection-start-column="29" selection-end-line="38" selection-end-column="29" />
+        <state relative-caret-position="915">
+          <caret line="66" column="28" lean-forward="true" selection-start-line="66" selection-start-column="28" selection-end-line="66" selection-end-column="28" />
         </state>
       </provider>
     </entry>
