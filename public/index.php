@@ -14,23 +14,20 @@ $route = new Router();
 
 //echo get_class($route);
 
-//add the routes
-
+// Add the routes
 $route->add('', ['controller' => 'Home', 'action' => 'index']);
 $route->add('posts', ['controller' => 'Posts', 'action' => 'index']);
-$route->add('show_post', ['controller' => 'Posts', 'action' => 'show']);
+$route->add('{controller}/{action}');
+$route->add('{controller}/{id:\d+}/{action}');
 
 // Display the routing table
-
-/*
 echo '<pre>';
-var_dump($route->getRoutes());
+//var_dump($router->getRoutes());
+echo htmlspecialchars(print_r($route->getRoutes(), true));
 echo '</pre>';
-*/
 
 
-// Matches request routes
-
+// Match the requested route
 $url = $_SERVER['QUERY_STRING'];
 
 if ($route->match($url)) {
@@ -38,5 +35,5 @@ if ($route->match($url)) {
     var_dump($route->getParams());
     echo '</pre>';
 } else {
-    echo ' No route found for URL ' . $url;
+    echo "No route found for URL '$url'";
 }
