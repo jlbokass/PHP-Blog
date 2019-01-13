@@ -13,6 +13,8 @@ class Model
 {
     private $connexion;
 
+
+
     public function getConnection()
     {
         try
@@ -50,5 +52,41 @@ class Model
         }
         $req = $this->checkConnection()->query($sql);
         return $req;
+    }
+
+
+    protected function select ( $sql, $params = null) {
+
+        $req = $this->sql($sql, $params);
+        $data = $req->fetchAll();
+
+        return $data;
+    }
+
+    protected function update ($sql, $params = null) {
+
+        $req = $this->sql($sql, $params);
+        $updated = $req->rowCount();
+
+        return $updated;
+    }
+
+
+    protected function insert ($sql, $params = []){
+
+        $req = $this->sql($sql, $params);
+
+        $inserted = $req->rowCount();
+
+        return $inserted;
+    }
+
+    protected function delete ( $sql, $params = []) {
+
+        $req = $this->sql($sql, $params);
+
+        $deleted = $req->rowCount();
+
+        return $deleted;
     }
 }

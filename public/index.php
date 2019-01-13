@@ -5,18 +5,13 @@
  * Date: 04/01/2019
  * Time: 08:28
  */
-
+require '../vendor/autoload.php';
 require '../core/config.php';
 require '../core/db.php';
-require '../core/Model.php';
+require '../core/Router.php';
 
-echo constant('PATH_REQUIRE');
 
-echo '<br/>';
+$route = new Router();
+$route->run();
 
-echo constant('PATH');
 
-echo '<br/>';
-
-$db = new \Core\Model();
-$db->getConnection();
