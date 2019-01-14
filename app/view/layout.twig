@@ -1,25 +1,30 @@
 <!doctype html>
 <html lang="fr">
 
+
+
 <head>
+
     <!-- Required meta tags -->
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <!--<meta http-equiv="Content-Type" content="text/html; charset=utf-8" /> à voir avec mon mentor-->
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     <meta name="author" content="Bokassa jean Le Grand" />
     <meta name="copyright" content="©2018, Bokassa Jean Le Grand, All Right Reserved." />
     <meta name="description" content="Blog professionnel PHP réalisé par Bokassa jean Le Grand dans le cadre de ma formation DevWeb PHP Symfony avec l'organisme OpenClassroom" />
+
 
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
     <!-- Custom styles for this template -->
     <link href="https://fonts.googleapis.com/css?family=Playfair+Display:700,900" rel="stylesheet">
-    <link href="../public/css/blog.css" rel="stylesheet">
+    <link href="css/blog.css" type="text/css" rel="stylesheet">
 
     <!-- favicon du site -->
     <link rel="icon" href="">
 
     <title>Développeur Web | {% block title %}{% endblock %}</title>
+
 </head>
 
 <body>
@@ -42,10 +47,10 @@
 
         <div class="nav-scroller py-1 mb-2">
             <nav class="nav d-flex justify-content-end">
-                <a class="p-2 text-muted" href="index.html">Accueil</a>
-                <a class="p-2 text-muted" href="blog.html">Blog</a>
+                <a class="p-2 text-muted" href="/">Accueil</a>
+                <a class="p-2 text-muted" href="/posts/index">Blog</a>
                 <a class="p-2 text-muted" href="cv.html">CV</a>
-                <a class="p-2 text-muted" href="contact.html">Contact</a>
+                <a class="p-2 text-muted" href="/">Contact</a>
             </nav>
         </div>
     </div>
@@ -100,12 +105,17 @@
                 {% block subTitle %}{% endblock %}
             </h1>
 
+
+
             <div class="blog-post">
-                <h2 class="blog-post-title">À propos</h2>
-
-                {% block content %}{% endblock %}
-
+                {% block body %}{% endblock %}
             </div><!-- /.blog-post -->
+
+
+            <!--<nav class="blog-pagination">
+                <a class="btn btn-outline-primary" href="#">Older</a>
+                <a class="btn btn-outline-secondary disabled" href="#">Newer</a>
+            </nav>-->
 
         </div><!-- /.blog-main -->
 
@@ -141,54 +151,8 @@
     </div><!-- /.row -->
 
 </main><!-- /.container -->
-<hr/>
 
-<div class="container mb-4">
-    <div class="footer-wrap">
-        <div class="row text-left">
-            <div class="col-md-6">
-                <form class="needs-validation ml-4" method="post" action="confirmation-email.html" novalidate>
-                    <div class="row">
-                        <div class="col-md-6 mb-3">
-                            <label for="firstName">Prénom</label>
-                            <input type="text" class="form-control" id="firstName" placeholder="" value="" required>
-                            <div class="invalid-feedback">
-                                Valid first name is required.
-                            </div>
-                        </div>
-                        <div class="col-md-6 mb-3">
-                            <label for="lastName">Nom</label>
-                            <input type="text" class="form-control" id="lastName" placeholder="" value="" required>
-                            <div class="invalid-feedback">
-                                Valid last name is required.
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="mb-3">
-                        <label for="email">Email</label>
-                        <input type="email" class="form-control" id="email" placeholder="you@example.com" value="" required>
-                        <div class="invalid-feedback">
-                            Please enter a valid email address for shipping updates.
-                        </div>
-                    </div>
-
-                    <div class="mb-3">
-                        <label for="message">Message</label>
-                        <textarea class="form-control" id="exampleFormControlTextarea1" rows="5"></textarea>
-                    </div>
-
-                    <hr class="mb-4">
-                    <button class="btn btn-primary btn-lg btn-block" type="submit">Envoyez</button>
-                </form>
-            </div>
-
-            <div class="col-md-6 mt-3">
-                <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2837.39443637826!2d-0.4905950838174441!3d44.67072257909955!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0xd551857e75f6b73%3A0x64cc4f6441c1c72f!2s1+Route+de+Bigard%2C+33650+Saint-Selve!5e0!3m2!1sfr!2sfr!4v1542365130076" width="100%" height="450" frameborder="0" style="border:0" allowfullscreen></iframe>
-            </div>
-        </div>
-    </div>
-</div>
+{% block emailMe %}{% endblock %}
 
 <p class="text-center mb-5"><a href="#">Back to top</a></p>
 

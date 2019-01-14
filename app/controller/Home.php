@@ -31,10 +31,7 @@ class Home extends Controller
             'colors' => ['red', 'green', 'blue']]);
         */
 
-        View::renderTemplate('/Home/index.twig', [
-            'name' => 'john',
-            'colors' => ['red', 'blue', 'green']
-        ]);
+        View::renderTemplate('/Home/index.twig');
     }
 
     protected function before()
