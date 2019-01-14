@@ -15,18 +15,18 @@ use Core\Controller;
 use Core\View;
 
 /**
- * Class HomeController
+ * Class Home
  * @package app\controller
  */
-class HomeController extends Controller
+class Home extends Controller
 {
     /**
      *
      */
     public function indexAction()
     {
-        //echo ' Hello from the index in the HomeController! ';
-        View::render('home/index.php');
+        //echo ' Hello from the index in the Home! ';
+        View::render('Home/index.php');
     }
 
     protected function before()
