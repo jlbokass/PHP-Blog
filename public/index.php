@@ -29,6 +29,7 @@ $router = new \Core\Router();
 $router->add('', ['controller' => 'HomeController', 'action' => 'index']);
 $router->add('{controller}/{action}');
 $router->add('{controller}/{id:\d+}/{action}');
+$router->add('admin/{controller}/{action}', ['namespace' => 'admin']);
 
 /*
 // Display the routing table

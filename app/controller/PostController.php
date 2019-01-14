@@ -8,16 +8,37 @@
 
 namespace App\Controller;
 
-class PostController
+use Core\Controller;
+
+/**
+ * Class PostController
+ * @package App\Controller
+ */
+class PostController extends Controller
 {
-    public function index()
+    /**
+     *
+     */
+    public function indexAction()
     {
         echo 'Hello from the index action in the PostController ';
         echo '<p>Query string parameters : <pre>' . htmlspecialchars(print_r($_GET, true)) .'</pre></p>';
     }
 
-    public function addNew()
+    /**
+     *
+     */
+    public function addNewAction()
     {
         echo 'hello from the addnew action in the PostController';
+    }
+
+    /**
+     *
+     */
+    public function editAction()
+    {
+        echo 'hello from the edit in PostController !';
+        echo '<p><pre>' . htmlspecialchars(print_r($this->route_params, true)) . '</pre></p>';
     }
 }

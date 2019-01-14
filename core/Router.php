@@ -109,10 +109,11 @@ class Router
         if ($this->match($url)) {
             $controller = $this->params['controller'];
             $controller = $this->convertToStudlyCaps($controller);
-            $controller = "app\controller\\$controller";
+            //$controller = "app\controller\\$controller";
+            $controller = $this->getNamespace() . $controller;
 
             if (class_exists($controller)) {
-                $controller_object = new $controller();
+                $controller_object = new $controller($this->params);
 
                 $action = $this->params['action'];
                 $action = $this->convertToCamelCase($action);
@@ -193,6 +194,17 @@ class Router
         }
 
         return $url;
+    }
+
+    protected function getNamespace()
+    {
+        $namespace = 'app\Controller\\';
+
+        if (array_key_exists('namespace', $this->params)) {
+            $namespace .= $this->params['namespace'] . '\\';
+        }
+
+        return $namespace;
     }
 
 }

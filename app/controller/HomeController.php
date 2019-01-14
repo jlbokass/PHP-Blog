@@ -9,10 +9,30 @@
 namespace app\controller;
 
 
-class HomeController
+use Core\Controller;
+
+/**
+ * Class HomeController
+ * @package app\controller
+ */
+class HomeController extends Controller
 {
-    public function index()
+    /**
+     *
+     */
+    public function indexAction()
     {
-        echo 'Hello from the index in the HomController!';
+        echo ' Hello from the index in the HomeController! ';
+    }
+
+    protected function before()
+    {
+        echo '(before)';
+        //return false;
+    }
+
+    protected function after()
+    {
+        echo '(after)';
     }
 }
