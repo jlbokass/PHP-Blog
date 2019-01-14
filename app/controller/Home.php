@@ -11,6 +11,9 @@ namespace app\controller;
 
 use Core\Controller;
 
+
+use Core\View;
+
 /**
  * Class HomeController
  * @package app\controller
@@ -22,17 +25,18 @@ class HomeController extends Controller
      */
     public function indexAction()
     {
-        echo ' Hello from the index in the HomeController! ';
+        //echo ' Hello from the index in the HomeController! ';
+        View::render('home/index.php');
     }
 
     protected function before()
     {
-        echo '(before)';
+        //echo '(before)';
         //return false;
     }
 
     protected function after()
     {
-        echo '(after)';
+       // echo '(after)';
     }
 }
