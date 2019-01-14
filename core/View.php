@@ -15,11 +15,10 @@ namespace Core;
  */
 class View
 {
+
     /**
-     * Render a view file
-     * @param string $view The view file
-     *
-     * @return void
+     * @param $view
+     * @param array $args
      */
     public static function render($view, $args = [])
     {
@@ -31,5 +30,25 @@ class View
         } else {
             echo $file . ' not found';
         }
+    }
+
+    /**
+     * @param $template
+     * @param array $args
+     * @throws \Twig_Error_Loader
+     * @throws \Twig_Error_Runtime
+     * @throws \Twig_Error_Syntax
+     */
+    public static function renderTemplate($template, $args = [])
+    {
+        static $twig = null;
+
+        if ($twig === null) {
+            $loader = new \Twig_Loader_Filesystem('../app/view');
+
+            $twig = new \Twig_Environment($loader, ['cache' => false]);
+        }
+
+        echo $twig->render($template, $args);
     }
 }

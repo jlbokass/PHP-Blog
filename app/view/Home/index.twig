@@ -1,0 +1,56 @@
+{%  extends 'layout.twig' %}
+
+{% block title %} Home {% endblock %}
+
+{% block myInfo %}
+
+    <div class="row mb-2">
+        <div class="col-md-6">
+            <div class="card flex-md-row mb-4 box-shadow h-md-250">
+                <div class="card-body d-flex flex-column align-items-start">
+                    <strong class="d-inline-block mb-2 text-primary">Qui je suis</strong>
+                    <h4 class="mb-0">
+                        <p class="text-dark">Bokassa <br>jean le Grand</p>
+                    </h4>
+                    <div class="mb-1 text-muted">41 ans</div>
+                    <p class="card-text mb-auto">Vie à Bordeaux et anciennement prof de danses latines.</p>
+
+                </div>
+                <img class="card-img-right flex-auto d-none d-lg-block" src="img/me.jpg" alt="Card image cap">
+            </div>
+        </div>
+        <div class="col-md-6">
+            <div class="card flex-md-row mb-4 box-shadow h-md-250">
+                <div class="card-body d-flex flex-column align-items-start">
+                    <strong class="d-inline-block mb-2 text-success">Actuellment</strong>
+                    <h4 class="mb-0">
+                        <p class="text-dark">En formation développeur PHP</p>
+                    </h4>
+                    <div class="mb-1 text-muted">Depuis le 11 juin 2018</div>
+                    <p class="card-text mb-auto">Avec l'organisme Openclassroom. Je travail actuellement sur le projet 6.<br/>Consulter mon <a href="#">CV</a>.</p>
+                </div>
+                <!--<img class="card-img-right flex-auto d-none d-lg-block" src="img/me.jpg" alt="Card image cap">-->
+            </div>
+        </div>
+    </div>
+
+{% endblock %}
+
+{% block subTitle %}Accueil{% endblock %}
+
+{% block content %}
+
+    <p><strong>Je m'appelle Jean le Grand Bokassa</strong>, j'ai commencé à m'intéresser au développement web et au
+        graphisme en 2008. Mon association avait besoin d'un site web, Je me suis alors lancé dans sa création et depuis,
+        c'est devenu une vrai vocation. J'aime expérimenter, découvrir et apprendre au fur et à mesure de mes projets
+        professionnels et personnels.</p>
+
+    <p><strong>Mon projet : </strong>Depuis une dizaine d’années, je réalise des sites internet pour mes associations
+        de manière autonome. Aujourd’hui je souhaite en faire mon métier et approfondir mes compétences. Pour cela, je
+        suis à la recherche d’une entreprise pour m’accompagner en contrat de professionnalisation avec l’organisme
+        OPENCLASSROOMS. Je vise le titre de dévelopeur Web PHP/SYMPHONY dans un premier temps puis souhaite évoluer à
+        moyen terme vers Chef de projet multimédia option développement .</p>
+    <p class="blog-post-meta">Rédigé le 27 octobre 2018 par <a href="#">John</a></p>
+
+{% endblock %}
+

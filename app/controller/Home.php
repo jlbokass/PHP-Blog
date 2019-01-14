@@ -25,10 +25,16 @@ class Home extends Controller
      */
     public function indexAction()
     {
-        //echo ' Hello from the index in the Home! ';
+        /*
         View::render('Home/index.php', [
             'name' => 'John',
             'colors' => ['red', 'green', 'blue']]);
+        */
+
+        View::renderTemplate('/Home/index.twig', [
+            'name' => 'john',
+            'colors' => ['red', 'blue', 'green']
+        ]);
     }
 
     protected function before()
@@ -41,4 +47,5 @@ class Home extends Controller
     {
        // echo '(after)';
     }
+
 }
