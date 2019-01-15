@@ -2,66 +2,80 @@
 /**
  * Created by PhpStorm.
  * User: jlbokass
- * Date: 04/01/2019
- * Time: 14:19
+ * Date: 12/01/2019
+ * Time: 00:10
  */
 
 class Router
 {
+    /**
+     * @var array
+     */
+    protected $routes = [];
 
+    /**
+     * @var
+     */
+    protected $params;
 
-
-    public function run()
+    /**
+     * @param $route
+     * @param $params
+     */
+    public function add($route, $params)
     {
-        $page = 'home';
-
-//router
-        if (isset($_GET['route']))
-        {
-            $page = $_GET['route'];
-        }
-
-// rendu du template
-        $loader = new Twig_Loader_Filesystem('../app/view/front');
-        $twig = new Twig_Environment($loader, [
-            'cache' => false // ../core/temp'
-        ]);
-
-
-        switch ($page)
-        {
-            case 'home' :
-                echo $twig->render('home.twig');
-                break;
-
-            case 'posts' :
-                echo $twig->render('posts.twig');
-                break;
-
-            case 'single' :
-                echo $twig->render('single.twig');
-                break;
-
-            case 'inscription' :
-                echo $twig->render('register.twig');
-                break;
-
-            case 'connexion' :
-                echo $twig->render('connexion.twig');
-                break;
-
-            case 'cv' :
-                echo $twig->render('cv.twig');
-                break;
-
-            case 'contact' :
-                echo $twig->render('contact.twig');
-                break;
-
-            default :
-                header('HTTP/1.0 404 not found');
-                echo $twig->render('404.twig');
-                break;
-        }
+        $this->routes[$route] = $params;
     }
+
+    /**
+     * @return array
+     */
+    public function getRoutes()
+    {
+        return $this->routes;
+    }
+
+    /**
+     * @param $url
+     * @return bool
+     */
+    public function match($url)
+    {
+        /*
+        foreach ($this->routes as $route => $params) {
+            if ($url == $route) {
+                $this->params = $params;
+                return true;
+            }
+        }
+        */
+
+        // Match to fixed URL format /controller/action
+        $reg_exp = "/^(?P<controller>[a-z-]+)\/(?P<action>[a-z-]+)$/";
+
+        if (preg_match($reg_exp, $url, $matches)) {
+            // Get named capture group values
+            $params = [];
+
+            foreach ($matches as $key => $match) {
+                if (is_string($key)) {
+                    $params[$key] = $match;
+                }
+            }
+
+            $this->params = $params;
+            return true;
+        }
+
+        return false;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getParams()
+    {
+        return $this->params;
+    }
+
 }

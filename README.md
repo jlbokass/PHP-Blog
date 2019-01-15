@@ -1,3 +1,4 @@
+
 # My PHP Blog
 
 ## Web server configuration
@@ -20,3 +21,4 @@ You can find all the scripts in resource folder.
 
 # Data base configuration
 Remplace setting connection with your own by using the db.php in the config folder.
+

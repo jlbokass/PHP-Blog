@@ -1,5 +1,6 @@
+# Remove index from the URL but maintain the query string
 RewriteEngine On
-RewriteCond %{REQUEST_FILENAME} !-d
+rewriteBase /
 RewriteCond %{REQUEST_FILENAME} !-f
-RewriteRule (.*) index.php/$1 [L]
-# tout rediriger vers index sauf si on peut atteindre un fichier
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteRule ^(.*)$ index.php?$1 [L,QSA]
