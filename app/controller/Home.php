@@ -6,33 +6,43 @@
  * Time: 05:02
  */
 
-namespace app\controller;
+namespace App\controller;
 
 
 use Core\Controller;
 
+
+use Core\View;
+
 /**
- * Class HomeController
+ * Class Home
  * @package app\controller
  */
-class HomeController extends Controller
+class Home extends Controller
 {
     /**
      *
      */
     public function indexAction()
     {
-        echo ' Hello from the index in the HomeController! ';
+        /*
+        View::render('Home/index.php', [
+            'name' => 'John',
+            'colors' => ['red', 'green', 'blue']]);
+        */
+
+        View::renderTemplate('/Home/index.twig');
     }
 
     protected function before()
     {
-        echo '(before)';
+        //echo '(before)';
         //return false;
     }
 
     protected function after()
     {
-        echo '(after)';
+       // echo '(after)';
     }
+
 }

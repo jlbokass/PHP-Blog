@@ -5,14 +5,16 @@
  * Date: 11/01/2019
  * Time: 23:39
  */
-//require '../core/Router.php';
-//require '../app/controller/PostController.php';
 
+/*
+ * Twig
+ */
+
+require_once dirname(__DIR__) . '/vendor/autoload.php';
 
 /*
  * Autoloader
  */
-
 spl_autoload_register(function ($class) {
     $root = dirname(__DIR__);   // get the parent directory
     $file = $root . '/' . str_replace('\\', '/', $class) . '.php';
@@ -21,12 +23,14 @@ spl_autoload_register(function ($class) {
     }
 });
 
+//TODO : faire fonctionner l'autoloader de composer
+
 $router = new \Core\Router();
 
 //echo get_class($route);
 
 // Add the routes
-$router->add('', ['controller' => 'HomeController', 'action' => 'index']);
+$router->add('', ['controller' => 'Home', 'action' => 'index']);
 $router->add('{controller}/{action}');
 $router->add('{controller}/{id:\d+}/{action}');
 $router->add('admin/{controller}/{action}', ['namespace' => 'admin']);

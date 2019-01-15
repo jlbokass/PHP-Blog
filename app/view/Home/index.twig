@@ -1,0 +1,111 @@
+{%  extends 'layout.twig' %}
+
+{% block title %}Home{% endblock %}
+
+{% block myInfo %}
+
+<div class="row mb-2">
+    <div class="col-md-6">
+        <div class="card flex-md-row mb-4 box-shadow h-md-250">
+            <div class="card-body d-flex flex-column align-items-start">
+                <strong class="d-inline-block mb-2 text-primary">Qui je suis</strong>
+                <h4 class="mb-0">
+                    <p class="text-dark">Bokassa <br>jean le Grand</p>
+                </h4>
+                <div class="mb-1 text-muted">41 ans</div>
+                <p class="card-text mb-auto">Vie à Bordeaux et anciennement prof de danses latines.</p>
+
+            </div>
+            <img class="card-img-right flex-auto d-none d-lg-block" src="img/me.jpg" alt="Card image cap">
+        </div>
+    </div>
+    <div class="col-md-6">
+        <div class="card flex-md-row mb-4 box-shadow h-md-250">
+            <div class="card-body d-flex flex-column align-items-start">
+                <strong class="d-inline-block mb-2 text-success">Actuellment</strong>
+                <h4 class="mb-0">
+                    <p class="text-dark">En formation développeur PHP</p>
+                </h4>
+                <div class="mb-1 text-muted">Depuis le 11 juin 2018</div>
+                <p class="card-text mb-auto">Avec l'organisme Openclassroom. Je travail actuellement sur le projet 6.<br/>Consulter mon <a href="#">CV</a>.</p>
+            </div>
+            <!--<img class="card-img-right flex-auto d-none d-lg-block" src="img/me.jpg" alt="Card image cap">-->
+        </div>
+    </div>
+</div>
+
+{% endblock %}
+
+{% block subTitle %} Accueil {% endblock %}
+
+{% block body %}
+
+    <h2 class="blog-post-title">À propos</h2>
+
+    <p><strong>Je m'appelle Jean le Grand Bokassa</strong>, j'ai commencé à m'intéresser au développement web et au
+        graphisme en 2008. Mon association avait besoin d'un site web, Je me suis alors lancé dans sa création et depuis,
+        c'est devenu une vrai vocation. J'aime expérimenter, découvrir et apprendre au fur et à mesure de mes projets
+        professionnels et personnels.</p>
+
+    <p><strong>Mon projet : </strong>Depuis une dizaine d’années, je réalise des sites internet pour mes associations
+        de manière autonome. Aujourd’hui je souhaite en faire mon métier et approfondir mes compétences. Pour cela, je
+        suis à la recherche d’une entreprise pour m’accompagner en contrat de professionnalisation avec
+        l’organisme OPENCLASSROOMS. Je vise le titre de dévelopeur Web PHP/SYMPHONY dans un premier temps puis souhaite
+        évoluer à moyen terme vers Chef de projet multimédia option développement .</p>
+    <p class="blog-post-meta">Rédigé le 27 octobre 2018 par <a href="#">John</a></p>
+
+{% endblock %}
+
+{% block emailMe %}
+
+
+    <hr/>
+
+    <div class="container mb-4">
+        <div class="footer-wrap">
+            <div class="row text-left">
+                <div class="col-md-6">
+                    <form class="needs-validation ml-4" method="post" action="confirmation-email.html" novalidate>
+                        <div class="row">
+                            <div class="col-md-6 mb-3">
+                                <label for="firstName">Prénom</label>
+                                <input type="text" class="form-control" id="firstName" placeholder="" value="" required>
+                                <div class="invalid-feedback">
+                                    Valid first name is required.
+                                </div>
+                            </div>
+                            <div class="col-md-6 mb-3">
+                                <label for="lastName">Nom</label>
+                                <input type="text" class="form-control" id="lastName" placeholder="" value="" required>
+                                <div class="invalid-feedback">
+                                    Valid last name is required.
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="mb-3">
+                            <label for="email">Email</label>
+                            <input type="email" class="form-control" id="email" placeholder="you@example.com" value="" required>
+                            <div class="invalid-feedback">
+                                Please enter a valid email address for shipping updates.
+                            </div>
+                        </div>
+
+                        <div class="mb-3">
+                            <label for="message">Message</label>
+                            <textarea class="form-control" id="exampleFormControlTextarea1" rows="5"></textarea>
+                        </div>
+
+                        <hr class="mb-4">
+                        <button class="btn btn-primary btn-lg btn-block" type="submit">Envoyez</button>
+                    </form>
+                </div>
+
+                <div class="col-md-6 mt-3">
+                    <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2837.39443637826!2d-0.4905950838174441!3d44.67072257909955!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0xd551857e75f6b73%3A0x64cc4f6441c1c72f!2s1+Route+de+Bigard%2C+33650+Saint-Selve!5e0!3m2!1sfr!2sfr!4v1542365130076" width="100%" height="450" frameborder="0" style="border:0" allowfullscreen></iframe>
+                </div>
+            </div>
+        </div>
+    </div>
+
+{% endblock %}

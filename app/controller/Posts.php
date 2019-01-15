@@ -10,19 +10,21 @@ namespace App\Controller;
 
 use Core\Controller;
 
+use Core\View;
+
 /**
- * Class PostController
+ * Class Posts
  * @package App\Controller
  */
-class PostController extends Controller
+class Posts extends Controller
 {
     /**
      *
      */
     public function indexAction()
     {
-        echo 'Hello from the index action in the PostController ';
-        echo '<p>Query string parameters : <pre>' . htmlspecialchars(print_r($_GET, true)) .'</pre></p>';
+        //echo 'Hello from the index action in the Posts ';
+        View::renderTemplate('/Posts/index.twig');
     }
 
     /**
@@ -30,7 +32,7 @@ class PostController extends Controller
      */
     public function addNewAction()
     {
-        echo 'hello from the addnew action in the PostController';
+        echo 'hello from the addnew action in the Posts';
     }
 
     /**
@@ -38,7 +40,7 @@ class PostController extends Controller
      */
     public function editAction()
     {
-        echo 'hello from the edit in PostController !';
+        echo 'hello from the edit in Posts !';
         echo '<p><pre>' . htmlspecialchars(print_r($this->route_params, true)) . '</pre></p>';
     }
 }
