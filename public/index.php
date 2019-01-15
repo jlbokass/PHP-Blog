@@ -23,6 +23,8 @@ spl_autoload_register(function ($class) {
     }
 });
 
+//TODO : faire fonctionner l'autoloader de composer
+
 $router = new \Core\Router();
 
 //echo get_class($route);
