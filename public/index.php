@@ -5,38 +5,49 @@
  * Date: 11/01/2019
  * Time: 23:39
  */
+//require '../core/Router.php';
+//require '../app/controller/PostController.php';
 
-//echo 'REQUEST URL : ' . $_SERVER['QUERY_STRING'];
 
-require '../core/Router.php';
+/*
+ * Autoloader
+ */
 
-$route = new Router();
+spl_autoload_register(function ($class) {
+    $root = dirname(__DIR__);   // get the parent directory
+    $file = $root . '/' . str_replace('\\', '/', $class) . '.php';
+    if (is_readable($file)) {
+        require $root . '/' . str_replace('\\', '/', $class) . '.php';
+    }
+});
+
+$router = new \Core\Router();
 
 //echo get_class($route);
 
-//add the routes
-
-$route->add('', ['controller' => 'Home', 'action' => 'index']);
-$route->add('posts', ['controller' => 'Posts', 'action' => 'index']);
-$route->add('show_post', ['controller' => 'Posts', 'action' => 'show']);
-
-// Display the routing table
+// Add the routes
+$router->add('', ['controller' => 'HomeController', 'action' => 'index']);
+$router->add('{controller}/{action}');
+$router->add('{controller}/{id:\d+}/{action}');
+$router->add('admin/{controller}/{action}', ['namespace' => 'admin']);
 
 /*
+// Display the routing table
 echo '<pre>';
-var_dump($route->getRoutes());
+//var_dump($router->getRoutes());
+echo htmlspecialchars(print_r($router->getRoutes(), true));
 echo '</pre>';
-*/
 
 
-// Matches request routes
-
+// Match the requested route
 $url = $_SERVER['QUERY_STRING'];
 
-if ($route->match($url)) {
+if ($router->match($url)) {
     echo '<pre>';
-    var_dump($route->getParams());
+    var_dump($router->getParams());
     echo '</pre>';
 } else {
-    echo ' No route found for URL ' . $url;
+    echo "No route found for URL '$url'";
 }
+*/
+$router->dispatch($_SERVER['QUERY_STRING']);
