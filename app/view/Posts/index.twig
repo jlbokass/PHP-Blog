@@ -6,7 +6,18 @@
 
 {% block body %}
 
-    <p>Blog</p>
+    <div class="blog-post">
+        {% for post in posts %}
+
+        <h3>{{ post.title }}</h3>
+        <p class="blog-post-meta">Rédigé le 27 octobre 2018 <a href="#">par John</a></p>
+
+        <p>{{ post.content }}<a href="blog-post.html"> Lire la suite ...</a><br>
+            <span class="badge badge-secondary mt-3">4 commentaires</span></p>
+
+        {% endfor %}
+
+    </div>
 
 {% endblock %}
 

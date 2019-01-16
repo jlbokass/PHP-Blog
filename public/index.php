@@ -25,6 +25,15 @@ spl_autoload_register(function ($class) {
 
 //TODO : faire fonctionner l'autoloader de composer
 
+/*
+ * Error and Exception handling
+ */
+
+error_reporting(E_ALL);
+set_error_handler('core\Error::errorHandler');
+set_exception_handler('core\Error::exceptionHandler');
+
+
 $router = new \Core\Router();
 
 //echo get_class($route);

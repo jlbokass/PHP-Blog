@@ -8,6 +8,8 @@
 
 namespace App\Controller;
 
+use App\Model\Post;
+
 use Core\Controller;
 
 use Core\View;
@@ -23,8 +25,10 @@ class Posts extends Controller
      */
     public function indexAction()
     {
-        //echo 'Hello from the index action in the Posts ';
-        View::renderTemplate('/Posts/index.twig');
+        $posts = Post::getAll();
+        View::renderTemplate('/Posts/index.twig', [
+            'posts' => $posts
+        ]);
     }
 
     /**
