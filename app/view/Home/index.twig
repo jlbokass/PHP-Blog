@@ -70,6 +70,7 @@
                             <div class="col-md-6 mb-3">
                                 <label for="firstName">Prénom</label>
                                 <input type="text" class="form-control" id="firstName" placeholder="" value="" required>
+                                <small id="emailHelp" class="form-text text-muted">Donnée confidentielle</small>
                                 <div class="invalid-feedback">
                                     Valid first name is required.
                                 </div>
@@ -77,6 +78,7 @@
                             <div class="col-md-6 mb-3">
                                 <label for="lastName">Nom</label>
                                 <input type="text" class="form-control" id="lastName" placeholder="" value="" required>
+                                <small id="emailHelp" class="form-text text-muted">Donnée confidentielle</small>
                                 <div class="invalid-feedback">
                                     Valid last name is required.
                                 </div>
@@ -86,6 +88,7 @@
                         <div class="mb-3">
                             <label for="email">Email</label>
                             <input type="email" class="form-control" id="email" placeholder="you@example.com" value="" required>
+                            <small id="emailHelp" class="form-text text-muted">Votre email ne sera jamais paragé</small>
                             <div class="invalid-feedback">
                                 Please enter a valid email address for shipping updates.
                             </div>
@@ -93,7 +96,10 @@
 
                         <div class="mb-3">
                             <label for="message">Message</label>
-                            <textarea class="form-control" id="exampleFormControlTextarea1" rows="5"></textarea>
+                            <textarea class="form-control" id="exampleFormControlTextarea1" rows="5" required></textarea>
+                            <div class="invalid-feedback">
+                                Please enter a valid message.
+                            </div>
                         </div>
 
                         <hr class="mb-4">

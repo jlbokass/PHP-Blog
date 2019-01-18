@@ -11,8 +11,15 @@ namespace App\Model;
 use Core\Model;
 use PDO;
 
+/**
+ * Class Post
+ * @package App\Model
+ */
 class Post extends Model
 {
+    /**
+     * @return array
+     */
     public static function getAll()
     {
         $db = Model::getDB();

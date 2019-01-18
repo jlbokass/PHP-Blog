@@ -12,8 +12,15 @@ use PDO;
 
 use App\Config;
 
+/**
+ * Class Model
+ * @package Core
+ */
 abstract class Model
 {
+    /**
+     * @return null|PDO
+     */
     protected static function getDB()
     {
         static $db = null;
@@ -35,3 +42,4 @@ abstract class Model
         }
     }
 }
+

@@ -8,6 +8,10 @@
 
 namespace Core;
 
+/**
+ * Class Router
+ * @package Core
+ */
 class Router
 {
     /**
@@ -95,6 +99,10 @@ class Router
     }
 
 
+    /**
+     * @param $url
+     * @throws \Exception
+     */
     public function dispatch($url)
     {
         $url = $this->removeQueryStringVariables($url);
@@ -123,7 +131,7 @@ class Router
             }
         } else {
             //echo 'No route matched.';
-            throw new \Exception('No route matched');
+            throw new \Exception('No route matched.', 404);
         }
     }
 
@@ -191,6 +199,9 @@ class Router
         return $url;
     }
 
+    /**
+     * @return string
+     */
     protected function getNamespace()
     {
         $namespace = 'app\Controller\\';
