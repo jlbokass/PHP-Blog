@@ -24,9 +24,16 @@ class Signup extends Controller
          $user = new User($_POST);
 
          if ($user->save()) {
+
              View::renderTemplate('Signup/success.twig');
+
          } else {
              View::renderTemplate('Signup/new.twig', ['user' => $user]);
          }
+    }
+
+    public function successAction()
+    {
+        View::renderTemplate('Signup/success.twig');
     }
 }

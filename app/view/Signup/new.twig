@@ -6,10 +6,10 @@
 
 {% block body %}
 
-    {% if user.error is not empty %}
+    {% if user.errors is not empty %}
     <p>Errors:</p>
     <ul>
-        {%  for error in user.error %}
+        {%  for error in user.errors %}
             <li>{{ error }}</li>
         {% endfor %}
     </ul>
@@ -30,8 +30,8 @@
                 </div>
 
                 <div class="mb-3">
-                    <label for="password">Password</label>
-                    <input type="password" class="form-control" id="password" name="password_hash" value="" required>
+                    <label for="password_hash">Password</label>
+                    <input type="password" class="form-control" id="password_hash" name="password_hash" value="" required>
                     <small id="emailHelp" class="form-text text-muted">More than 6 characters, 1 letter, 1 number</small>
                     <div class="invalid-feedback">
                         Please enter a password.
@@ -39,8 +39,8 @@
                 </div>
 
                 <div class="mb-3">
-                    <label for="password-confirm">Confirmation du mot de pass</label>
-                    <input type="password" class="form-control" id="password-confirm" name="password-confirm" value="" required>
+                    <label for="password_confirmation">Confirmation du mot de pass</label>
+                    <input type="password" class="form-control" id="password_confirmation" name="password_confirmation" value="" required>
                     <small id="emailHelp" class="form-text text-muted">Enter the same password</small>
                     <div class="invalid-feedback">
                         Please enter the same password.

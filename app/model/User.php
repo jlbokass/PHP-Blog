@@ -16,7 +16,7 @@ class User extends Model
     private $email;
     private $password_hash;
     private $password_confirmation;
-    public $error = [];
+    public $errors = [];
 
     public function __construct($data)
     {
@@ -29,8 +29,8 @@ class User extends Model
     {
         $this->validate();
 
-        if (empty($this->error)) {
-            $this->password = password_hash($this->password, PASSWORD_DEFAULT);
+        if (empty($this->errors)) {
+            $this->password_hash = password_hash($this->password_hash, PASSWORD_DEFAULT);
             $sql = 'INSERT INTO user (email, password_hash, role, registeredAt)
                VALUES(:email, :password_hash, \'user\', now())';
 
@@ -38,7 +38,7 @@ class User extends Model
             $stmt = $db->prepare($sql);
 
             $stmt->bindValue(':email', $this->email, \PDO::PARAM_STR);
-            $stmt->bindValue(':password_hash', $this->password, \PDO::PARAM_STR);
+            $stmt->bindValue(':password_hash', $this->password_hash, \PDO::PARAM_STR);
 
             $stmt->execute();
         }
@@ -50,27 +50,27 @@ class User extends Model
     {
         // email address
         if (filter_var($this->email, FILTER_VALIDATE_EMAIL) === false) {
-            $this->error[] = 'Invalide email';
+            $this->errors[] = 'Invalide email';
         }
         if ($this->emailExists($this->email)) {
-            $this->error[] = 'Email already taken';
+            $this->errors[] = 'Email already taken';
         }
 
         //password
         if ($this->password_hash != $this->password_confirmation) {
-            $this->error[] = 'Password must match confirmation';
+            $this->errors[] = 'Password must match confirmation';
         }
 
         if (strlen($this->password_hash) < 6) {
-            $this->error[] = 'Please enter at least 6 characters for password';
+            $this->errors[] = 'Please enter at least 6 characters for password';
         }
 
         if (preg_match('/.*[a-z]+.*/i', $this->password_hash) == 0) {
-            $this->error[] = 'Password needs at least one letter';
+            $this->errors[] = 'Password needs at least one letter';
         }
 
         if (preg_match('/.*\d+.*/i', $this->password_hash) == 0) {
-            $this->error[] = 'Password needs at least one number';
+            $this->errors[] = 'Password needs at least one number';
         }
     }
 
