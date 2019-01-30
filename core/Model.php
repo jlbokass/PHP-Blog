@@ -1,7 +1,7 @@
 <?php
 /**
  * Created by PhpStorm.
- * User: jlbokass
+ * UsersManager: jlbokass
  * Date: 15/01/2019
  * Time: 02:46
  */
@@ -10,7 +10,7 @@ namespace Core;
 
 use PDO;
 
-use App\Config;
+use Config\Config;
 
 /**
  * Class Model
@@ -21,6 +21,8 @@ abstract class Model
     /**
      * @return null|PDO
      */
+
+
     protected static function getDB()
     {
         static $db = null;
@@ -34,12 +36,12 @@ abstract class Model
                 // Throw an Exception when errror occurs
                 $db->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 
-                return $db;
-
             } catch (\PDOException $e) {
                 echo $e->getMessage();
             }
         }
+
+        return $db;
     }
 }
 

@@ -1,0 +1,47 @@
+{%  extends 'layout.html.twig' %}
+
+{% block title %}Reset{% endblock %}
+
+{% block subTitle %} Reset {% endblock %}
+
+{% block body %}
+
+
+{% if user.errors is not empty %}
+
+<p>Errors:</p>
+<ul>
+    {% for error in user.errors %}
+
+    <li>{{ error }}</li>
+
+    {% endfor %}
+</ul>
+
+{% endif %}
+
+<div class="blog-post">
+    <div class="col-md-8 order-md-1">
+
+        <form class="needs-validation" method="post" action="/password/reset-password" novalidate>
+
+            <input type="hidden" name="token" value="{{ token }}">
+
+            <div class="mb-3">
+                <label for="password">Password</label>
+                <input type="password" class="form-control" id="password" name="password" value="" required>
+                <small id="emailHelp" class="form-text text-muted">More than 6 characters, 1 letter, 1 number</small>
+                <div class="invalid-feedback">
+                    Please enter a password.
+                </div>
+            </div>
+
+            <hr class="mb-4">
+            <button class="btn btn-primary btn-lg btn-block" type="submit">Reset password</button>
+        </form>
+    </div>
+
+</div>
+
+{% endblock %}
+

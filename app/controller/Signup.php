@@ -1,14 +1,14 @@
 <?php
 /**
  * Created by PhpStorm.
- * User: jlbokass
+ * UsersManager: jlbokass
  * Date: 17/01/2019
  * Time: 05:26
  */
 
 namespace App\Controller;
 
-use App\Model\User;
+use App\Manager\UsersManager;
 use Core\Controller;
 use Core\View;
 
@@ -16,24 +16,42 @@ class Signup extends Controller
 {
     public function newAction()
     {
-        View::renderTemplate('Signup/new.twig');
+        View::renderTemplate('Signup/new.html.twig');
     }
 
     public function createAction()
     {
-         $user = new User($_POST);
+        $user = new UsersManager($_POST);
 
-         if ($user->save()) {
+        if ($user->save()) {
 
-             View::renderTemplate('Signup/success.twig');
+            $user->sendActivationEmail();
 
-         } else {
-             View::renderTemplate('Signup/new.twig', ['user' => $user]);
-         }
+            $this->redirect('/signup/success');
+        }
+
+        else {
+
+            View::renderTemplate('Signup/new.html.twig', [
+                'user' => $user
+            ]);
+        }
+
     }
 
     public function successAction()
     {
-        View::renderTemplate('Signup/success.twig');
+        View::renderTemplate('Signup/success.html.twig');
+    }
+
+    public function activateAction()
+    {
+        UsersManager::activate($this->route_params['token']);
+        $this->redirect('/signup/activated');
+    }
+
+    public function activatedAction()
+    {
+        View::renderTemplate('Signup/activated.html.twig');
     }
 }

@@ -1,0 +1,81 @@
+{%  extends 'layout.html.twig' %}
+
+{% block title %}Sign Up{% endblock %}
+
+{% block subTitle %} Sign Up {% endblock %}
+
+{% block body %}
+
+    {% if user.errors is not empty %}
+        <p>Errors:</p>
+        <ul>
+            {% for error in user.errors %}
+            <li>{{ error }}</li>
+            {% endfor %}
+        </ul>
+    {% endif %}
+
+    <div class="blog-post">
+        <div class="col-md-8 order-md-1">
+
+            <form class="needs-validation" method="post" action="/signup/create" novalidate>
+
+                <div class="mb-3">
+                    <label for="username">Username</label>
+                    <input type="text" class="form-control" id="username" name="username" placeholder="my username is John for exemple" value="{{ user.username }}" autofocus required>
+                    <small id="usernameHelp" class="form-text text-muted">Something to identify you when you're logged in</small>
+                    <div class="invalid-feedback">
+                        Please enter a valid username.
+                    </div>
+                </div>
+
+                <div class="mb-3">
+                    <label for="email">Email</label>
+                    <input type="email" class="form-control" id="email" name="email" placeholder="you@example.com" value="{{ user.email }}" required>
+                    <small id="emailHelp" class="form-text text-muted">Your email adress</small>
+                    <div class="invalid-feedback">
+                        Please enter a valid email address.
+                    </div>
+                </div>
+
+                <!--<div class="mb-3">
+                    <label for="password">Password</label>
+                    <input type="password" class="form-control" id="password" name="password" value="" required>
+                    <small id="passwordlHelp" class="form-text text-muted">More than 6 characters, 1 letter, 1 number</small>
+                    <div class="invalid-feedback">
+                        Please enter a password.
+                    </div>
+                </div>-->
+
+                <div class="mb-3">
+                    <label for="password">Password</label>
+                    <div class="input-group">
+                        <input type="password" class="form-control" id="password" name="password" required>
+                        <div class="input-group-append">
+                            <span class="input-group-text">Show</span>
+                        </div>
+                        <div class="invalid-feedback">
+                            Please enter a password.
+                        </div>
+                    </div>
+                    <small id="passwordlHelp" class="form-text text-muted">More than 6 characters, 1 letter, 1 number </small>
+                </div>
+
+                <div class="mb-3">
+                    <label for="password_confirmation">Confirmation du mot de pass</label>
+                    <input type="password" class="form-control" id="password_confirmation" name="password_confirmation" value="" required>
+                    <small id="passwordConfirmHelp" class="form-text text-muted">Enter the same password</small>
+                    <div class="invalid-feedback">
+                        Please enter the same password.
+                    </div>
+                </div>
+
+                <hr class="mb-4">
+                <button class="btn btn-primary btn-lg btn-block" type="submit">Sign Up</button>
+            </form>
+        </div>
+
+    </div>
+
+{% endblock %}
+

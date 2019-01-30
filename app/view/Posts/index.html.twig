@@ -1,4 +1,4 @@
-{%  extends 'layout.twig' %}
+{%  extends 'layout.html.twig' %}
 
 {% block title %}Blog{% endblock %}
 
@@ -10,10 +10,12 @@
         {% for post in posts %}
 
         <h3>{{ post.title }}</h3>
-        <p class="blog-post-meta">Rédigé le 27 octobre 2018 <a href="#">par John</a></p>
+        <p class="blog-post-meta">Rédigé le {{ post.created_at }} </p>
 
-        <p>{{ post.content }}<a href="blog-post.html"> Lire la suite ...</a><br>
+        <p>{{ post.sentence }}<br>
+            <a href="/posts/{{ post.id }}/single"> Lire la suite ...</a><br>
             <span class="badge badge-secondary mt-3">4 commentaires</span></p>
+            <p>Post number {{ post.id }}</p>
 
         {% endfor %}
 

@@ -1,13 +1,15 @@
 <?php
 /**
  * Created by PhpStorm.
- * User: jlbokass
+ * UsersManager: jlbokass
  * Date: 13/01/2019
  * Time: 05:33
  */
 
 namespace Core;
 
+use App\Utilities\Auth;
+use App\Utilities\Flash;
 
 /**
  * Class Controller
@@ -43,11 +45,15 @@ abstract class Controller
         $method = $name . 'Action';
 
         if (method_exists($this, $method)) {
+
             if ($this->before() !== false) {
+
                 call_user_func_array([$this, $method], $arguments);
                 $this->after();
             }
+
         } else {
+
             //echo 'Method ' . $method . 'not found in controller ' . get_class($this);
             throw new \Exception('Method ' . $method . ' not found in controller ' . get_class($this));
         }
@@ -67,5 +73,23 @@ abstract class Controller
     protected  function after()
     {
 
+    }
+
+    public function redirect($url)
+    {
+        header('Location: http://' . $_SERVER['HTTP_HOST'] . $url, true, 303);
+        exit;
+    }
+
+    public function requireLogin()
+    {
+        if (! Auth::getUser()) {
+
+            Flash::addMessage('Please login to access that page');
+
+            Auth::rememberRequestedPage();
+
+            $this->redirect('/login');
+        }
     }
 }

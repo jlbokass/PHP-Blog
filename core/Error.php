@@ -1,13 +1,14 @@
 <?php
 /**
  * Created by PhpStorm.
- * User: jlbokass
+ * UsersManager: jlbokass
  * Date: 16/01/2019
  * Time: 00:39
  */
 
 namespace Core;
 
+use Config\Config;
 
 /**
  * Class Error
@@ -45,7 +46,7 @@ class Error
         }
         http_response_code($code);
 
-        if (\App\Config::SHOW_ERRORS) {
+        if (Config::SHOW_ERRORS) {
             echo "<h1>Fatal error</h1>";
             echo "<p>Uncaught exception: '" . get_class($exception) . "'</p>";
             echo "<p>Message: '" . $exception->getMessage() . "'</p>";
@@ -69,7 +70,7 @@ class Error
                 echo "<h1>An error occurred</h1>";
             }
             */
-            View::renderTemplate($code . '.twig');
+            View::renderTemplate($code . '.html');
         }
     }
 }

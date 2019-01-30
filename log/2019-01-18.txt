@@ -244,3 +244,43 @@ Thrown in '/Applications/MAMP/htdocs/PHP-Blog/app/Model/User.php' on line 38
 Stack trace: #0 /Applications/MAMP/htdocs/PHP-Blog/public/index.php(66): Core\Router->dispatch('signup/css/blog...')
 #1 {main}
 Thrown in '/Applications/MAMP/htdocs/PHP-Blog/core/Router.php' on line 134
+[18-Jan-2019 11:12:09 Europe/Paris] Uncaught exception: 'Exception' with message 'No route matched.'
+Stack trace: #0 /Applications/MAMP/htdocs/PHP-Blog/public/index.php(66): Core\Router->dispatch('posts/css/blog....')
+#1 {main}
+Thrown in '/Applications/MAMP/htdocs/PHP-Blog/core/Router.php' on line 134
+[18-Jan-2019 12:02:46 Europe/Paris] Uncaught exception: 'Exception' with message 'No route matched.'
+Stack trace: #0 /Applications/MAMP/htdocs/PHP-Blog/public/index.php(66): Core\Router->dispatch('posts/css/blog....')
+#1 {main}
+Thrown in '/Applications/MAMP/htdocs/PHP-Blog/core/Router.php' on line 134
+[18-Jan-2019 12:02:53 Europe/Paris] Uncaught exception: 'Exception' with message 'No route matched.'
+Stack trace: #0 /Applications/MAMP/htdocs/PHP-Blog/public/index.php(66): Core\Router->dispatch('posts/cv.html')
+#1 {main}
+Thrown in '/Applications/MAMP/htdocs/PHP-Blog/core/Router.php' on line 134
+[18-Jan-2019 12:02:54 Europe/Paris] Uncaught exception: 'Exception' with message 'No route matched.'
+Stack trace: #0 /Applications/MAMP/htdocs/PHP-Blog/public/index.php(66): Core\Router->dispatch('posts/css/blog....')
+#1 {main}
+Thrown in '/Applications/MAMP/htdocs/PHP-Blog/core/Router.php' on line 134
+[18-Jan-2019 12:02:54 Europe/Paris] Uncaught exception: 'Exception' with message 'No route matched.'
+Stack trace: #0 /Applications/MAMP/htdocs/PHP-Blog/public/index.php(66): Core\Router->dispatch('posts/cv.html')
+#1 {main}
+Thrown in '/Applications/MAMP/htdocs/PHP-Blog/core/Router.php' on line 134
+[18-Jan-2019 12:06:42 Europe/Paris] Uncaught exception: 'Exception' with message 'No route matched.'
+Stack trace: #0 /Applications/MAMP/htdocs/PHP-Blog/public/index.php(66): Core\Router->dispatch('signup/css/blog...')
+#1 {main}
+Thrown in '/Applications/MAMP/htdocs/PHP-Blog/core/Router.php' on line 134
+[18-Jan-2019 12:11:06 Europe/Paris] Uncaught exception: 'Exception' with message 'No route matched.'
+Stack trace: #0 /Applications/MAMP/htdocs/PHP-Blog/public/index.php(66): Core\Router->dispatch('signup/css/blog...')
+#1 {main}
+Thrown in '/Applications/MAMP/htdocs/PHP-Blog/core/Router.php' on line 134
+[18-Jan-2019 12:11:49 Europe/Paris] Uncaught exception: 'Error' with message 'Call to a member function prepare() on null'
+Stack trace: #0 /Applications/MAMP/htdocs/PHP-Blog/app/Controller/Signup.php(26): App\Model\User->save()
+#1 [internal function]: App\Controller\Signup->createAction()
+#2 /Applications/MAMP/htdocs/PHP-Blog/core/Controller.php(47): call_user_func_array(Array, Array)
+#3 /Applications/MAMP/htdocs/PHP-Blog/core/Router.php(122): Core\Controller->__call('create', Array)
+#4 /Applications/MAMP/htdocs/PHP-Blog/public/index.php(66): Core\Router->dispatch('signup/create')
+#5 {main}
+Thrown in '/Applications/MAMP/htdocs/PHP-Blog/app/Model/User.php' on line 38
+[18-Jan-2019 12:11:49 Europe/Paris] Uncaught exception: 'Exception' with message 'No route matched.'
+Stack trace: #0 /Applications/MAMP/htdocs/PHP-Blog/public/index.php(66): Core\Router->dispatch('signup/css/blog...')
+#1 {main}
+Thrown in '/Applications/MAMP/htdocs/PHP-Blog/core/Router.php' on line 134

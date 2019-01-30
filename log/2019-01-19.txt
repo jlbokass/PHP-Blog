@@ -1,0 +1,64 @@
+[19-Jan-2019 16:00:35 Europe/Paris] Uncaught exception: 'Error' with message 'Call to a member function prepare() on null'
+Stack trace: #0 /Applications/MAMP/htdocs/PHP-Blog/app/Controller/Signup.php(26): App\Model\User->save()
+#1 [internal function]: App\Controller\Signup->createAction()
+#2 /Applications/MAMP/htdocs/PHP-Blog/core/Controller.php(47): call_user_func_array(Array, Array)
+#3 /Applications/MAMP/htdocs/PHP-Blog/core/Router.php(122): Core\Controller->__call('create', Array)
+#4 /Applications/MAMP/htdocs/PHP-Blog/public/index.php(66): Core\Router->dispatch('signup/create')
+#5 {main}
+Thrown in '/Applications/MAMP/htdocs/PHP-Blog/app/Model/User.php' on line 40
+[19-Jan-2019 16:13:11 Europe/Paris] Uncaught exception: 'Error' with message 'Call to a member function prepare() on null'
+Stack trace: #0 /Applications/MAMP/htdocs/PHP-Blog/app/Controller/Signup.php(26): App\Model\User->save()
+#1 [internal function]: App\Controller\Signup->createAction()
+#2 /Applications/MAMP/htdocs/PHP-Blog/core/Controller.php(47): call_user_func_array(Array, Array)
+#3 /Applications/MAMP/htdocs/PHP-Blog/core/Router.php(122): Core\Controller->__call('create', Array)
+#4 /Applications/MAMP/htdocs/PHP-Blog/public/index.php(66): Core\Router->dispatch('signup/create')
+#5 {main}
+Thrown in '/Applications/MAMP/htdocs/PHP-Blog/app/Model/User.php' on line 40
+[19-Jan-2019 16:20:03 Europe/Paris] Uncaught exception: 'ErrorException' with message 'Undefined property: App\Model\User::$name'
+Stack trace: #0 /Applications/MAMP/htdocs/PHP-Blog/app/Model/User.php(74): Core\Error::errorHandler(8, 'Undefined prope...', '/Applications/M...', 74, Array)
+#1 /Applications/MAMP/htdocs/PHP-Blog/app/Model/User.php(44): App\Model\User->validate()
+#2 /Applications/MAMP/htdocs/PHP-Blog/app/Controller/Signup.php(26): App\Model\User->save()
+#3 [internal function]: App\Controller\Signup->createAction()
+#4 /Applications/MAMP/htdocs/PHP-Blog/core/Controller.php(47): call_user_func_array(Array, Array)
+#5 /Applications/MAMP/htdocs/PHP-Blog/core/Router.php(122): Core\Controller->__call('create', Array)
+#6 /Applications/MAMP/htdocs/PHP-Blog/public/index.php(66): Core\Router->dispatch('signup/create')
+#7 {main}
+Thrown in '/Applications/MAMP/htdocs/PHP-Blog/app/Model/User.php' on line 74
+[19-Jan-2019 16:30:57 Europe/Paris] Uncaught exception: 'Error' with message 'Class 'App\Model\PDO' not found'
+Stack trace: #0 /Applications/MAMP/htdocs/PHP-Blog/app/Model/User.php(77): App\Model\User->emailExists('salsadura33@gma...')
+#1 /Applications/MAMP/htdocs/PHP-Blog/app/Model/User.php(44): App\Model\User->validate()
+#2 /Applications/MAMP/htdocs/PHP-Blog/app/Controller/Signup.php(26): App\Model\User->save()
+#3 [internal function]: App\Controller\Signup->createAction()
+#4 /Applications/MAMP/htdocs/PHP-Blog/core/Controller.php(47): call_user_func_array(Array, Array)
+#5 /Applications/MAMP/htdocs/PHP-Blog/core/Router.php(122): Core\Controller->__call('create', Array)
+#6 /Applications/MAMP/htdocs/PHP-Blog/public/index.php(66): Core\Router->dispatch('signup/create')
+#7 {main}
+Thrown in '/Applications/MAMP/htdocs/PHP-Blog/app/Model/User.php' on line 112
+[19-Jan-2019 16:30:57 Europe/Paris] Uncaught exception: 'ErrorException' with message 'Undefined property: App\Model\User::$email'
+Stack trace: #0 /Applications/MAMP/htdocs/PHP-Blog/app/Model/User.php(74): Core\Error::errorHandler(8, 'Undefined prope...', '/Applications/M...', 74, Array)
+#1 /Applications/MAMP/htdocs/PHP-Blog/app/Model/User.php(44): App\Model\User->validate()
+#2 /Applications/MAMP/htdocs/PHP-Blog/app/Controller/Signup.php(26): App\Model\User->save()
+#3 [internal function]: App\Controller\Signup->createAction()
+#4 /Applications/MAMP/htdocs/PHP-Blog/core/Controller.php(47): call_user_func_array(Array, Array)
+#5 /Applications/MAMP/htdocs/PHP-Blog/core/Router.php(122): Core\Controller->__call('create', Array)
+#6 /Applications/MAMP/htdocs/PHP-Blog/public/index.php(66): Core\Router->dispatch('signup/create')
+#7 {main}
+Thrown in '/Applications/MAMP/htdocs/PHP-Blog/app/Model/User.php' on line 74
+[19-Jan-2019 16:32:51 Europe/Paris] Uncaught exception: 'Error' with message 'Class 'App\Model\PDO' not found'
+Stack trace: #0 /Applications/MAMP/htdocs/PHP-Blog/app/Model/User.php(77): App\Model\User->emailExists('salsadura33@gma...')
+#1 /Applications/MAMP/htdocs/PHP-Blog/app/Model/User.php(44): App\Model\User->validate()
+#2 /Applications/MAMP/htdocs/PHP-Blog/app/Controller/Signup.php(26): App\Model\User->save()
+#3 [internal function]: App\Controller\Signup->createAction()
+#4 /Applications/MAMP/htdocs/PHP-Blog/core/Controller.php(47): call_user_func_array(Array, Array)
+#5 /Applications/MAMP/htdocs/PHP-Blog/core/Router.php(122): Core\Controller->__call('create', Array)
+#6 /Applications/MAMP/htdocs/PHP-Blog/public/index.php(66): Core\Router->dispatch('signup/create')
+#7 {main}
+Thrown in '/Applications/MAMP/htdocs/PHP-Blog/app/Model/User.php' on line 112
+[19-Jan-2019 16:35:02 Europe/Paris] Uncaught exception: 'Error' with message 'Call to a member function prepare() on null'
+Stack trace: #0 /Applications/MAMP/htdocs/PHP-Blog/app/Controller/Signup.php(26): App\Model\User->save()
+#1 [internal function]: App\Controller\Signup->createAction()
+#2 /Applications/MAMP/htdocs/PHP-Blog/core/Controller.php(47): call_user_func_array(Array, Array)
+#3 /Applications/MAMP/htdocs/PHP-Blog/core/Router.php(122): Core\Controller->__call('create', Array)
+#4 /Applications/MAMP/htdocs/PHP-Blog/public/index.php(66): Core\Router->dispatch('signup/create')
+#5 {main}
+Thrown in '/Applications/MAMP/htdocs/PHP-Blog/app/Model/User.php' on line 55

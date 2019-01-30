@@ -1,0 +1,30 @@
+{%  extends 'layout.html.twig' %}
+
+{% block title %}Reset{% endblock %}
+
+{% block subTitle %} Reset success {% endblock %}
+
+{% block body %}
+
+
+{% if user.errors is not empty %}
+
+<p>Errors:</p>
+<ul>
+    {% for error in user.errors %}
+
+    <li>{{ error }}</li>
+
+    {% endfor %}
+</ul>
+
+{% endif %}
+
+<div class="blog-post">
+
+    <p>You can now <a href="/login">login</a>. </p>
+
+</div>
+
+{% endblock %}
+

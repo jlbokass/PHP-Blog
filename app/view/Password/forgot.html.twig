@@ -1,0 +1,29 @@
+{%  extends 'layout.html.twig' %}
+
+{% block title %}reset{% endblock %}
+
+{% block subTitle %} Reset{% endblock %}
+
+{% block body %}
+
+    <div class="blog-post">
+        <div class="col-md-8 order-md-1">
+
+            <form class="needs-validation" method="post" action="/password/request-reset" novalidate>
+
+                <div class="mb-3">
+                    <label for="email">Email</label>
+                    <input type="email" class="form-control" id="email" name="email" placeholder="you@example.com" value="{{ email }}" autofocus required>
+                    <small id="emailHelp" class="form-text text-muted">Your email address</small>
+                    <div class="invalid-feedback">
+                        Please enter a valid email address.
+                    </div>
+                </div>
+
+                <hr class="mb-4">
+                <button class="btn btn-primary btn-lg btn-block" type="submit">Reset password</button>
+            </form>
+        </div>
+    </div>
+
+{% endblock %}

@@ -1,12 +1,12 @@
 <?php
 /**
  * Created by PhpStorm.
- * User: jlbokass
+ * UsersManager: jlbokass
  * Date: 13/01/2019
  * Time: 05:02
  */
 
-namespace App\controller;
+namespace App\Controller;
 
 
 use Core\Controller;
@@ -31,24 +31,7 @@ class Home extends Controller
             'colors' => ['red', 'green', 'blue']]);
         */
 
-        View::renderTemplate('/Home/index.twig');
-    }
-
-    /**
-     *
-     */
-    protected function before()
-    {
-        //echo '(before)';
-        //return false;
-    }
-
-    /**
-     *
-     */
-    protected function after()
-    {
-       // echo '(after)';
+        View::renderTemplate('/Home/index.html.twig');
     }
 
 }
