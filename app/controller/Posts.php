@@ -8,6 +8,7 @@
 
 namespace App\Controller;
 
+use App\Manager\CommentManager;
 use App\Manager\PostManager;
 use Core\Controller;
 use Core\View;
@@ -35,10 +36,14 @@ class Posts extends Controller
     {
         $id = $this->route_params['id'];
 
+        $posts = PostManager::getAll($id);
         $single = PostManager::getSingle($id);
+        $comments = CommentManager::getAll($id);
 
         View::renderTemplate('/Posts/single.html.twig', [
-            'single' => $single
+            'posts' => $posts,
+            'single' => $single,
+            'comments' => $comments
         ]);
     }
 

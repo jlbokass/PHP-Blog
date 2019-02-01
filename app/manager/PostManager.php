@@ -17,15 +17,51 @@ use PDO;
  */
 class PostManager extends Model
 {
+
     /**
-     * @return array
+     * @param null $postId
+     * @return array|mixed
      */
-    public static function getAll()
+    public static function getAll($postId = null)
     {
-        $sql = 'SELECT post.id, FK_user_id, title,
+        if($postId) {
+                $sql = 'SELECT post.id,
+                post.title,
+                left(content,100) AS sentence,
+                post.content,
+                post.createdAt,
+                u.username AS user_username
+                FROM post
+                INNER JOIN user u on post.FK_user_id = u.id
+                WHERE post.id = :postId';
+
+            $db = Model::getDB();
+
+            $stmt = $db->prepare($sql);
+            $stmt->bindValue(':postId', $postId, PDO::PARAM_INT);
+            $stmt->execute();
+
+            $result = $stmt->fetch();
+
+            return $result;
+        }
+
+        /*
+        $sql2 = 'SELECT post.id, FK_user_id, title,
                 left(content,100) AS sentence, content,
                 DATE_FORMAT(createdAt, \'%d/%m/%Y à %Hh%imin\')
                 AS created_at
+                FROM post
+                INNER JOIN user u on post.FK_user_id = u.id
+                ORDER BY post.id DESC ';
+        */
+
+        $sql = 'SELECT post.id,
+                post.title,
+                left(content,100) AS sentence,
+                post.content,
+                post.createdAt,
+                u.username AS user_username
                 FROM post
                 INNER JOIN user u on post.FK_user_id = u.id
                 ORDER BY post.id DESC ';
@@ -38,10 +74,14 @@ class PostManager extends Model
         return $results;
     }
 
+    /**
+     * @param $postId
+     * @return mixed
+     */
     public static function getSingle($postId)
     {
         $sql = 'SELECT title, content,
-                DATE_FORMAT(createdAt, \'%d/%m/%Y à %Hh%imin\') AS created_at 
+                createdAt
                 FROM post
                 WHERE post.id = :postId';
 
@@ -55,6 +95,5 @@ class PostManager extends Model
 
         return $result;
     }
-
 
 }

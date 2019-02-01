@@ -32,11 +32,8 @@ class Login extends Controller
 
             Auth::login($user, $remember_me);
 
-
-
             Flash::addMessage('Login successful');
 
-            //$this->redirect('/');
             $this->redirect(Auth::getReturnToPage());
 
         } else {

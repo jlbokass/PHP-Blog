@@ -105,6 +105,11 @@ class Auth
         }
     }
 
+    public static function getAdmin()
+    {
+        //
+    }
+
     /**
      * @return mixed
      */
