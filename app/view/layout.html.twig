@@ -61,7 +61,7 @@
         <div class="nav-scroller py-1 mb-2">
             <nav class="nav d-flex justify-content-end">
                 <a class="p-2 text-muted" href="/">Accueil</a>
-                <a class="p-2 text-muted" href="/posts/index">Blog</a>
+                <a class="p-2 text-muted" href="/post/index">Blog</a>
                 <a class="p-2 text-muted" href="/cv/index">CV</a>
                 <a class="p-2 text-muted" href="/#contactAdmin">Contact</a>
             </nav>
@@ -81,7 +81,7 @@
                     <a class="nav-link" href="/">Accueil</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="/posts/index">Blog</a>
+                    <a class="nav-link" href="/post/index">Blog</a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" href="/cv/index">CV</a>
@@ -127,9 +127,9 @@
             <div class="blog-post">
 
                 {% for message in flash_messages %}
-                <div class="alert alert-danger alert-dismissible fade show">
+                <div class="alert alert-{{ message.type }} alert-dismissible fade show">
                     <button type="button" class="close" data-dismiss="alert">&times;</button>
-                    {{ message }}
+                    {{ message.body }}
                 </div>
                 {% endfor %}
 
@@ -179,7 +179,7 @@
 <p class="text-center mb-5"><a href="#">Back to top</a></p>
 
 <footer class="blog-footer">
-    Copyright © 2019 Conception by <a href="contact.html">John Bokassa</a>. <a href="connexion.html">Administration</a>
+    Copyright © 2019 Conception by <a href="contact.html">John Bokassa</a>. <a href="/admin/index">Administration</a>
     <!--<p>Blog template built for <a href="https://getbootstrap.com/">Bootstrap</a> by <a href="https://twitter.com/mdo">@mdo</a>.</p>-->
 </footer>
 

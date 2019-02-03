@@ -18,7 +18,7 @@ use Core\View;
  * Class Home
  * @package app\controller
  */
-class Home extends Controller
+class HomeController extends Controller
 {
     /**
      *

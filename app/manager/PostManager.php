@@ -80,6 +80,7 @@ class PostManager extends Model
      */
     public static function getSingle($postId)
     {
+
         $sql = 'SELECT title, content,
                 createdAt
                 FROM post
@@ -94,6 +95,24 @@ class PostManager extends Model
         $result = $stmt->fetch();
 
         return $result;
+    }
+
+    public static function getAllFromUser($userId)
+    {
+
+            $sql = 'SELECT * FROM post
+                    WHERE post.FK_user_id = :postId';
+
+            $db = Model::getDB();
+
+            $stmt = $db->prepare($sql);
+            $stmt->bindValue(':postId', $userId, PDO::PARAM_INT);
+            $stmt->execute();
+
+            $result = $stmt->fetchAll();
+
+            return $result;
+
     }
 
 }

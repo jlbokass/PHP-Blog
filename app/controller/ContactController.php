@@ -13,7 +13,7 @@ use App\Manager\ContactManager;
 use Core\Controller;
 use Core\View;
 
-class Contact extends Controller
+class ContactController extends Controller
 {
     public function createAction()
     {

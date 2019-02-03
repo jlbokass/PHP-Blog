@@ -9,11 +9,13 @@
 namespace App\Controller;
 
 
+use App\Manager\PostManager;
+use App\Manager\UsersManager;
 use App\Utilities\Auth;
 use App\Utilities\Flash;
 use Core\View;
 
-class Profile extends Authenticated
+class ProfileController extends AuthenticatedController
 {
     public function showAction()
     {
@@ -33,6 +35,13 @@ class Profile extends Authenticated
     {
         $user = Auth::getUser();
 
+        /*
+        $tata = new UsersManager();
+        $tata->updateProfile($_POST);
+        var_dump($tata);
+        die();
+        */
+
         if ($user->updateProfile($_POST)) {
 
             Flash::addMessage('changes saved');
@@ -41,8 +50,19 @@ class Profile extends Authenticated
 
         }
 
-        View::renderTemplate('Profile/edit.html.twig', [
+        View::renderTemplate('Profile/show.html.twig', [
             'user' => $user
+        ]);
+    }
+
+    public function articleAction()
+    {
+        $tatas = PostManager::getAllFromUser(Auth::getUser()->id);
+        //var_dump($tatas);
+        //die();
+
+        View::renderTemplate('Profile/article.html.twig', [
+            'tatas' => $tatas
         ]);
     }
 }

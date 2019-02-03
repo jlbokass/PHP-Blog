@@ -11,7 +11,7 @@ namespace App\Controller;
 
 use Core\Controller;
 
-abstract class Authenticated extends Controller
+abstract class AuthenticatedController extends Controller
 {
     protected function before()
     {

@@ -15,13 +15,27 @@ use Core\Controller;
 use Core\View;
 use App\Manager\UsersManager;
 
-class Login extends Controller
+/**
+ * Class Login
+ * @package App\Controller
+ */
+class LoginController extends Controller
 {
+    /**
+     * @throws \Twig_Error_Loader
+     * @throws \Twig_Error_Runtime
+     * @throws \Twig_Error_Syntax
+     */
     public function newAction()
     {
         View::renderTemplate('Login/new.html.twig');
     }
 
+    /**
+     * @throws \Twig_Error_Loader
+     * @throws \Twig_Error_Runtime
+     * @throws \Twig_Error_Syntax
+     */
     public function createAction()
     {
         $user = UsersManager::authenticate($_POST['email'], $_POST['password']);
@@ -38,7 +52,9 @@ class Login extends Controller
 
         } else {
 
-            Flash::addMessage('login unsuccessful, please try again');
+            //Flash::addMessage('login unsuccessful, please try again');
+
+            Flash::addMessage('Login unsuccessful, please try again', Flash::WARNING);
 
             View::renderTemplate('Login/new.html.twig', [
                 'email' => $_POST['email'],
@@ -47,6 +63,9 @@ class Login extends Controller
         }
     }
 
+    /**
+     *
+     */
     public function destroyAction()
     {
         Auth::logout();
@@ -55,6 +74,9 @@ class Login extends Controller
     }
 
 
+    /**
+     *
+     */
     public function showLogoutMessageAction()
     {
         Flash::addMessage('logout successful');

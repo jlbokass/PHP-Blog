@@ -9,7 +9,7 @@
 namespace App\Manager;
 
 
-use App\Token;
+use App\Utilities\Token;
 use Core\Model;
 
 class RememberedLogin extends Model

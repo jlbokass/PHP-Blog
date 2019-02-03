@@ -9,7 +9,7 @@
 namespace App\Model;
 
 
-class Posts
+class Post
 {
     public $id;
     public $FK_user_id;

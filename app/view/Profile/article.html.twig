@@ -1,0 +1,53 @@
+{%  extends 'AdminLayout.html.twig' %}
+
+{% block home %}
+    Profile
+{% endblock %}
+
+{% block title %} Article {% endblock %}
+
+{% block link %}
+    <li class="nav-item">
+        <a class="nav-link" href="/profile/article"><span data-feather="file"></span>Article</a>
+    </li>
+{% endblock %}
+
+{% block body %}
+
+    <div class="container">
+        <h4>New article</h4>
+
+        {% if tatas %}
+
+        <table class="table table-hover table-bordered">
+            <thead>
+            <tr>
+                <th>Title</th>
+                <th>Date</th>
+                <th colspan="2" class="text-center">Action</th>
+            </tr>
+            </thead>
+            <tbody>
+
+            {% for tata in tatas %}
+            <tr>
+                <td>{{ tata.title }}</td>
+                <td>{{ tata.createdAt }}</td>
+                <td>
+                    <a href="#">update</a>
+                </td>
+                <td>
+                    <a href="#">delete</a>
+                </td>
+            </tr>
+            {% endfor %}
+            </tbody>
+        </table>
+
+        {% else %}
+            <p>Vous n'avez pas encore créer d'article.</p>
+        {% endif %}
+
+    </div>
+
+{% endblock %}

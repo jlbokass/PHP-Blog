@@ -13,7 +13,7 @@
         <p class="blog-post-meta text-body">Rédigé par <strong>{{ post.user_username }}</strong> le {{ post.createdAt | date("d/m/Y à H:i") }} </p>
 
         <p>{{ post.sentence }}<br>
-            <a href="/posts/{{ post.id }}/single"> Lire la suite ...</a><br>
+            <a href="/post/{{ post.id }}/single"> Lire la suite ...</a><br>
             <span class="badge badge-secondary mt-3">4 commentaires</span></p>
             <p>Post number {{ post.id }}</p>
 

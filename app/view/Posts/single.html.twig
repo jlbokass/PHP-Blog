@@ -2,7 +2,7 @@
 
 {% block title %}Single{% endblock %}
 
-{% block subTitle %} Détail du post - <span style="font-size: .6em"><a href="/posts/index"> revenir aux blog</a> </span> {% endblock %}
+{% block subTitle %} Détail du post - <span style="font-size: .6em"><a href="/post/index"> revenir aux blog</a> </span> {% endblock %}
 
 {% block body %}
 
@@ -19,11 +19,20 @@
 
             <div class="row mb-3">
                 <div class="col-12">
-                    <form class="needs-validation" method="post" action="" novalidate>
+                    <form class="needs-validation" method="post" action="/comment/create" novalidate>
                         <div class="mb-3">
                             <h5 class="mt-4 mb-4">Publiez un commentaire :</h5>
-                            <textarea class="form-control" id="exampleFormControlTextarea1" rows="5"></textarea>
+                            <textarea class="form-control" id="exampleFormControlTextarea1" name="content" rows="5"></textarea>
                         </div>
+
+                        <div class="mb-3">
+                            <input type="text" id="user_id" name="user_id"  value="{{ posts.FK_user_id }}" hidden>
+                        </div>
+
+                        <div class="mb-3">
+                            <input type="text" id="post_id" name="post_id"  value="{{ posts.id }}" hidden>
+                        </div>
+
                         <button class="btn btn-primary btn-lg btn-block" type="submit">Envoyez</button>
                     </form>
                 </div>
@@ -36,7 +45,7 @@
                     <div class="col-12">
                         <div class="card">
                             <div class="card-body">
-                                    <span class="small text-secondary"><strong>{{ comment.user_username }}</strong>a écrit le {{ comment.createdAt |date("d/m/Y à H:i") }}<br />
+                                    <span class="small text-secondary"><strong>{{ comment.user_username }}</strong> a écrit le {{ comment.createdAt |date("d/m/Y à H:i") }}<br />
                                         "
                                         {{ comment.content }}"</span>
                             </div>
@@ -51,11 +60,20 @@
 
                 <div class="row mb-3">
                     <div class="col-12">
-                        <form class="needs-validation" method="post" action="" novalidate>
+                        <form class="needs-validation" method="post" action="/comment/create" novalidate>
                             <div class="mb-3">
                                 <h5 class="mt-4 mb-4">Publiez un commentaire :</h5>
-                                <textarea class="form-control" id="exampleFormControlTextarea1" rows="5"></textarea>
+                                <textarea class="form-control" id="exampleFormControlTextarea1" name="content" rows="5"></textarea>
                             </div>
+
+                            <div class="mb-3">
+                                <input type="text" id="user_id" name="user_id"  hidden>
+                            </div>
+
+                            <div class="mb-3">
+                                <input type="text" id="post_id" name="post_id"  value="{{ posts.id }}" hidden>
+                            </div>
+
                             <button class="btn btn-primary btn-lg btn-block" type="submit">Envoyez</button>
                         </form>
                     </div>

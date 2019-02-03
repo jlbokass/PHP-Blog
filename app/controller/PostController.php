@@ -18,7 +18,7 @@ use Core\View;
  * Class Posts
  * @package App\Controller
  */
-class Posts extends Controller
+class PostController extends Controller
 {
     /**
      *
@@ -78,4 +78,5 @@ class Posts extends Controller
     {
          //...
     }
+
 }

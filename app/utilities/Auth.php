@@ -65,14 +65,6 @@ class Auth
         static::forgotLogin();
     }
 
-    /*
-    public static function isLoggedIn()
-    {
-        return isset($_SESSION['user_id']);
-    }
-    */
-
-
     /**
      *
      */
@@ -110,6 +102,11 @@ class Auth
         //
     }
 
+    public static function rememberPost()
+    {
+        //
+    }
+
     /**
      * @return mixed
      */
@@ -119,11 +116,11 @@ class Auth
 
         if ($cookie) {
 
-            $rememberred_login = RememberedLogin::findByToken($cookie);
+            $remembered_login = RememberedLogin::findByToken($cookie);
 
-            if ($rememberred_login && ! $rememberred_login->hasExpired()) {
+            if ($remembered_login && ! $remembered_login->hasExpired()) {
 
-                $user = $rememberred_login->getUser();
+                $user = $remembered_login->getUser();
 
                 static::login($user, false);
 

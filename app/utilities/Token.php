@@ -6,7 +6,7 @@
  * Time: 00:44
  */
 
-namespace App;
+namespace App\Utilities;
 
 use Config\Config;
 

@@ -12,7 +12,7 @@ namespace App\Controller;
 use Core\Controller;
 use Core\View;
 
-class Cv extends Controller
+class CvController extends Controller
 {
     public function indexAction()
     {

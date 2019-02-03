@@ -12,7 +12,7 @@ use App\Manager\UsersManager;
 use Core\Controller;
 use Core\View;
 
-class Signup extends Controller
+class SignupController extends Controller
 {
     public function newAction()
     {

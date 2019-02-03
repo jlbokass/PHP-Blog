@@ -10,7 +10,7 @@ namespace App\Controller;
 
 use Core\View;
 
-class Item extends Authenticated
+class Item extends AuthenticatedController
 {
 
     public function indexAction()

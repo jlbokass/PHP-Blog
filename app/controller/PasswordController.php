@@ -17,7 +17,7 @@ use Core\View;
  * Class Password
  * @package App\Controller
  */
-class Password extends Controller
+class PasswordController extends Controller
 {
     /**
      * @throws \Twig_Error_Loader
