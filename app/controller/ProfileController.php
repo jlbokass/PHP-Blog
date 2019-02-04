@@ -17,30 +17,24 @@ use Core\View;
 
 class ProfileController extends AuthenticatedController
 {
-    public function showAction()
+    public function showProfileAction()
     {
-        View::renderTemplate('Profile/show.html.twig', [
+        View::renderTemplate('Profile/show-profile.html.twig', [
             'user' => Auth::getUser()
         ]);
     }
 
-    public function editAction()
+
+    public function editProfileAction()
     {
-        View::renderTemplate('Profile/edit.html.twig', [
+        View::renderTemplate('Profile/edit-profile.html.twig', [
             'user' => Auth::getUser()
         ]);
     }
 
-    public function updateAction()
+    public function updateProfileAction()
     {
         $user = Auth::getUser();
-
-        /*
-        $tata = new UsersManager();
-        $tata->updateProfile($_POST);
-        var_dump($tata);
-        die();
-        */
 
         if ($user->updateProfile($_POST)) {
 
@@ -50,19 +44,37 @@ class ProfileController extends AuthenticatedController
 
         }
 
-        View::renderTemplate('Profile/show.html.twig', [
+        View::renderTemplate('Profile/show-profile.html.twig', [
             'user' => $user
         ]);
     }
 
-    public function articleAction()
+    public function showArticleAction()
     {
-        $tatas = PostManager::getAllFromUser(Auth::getUser()->id);
-        //var_dump($tatas);
-        //die();
+        $posts = PostManager::getAllFromUser(Auth::getUser()->id);
 
-        View::renderTemplate('Profile/article.html.twig', [
-            'tatas' => $tatas
+        View::renderTemplate('Profile/show-article.html.twig', [
+            'posts' => $posts
         ]);
+    }
+
+    public function NewArticleAction()
+    {
+        View::renderTemplate('Profile/new-article.html.twig');
+    }
+
+    public function createArticleAction()
+    {
+        $post = new PostManager($_POST);
+        //var_dump($post);
+
+        if ($post->save()) {
+            $this->redirect('/profile/show-article');
+        }
+    }
+
+    public function editArticleAction()
+    {
+        //
     }
 }

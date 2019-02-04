@@ -18,6 +18,15 @@ use PDO;
 class PostManager extends Model
 {
 
+    public $errors = [];
+
+    public function __construct($data = null)
+    {
+        foreach ($data as $key => $value) {
+            $this->$key = $value;
+        };
+    }
+
     /**
      * @param null $postId
      * @return array|mixed
@@ -112,6 +121,48 @@ class PostManager extends Model
             $result = $stmt->fetchAll();
 
             return $result;
+
+    }
+
+
+    public function save()
+    {
+        $this->validate();
+
+        if (empty($this->errors)) {
+
+
+
+            $sql = 'INSERT INTO post(FK_user_id, title, content, createdAt)
+                VALUES (:FK_user_id, :title, :content, now())';
+
+
+            $db = Model::getDB();
+
+            $stmt = $db->prepare($sql);
+
+            $stmt->bindValue(':FK_user_id', $this->FK_user_id, \PDO::PARAM_INT);
+            $stmt->bindValue(':title', $this->title, \PDO::PARAM_STR);
+            $stmt->bindValue(':content', $this->content, \PDO::PARAM_STR);
+
+            return $stmt->execute();
+        }
+
+        return false;
+    }
+
+
+    public function validate()
+    {
+        // Username
+        if ($this->title == '') {
+            $this->errors[] = 'title is required';
+        }
+
+        // content
+        if ($this->content == '') {
+            $this->errors[] = 'content is required';
+        }
 
     }
 

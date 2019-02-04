@@ -55,6 +55,7 @@ class PostController extends Controller
         echo 'hello from the addnew action in the Posts';
     }
 
+
     /**
      *
      */

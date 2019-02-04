@@ -6,18 +6,13 @@
 
 {% block title %} Article {% endblock %}
 
-{% block link %}
-    <li class="nav-item">
-        <a class="nav-link" href="/profile/article"><span data-feather="file"></span>Article</a>
-    </li>
-{% endblock %}
 
 {% block body %}
 
     <div class="container">
-        <h4>New article</h4>
+        <h4><a href="/profile/new-article">New article</a></h4>
 
-        {% if tatas %}
+        {% if posts %}
 
         <table class="table table-hover table-bordered">
             <thead>
@@ -29,10 +24,10 @@
             </thead>
             <tbody>
 
-            {% for tata in tatas %}
+            {% for post in posts %}
             <tr>
-                <td>{{ tata.title }}</td>
-                <td>{{ tata.createdAt }}</td>
+                <td>{{ post.title }}</td>
+                <td>{{ post.createdAt }}</td>
                 <td>
                     <a href="#">update</a>
                 </td>
