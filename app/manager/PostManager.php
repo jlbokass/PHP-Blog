@@ -90,7 +90,8 @@ class PostManager extends Model
     public static function getSingle($postId)
     {
 
-        $sql = 'SELECT title, content,
+        $sql = 'SELECT id, title,
+                content,
                 createdAt
                 FROM post
                 WHERE post.id = :postId';
@@ -165,5 +166,51 @@ class PostManager extends Model
         }
 
     }
+
+    public function updateAPost($data)
+    {
+        $this->id = $data['id'];
+        $this->title = $data['title'];
+        $this->content = $data['content'];
+
+        $this->validate();
+
+        if (empty($this->errors)) {
+
+            $sql = 'UPDATE post
+                    SET title = :title,
+                        content = :content,
+                        createdAt = now()
+                        where id = :id';
+
+
+            $db = static::getDB();
+            $stmt = $db->prepare($sql);
+
+            $stmt->bindValue(':title', $this->title, PDO::PARAM_STR);
+            $stmt->bindValue(':content', $this->content, PDO::PARAM_STR);
+            $stmt->bindValue(':id', $this->id, PDO::PARAM_INT);
+
+            return $stmt->execute();
+        }
+
+        return false;
+    }
+
+
+    public function delete()
+    {
+
+        $sql = 'DELETE FROM post
+                WHERE id = :id';
+
+        $db = static::getDB();
+        $stmt = $db->prepare($sql);
+
+        $stmt->bindValue(':id', $this->id, PDO::PARAM_INT);
+
+        return $stmt->execute();
+    }
+
 
 }

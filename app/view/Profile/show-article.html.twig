@@ -1,9 +1,5 @@
 {%  extends 'AdminLayout.html.twig' %}
 
-{% block home %}
-    Profile
-{% endblock %}
-
 {% block title %} Article {% endblock %}
 
 
@@ -29,10 +25,10 @@
                 <td>{{ post.title }}</td>
                 <td>{{ post.createdAt }}</td>
                 <td>
-                    <a href="#">update</a>
+                    <a href="/profile/{{ post.id }}/edit-article">update</a>
                 </td>
                 <td>
-                    <a href="#">delete</a>
+                    <a href="/profile/{{ post.id }}/delete-article">delete</a>
                 </td>
             </tr>
             {% endfor %}

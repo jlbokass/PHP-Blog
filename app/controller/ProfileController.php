@@ -11,6 +11,7 @@ namespace App\Controller;
 
 use App\Manager\PostManager;
 use App\Manager\UsersManager;
+use App\Model\Post;
 use App\Utilities\Auth;
 use App\Utilities\Flash;
 use Core\View;
@@ -75,6 +76,55 @@ class ProfileController extends AuthenticatedController
 
     public function editArticleAction()
     {
-        //
+        $id = $this->route_params['id'];
+        $single = PostManager::getSingle($id);
+
+        View::renderTemplate('/Profile/edit-article.html.twig', [
+            'single' => $single
+        ]);
     }
+
+    public function updateArticleAction()
+    {
+        $post = new PostManager($_POST);
+
+        if ($post->updateAPost($_POST)) {
+
+            Flash::addMessage('changes saved');
+
+            $this->redirect('/profile/show-article');
+
+        }
+
+        View::renderTemplate('Profile/show-article.html.twig', [
+            'post' => $post
+        ]);
+    }
+
+    public function deleteArticle()
+    {
+        $id = $this->route_params['id'];
+        $single = PostManager::getSingle($id);
+
+        View::renderTemplate('/Profile/delete-article.html.twig', [
+            'single' => $single
+        ]);
+    }
+
+
+    public function deleteArticleConfirmationAction()
+    {
+        $post = new PostManager($_POST);
+
+        if ($post->delete()) {
+
+            $this->redirect('/profile/show-article');
+
+        } else {
+
+            echo 'pb';
+        }
+    }
+
+
 }
