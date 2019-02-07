@@ -38,7 +38,7 @@
                 </div>
             </div>
 
-            <h4 class="mt-5 mb-4">Derniers Commentaires :</h4>
+            <h4 class="mt-5 mb-4">Dernier Commentaire :</h4>
 
             {% for comment in comments %}
                 <div class="row mb-3">
@@ -82,9 +82,9 @@
 
         {% elseif comments %}
 
-            <p>Suscribe to comment</p>
+            <p><a href="/signup/new">S'inscrire</a> pour publier un message.</p>
 
-            <h4 class="mt-4 mb-4">Derniers commentaires :</h4>
+            <h4 class="mt-4 mb-4">Dernier commentaire :</h4>
             {% for comment in comments %}
                 <div class="row mb-3">
                     <div class="col-12">
@@ -102,12 +102,9 @@
 
             {% else %}
                 <h4 class="mt-4 mb-4">Pas de commentaire. .</h4>
-            <p><a href="/signup/new">S'inscrre</a> ou <a href="/login/new">se connecter</a> pour publier un message.</p>
+            <p><a href="/signup/new">S'inscrire</a> ou <a href="/login/new">se connecter</a> pour publier un message.</p>
 
         {% endif %}
-
-
-
 
     </div>
 

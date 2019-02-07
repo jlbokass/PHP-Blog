@@ -2,16 +2,15 @@
 /**
  * Created by PhpStorm.
  * User: jlbokass
- * Date: 30/01/2019
- * Time: 03:20
+ * Date: 07/02/2019
+ * Time: 17:53
  */
 
 namespace App\Manager;
 
-
 use Config\Config;
 
-class ContactManager
+class HomeManager
 {
     public $errors = [];
 
