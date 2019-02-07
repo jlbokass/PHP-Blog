@@ -1,0 +1,55 @@
+{%  extends 'adminLayout.html.twig' %}
+
+{% block title %} Edit {% endblock %}
+
+
+{% block body %}
+
+    <div class="blog-post">
+        <div class="col-md-6 order-md-1">
+
+            <form class="needs-validation" method="post" action="/profile/delete-profile" novalidate>
+
+                <div class="mb-3">
+                    <label for="username">Username</label>
+                    <input type="text" class="form-control" id="username" name="username" placeholder="my username is John for exemple" value="{{ user.username }}" required>
+                    <small id="usernameHelp" class="form-text text-muted">Something to identify you when you're logged in</small>
+                    <div class="invalid-feedback">
+                        Please enter a valid username.
+                    </div>
+                </div>
+
+                <div class="mb-3">
+                    <label for="email">Email</label>
+                    <input type="email" class="form-control" id="email" name="email" placeholder="you@example.com" value="{{ user.email }}" required>
+                    <small id="emailHelp" class="form-text text-muted">Your email adress</small>
+                    <div class="invalid-feedback">
+                        Please enter a valid email address.
+                    </div>
+                </div>
+
+                <div class="mb-3">
+                    <label for="password">Password</label>
+                    <div class="input-group">
+                        <input type="password" class="form-control" id="password" name="password" placeholder="Password">
+                        <div class="input-group-append">
+                            <span class="input-group-text">Show</span>
+                        </div>
+                        <div class="invalid-feedback">
+                            Please enter a password.
+                        </div>
+                    </div>
+                    <small id="passwordlHelp" class="form-text text-muted">Leave blank to keep current password </small>
+                </div>
+
+                <hr class="mb-4">
+                <p>You confirm ?</p>
+                <button class="btn btn-danger btn-lg btn-block" type="submit">Delete</button>
+                <button class="btn btn-secondary btn-lg btn-block" type="reset">Cancel</button>
+            </form>
+        </div>
+
+    </div>
+
+{% endblock %}
+

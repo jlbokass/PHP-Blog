@@ -28,7 +28,7 @@
     <!--<input class="form-control form-control-dark w-100" type="text" placeholder="Search" aria-label="Search">-->
     <ul class="navbar-nav px-3">
         <li class="nav-item text-nowrap">
-            <a class="nav-link" href="">Sign out</a>
+            <a class="nav-link" href="/login/destroy">Sign out</a>
         </li>
     </ul>
 </nav>
@@ -106,7 +106,15 @@
                     </button>
                 </div>-->
             </div>
-            <div>{% block body %} {% endblock %}</div>
+
+            {% for message in flash_messages %}
+                <div class="alert alert-{{ message.type }} alert-dismissible fade show">
+                    <button type="button" class="close" data-dismiss="alert">&times;</button>
+                    {{ message.body }}
+                </div>
+            {% endfor %}
+
+            <div>{% block body %}{% endblock %}</div>
         </main>
     </div>
 </div>

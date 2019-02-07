@@ -91,6 +91,7 @@ class Auth
         if (isset($_SESSION['user_id'])) {
 
             return UsersManager::findById($_SESSION['user_id']);
+
         } else {
 
             return static::loginFromRememberCookie();

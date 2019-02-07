@@ -8,7 +8,7 @@
     <div class="col-md-6">
         <div class="card flex-md-row mb-4 box-shadow h-md-250">
             <div class="card-body d-flex flex-column align-items-start">
-                <strong class="d-inline-block mb-2 text-primary">Qui je suis</strong>
+                <strong class="d-inline-block mb-2 text-secondary">Qui je suis</strong>
                 <h4 class="mb-0">
                     <p class="text-dark">Bokassa <br>jean le Grand</p>
                 </h4>
@@ -22,7 +22,7 @@
     <div class="col-md-6">
         <div class="card flex-md-row mb-4 box-shadow h-md-250">
             <div class="card-body d-flex flex-column align-items-start">
-                <strong class="d-inline-block mb-2 text-success">Actuellment</strong>
+                <strong class="d-inline-block mb-2 text-secondary">Actuellment</strong>
                 <h4 class="mb-0">
                     <p class="text-dark">En formation développeur PHP</p>
                 </h4>
@@ -47,12 +47,13 @@
         c'est devenu une vrai vocation. J'aime expérimenter, découvrir et apprendre au fur et à mesure de mes projets
         professionnels et personnels.</p>
 
-    <p><strong>Mon projet : </strong>Depuis une dizaine d’années, je réalise des sites internet pour mes associations
-        de manière autonome. Aujourd’hui je souhaite en faire mon métier et approfondir mes compétences. Pour cela, je
-        suis à la recherche d’une entreprise pour m’accompagner en contrat de professionnalisation avec
-        l’organisme OPENCLASSROOMS. Je vise le titre de dévelopeur Web PHP/SYMPHONY dans un premier temps puis souhaite
-        évoluer à moyen terme vers Chef de projet multimédia option développement .</p>
-    <p class="blog-post-meta">Rédigé le 27 octobre 2018 par <a href="#">John</a></p>
+    <p><strong>Mon projet : </strong>Depuis une dizaine d’années, je réalise des sites vitrines
+        de manière autonome. Aujourd’hui je souhaite en faire mon métier et approfondir mes compétences. Je suis actuellement
+    la formation développeur PHP/SYMFONY avec Openclassroom et j'ai validé 5 projets sur 9.</p>
+
+    <p><strong>Ce blog</strong> a pour but d'illutrer les compétences que j'ai acquises à mi-chemin de mon parcours. Il est réalisé sans framework</p>
+
+    <p class="font-weight-bold">Je vous souhaite une bonne visite :) et n'hésitez à me faire des retours.</p>
 
 {% endblock %}
 
@@ -65,10 +66,10 @@
 
             <h2 class="mb-4" id="contactAdmin">Contact Me</h2>
 
-            {% if user.errors is not empty %}
+            {% if emailFromBlog.errors is not empty %}
                 <p>Errors:</p>
                 <ul>
-                    {% for error in user.errors %}
+                    {% for error in emailFromBlog.errors %}
                         <li>{{ error }}</li>
                     {% endfor %}
                 </ul>
@@ -76,7 +77,7 @@
 
             <div class="row text-left">
                 <div class="col-md-6">
-                    <form class="needs-validation ml-4" method="post" action="/contact/create" novalidate>
+                    <form class="needs-validation ml-4" method="post" action="/home/email" novalidate>
                         <div class="row">
                             <div class="col-md-6 mb-3">
                                 <label for="firstName">Prénom</label>

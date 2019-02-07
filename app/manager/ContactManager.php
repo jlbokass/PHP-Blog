@@ -33,12 +33,12 @@ class ContactManager
 
     public function validate()
     {
-        // Username
+        // firstName
         if ($this->firstName == '') {
             $this->errors[] = 'firstName is required';
         }
 
-        // Username
+        // lastName
         if ($this->lastName == '') {
             $this->errors[] = 'lastName is required';
         }
@@ -46,6 +46,11 @@ class ContactManager
         // email address
         if (filter_var($this->email, FILTER_VALIDATE_EMAIL) === false) {
             $this->errors[] = 'Invalid email';
+        }
+
+        // message
+        if (strlen($this->message) > 10) {
+            $this->errors[] = 'Please enter less than 10 characters for your message';
         }
 
     }

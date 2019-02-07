@@ -401,7 +401,6 @@ class UsersManager extends Model
         $text = View::getTemplate('Signup/activation_email.txt', ['url' => $url]);
         $html = View::getTemplate('Signup/activation_email.html', ['url' => $url]);
 
-
         Mail::send($this->email, 'Account activation', $text, $html);
     }
 
@@ -465,5 +464,10 @@ class UsersManager extends Model
         }
 
         return false;
+    }
+
+    public function deleteProfile()
+    {
+
     }
 }

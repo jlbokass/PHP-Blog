@@ -41,7 +41,7 @@ class ProfileController extends AuthenticatedController
 
             Flash::addMessage('changes saved');
 
-            $this->redirect('/profile/show');
+            $this->redirect('/profile/show-profile');
 
         }
 
