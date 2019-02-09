@@ -25,7 +25,7 @@ class PostController extends Controller
      */
     public function indexAction()
     {
-        $posts = PostManager::getAll();
+        $posts = PostManager::showAll();
 
         View::renderTemplate('/Posts/index.html.twig', [
             'posts' => $posts
@@ -36,13 +36,11 @@ class PostController extends Controller
     {
         $id = $this->route_params['id'];
 
-        $posts = PostManager::getAll($id);
-        $single = PostManager::getSingle($id);
-        $comments = CommentManager::publish($id);
+        $post = PostManager::showSingle($id);
+        $comments = CommentManager::showall($id);
 
         View::renderTemplate('/Posts/single.html.twig', [
-            'posts' => $posts,
-            'single' => $single,
+            'post' => $post,
             'comments' => $comments
         ]);
     }

@@ -7,10 +7,10 @@
 {% block body %}
 
     <div class="blog-post">
-        <h3>{{ posts.title }}</h3>
-        <p class="blog-post-meta text-body">Rédigé par <strong>{{ posts.user_username }}</strong> le {{ posts.createdAt | date("d/m/Y à H:i") }} </p>
-        <p class="chapo mb-5">{{ posts.headline }}</p>
-        <p>{{ single.content }}</p>
+        <h3>{{ post.title }}</h3>
+        <p class="blog-post-meta text-body">Rédigé par <strong>{{ post.user_username }}</strong> le {{ post.createdAt | date("d/m/Y à H:i") }} </p>
+        <p class="chapo mb-5">{{ post.headline }}</p>
+        <p>{{ post.content }}</p>
 
         <hr />
 
@@ -33,7 +33,7 @@
                             <input type="text" id="post_id" name="post_id"  value="{{ posts.id }}" hidden>
                         </div>
 
-                        <button class="btn btn-primary btn-lg btn-block" type="submit">Envoyez</button>
+                        <button class="btn btn-warning btn-lg btn-block" type="submit">Envoyez</button>
                     </form>
                 </div>
             </div>
@@ -74,7 +74,7 @@
                                 <input type="text" id="post_id" name="post_id"  value="{{ posts.id }}" hidden>
                             </div>
 
-                            <button class="btn btn-primary btn-lg btn-block" type="submit">Envoyez</button>
+                            <button class="btn btn-warning btn-lg btn-block" type="submit">Envoyez</button>
                         </form>
                     </div>
                 </div>

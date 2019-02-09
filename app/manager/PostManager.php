@@ -55,6 +55,8 @@ class PostManager extends Model
             return $result;
         }
 
+
+
         /*
         $sql2 = 'SELECT post.id, FK_user_id, title,
                 left(content,100) AS sentence, content,
@@ -82,6 +84,53 @@ class PostManager extends Model
 
         return $results;
     }
+
+
+
+    public static function showAll()
+    {
+        $sql = 'SELECT post.id,
+                post.title,
+                post.headline,
+                post.content,
+                post.createdAt,
+                u.username AS user_username
+                FROM post
+                INNER JOIN user u on post.FK_user_id = u.id
+                ORDER BY post.id DESC ';
+
+        $db = Model::getDB();
+
+        $stmt = $db->query($sql);
+        $results = $stmt->fetchAll(PDO::FETCH_ASSOC);
+
+        return $results;
+    }
+
+
+    public static function showSingle($postId)
+    {
+        $sql = 'SELECT post.id,
+                post.title,
+                post.headline,
+                post.content,
+                post.createdAt,
+                u.username AS user_username
+                FROM post
+                INNER JOIN user u on post.FK_user_id = u.id
+                WHERE post.id = :postId';
+
+        $db = Model::getDB();
+
+        $stmt = $db->prepare($sql);
+        $stmt->bindValue(':postId', $postId, PDO::PARAM_INT);
+        $stmt->execute();
+
+        $result = $stmt->fetch();
+
+        return $result;
+    }
+
 
     /**
      * @param $postId

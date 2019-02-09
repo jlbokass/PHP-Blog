@@ -45,6 +45,8 @@ class CommentManager extends Model
      * @param $id
      * @return array
      */
+
+    /*
     public static function getAll($id)
     {
         $sql = 'SELECT comment.*, u.username as user_username
@@ -63,6 +65,30 @@ class CommentManager extends Model
         $result = $stmt->fetchAll(\PDO::FETCH_ASSOC);
 
         return $result;
+    }
+    */
+
+    public static function getAll()
+    {
+        $sql = 'SELECT comment.*, u.username as user_username
+        FROM comment
+        INNER JOIN user u on comment.FK_user_id = u.id
+        INNER JOIN post p on comment.FK_post_id = p.id
+        WHERE comment.published = 0
+        ORDER BY comment.id DESC ';
+
+        $db = Model::getDB();
+
+        $stmt = $db->query($sql);
+
+        $result = $stmt->fetchAll(\PDO::FETCH_ASSOC);
+
+        return $result;
+    }
+
+    public static function getSingle($postId)
+    {
+
     }
 
 
@@ -117,6 +143,49 @@ class CommentManager extends Model
         return false;
     }
 
+
+
+    public static function showAll($postId)
+    {
+        $sql = 'SELECT comment.*, u.username as user_username
+        FROM comment
+        INNER JOIN user u on comment.FK_user_id = u.id
+        INNER JOIN post p on comment.FK_post_id = p.id
+        WHERE p.id = :postId AND comment.published = 1
+        ORDER BY comment.id DESC ';
+
+        $db = Model::getDB();
+
+        $stmt = $db->prepare($sql);
+        $stmt->bindValue(':postId', $postId, \PDO::PARAM_INT);
+        $stmt->execute();
+
+        $result = $stmt->fetchAll(\PDO::FETCH_ASSOC);
+
+        return $result;
+    }
+
+
+    public static function showSingle($commentId)
+    {
+        $sql = 'SELECT comment.*, u.username as user_username
+        FROM comment
+        INNER JOIN user u on comment.FK_user_id = u.id
+        INNER JOIN post p on comment.FK_post_id = p.id
+        WHERE comment.id = :commentId AND comment.published = 0 ';
+
+        $db = Model::getDB();
+
+        $stmt = $db->prepare($sql);
+        $stmt->bindValue(':commentId', $commentId, \PDO::PARAM_INT);
+        $stmt->execute();
+
+        $result = $stmt->fetch(\PDO::FETCH_ASSOC);
+
+        return $result;
+    }
+
+
     /**
      *
      */
@@ -142,12 +211,19 @@ class CommentManager extends Model
         }
     }
 
-    /**
-     *
-     */
-    public static function update()
+
+    public static function update($commentId)
     {
-        //
+        $sql = 'UPDATE comment
+                SET published = 1
+                WHERE id = :commentId';
+
+        $db = static::getDB();
+        $stmt = $db->prepare($sql);
+
+        $stmt->bindValue(':commentId', $commentId, \PDO::PARAM_INT);
+
+        return $stmt->execute();
     }
 
     /**

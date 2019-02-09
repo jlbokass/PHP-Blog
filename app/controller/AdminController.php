@@ -55,7 +55,7 @@ class AdminController extends AuthenticatedController
 
     public function showCommentAction()
     {
-        $comments = CommentManager::getComment();
+        $comments = CommentManager::getAll();
         View::renderTemplate('Admin/show-comment.html.twig', [
             'comments' => $comments
         ]);
@@ -66,19 +66,18 @@ class AdminController extends AuthenticatedController
     {
         $id = $this->route_params['id'];
 
-        $comments = CommentManager::getComment($id);
+        $comment = CommentManager::showSingle($id);
 
-        var_dump($comments);
-        die();
-
-        View::renderTemplate('/Admin/publish-comment.html.twig', [
-            'comments' => $comments
+        View::renderTemplate('/Admin/edit-comment.html.twig', [
+            'comment' => $comment
         ]);
     }
 
     public function updateCommentAction()
     {
-        //
+        $commentId = $_POST['comment_id'];
+        $comment = CommentManager::update($commentId);
+        $this->redirect('/admin/show-comment');
     }
 
     public function showUserAction()
