@@ -27,7 +27,7 @@
     <title>Développeur Web | {% block title %}{% endblock %}</title>
 </head>
 
-<body id="myPage" data-spy="scroll" data-target=".nav-scroller" data-offset="50">
+<body>
 
 <div class="container">
     <div class="d-none d-sm-block">
@@ -63,7 +63,7 @@
                 <a class="p-2 text-muted" href="/">Accueil</a>
                 <a class="p-2 text-muted" href="/post/index">Blog</a>
                 <a class="p-2 text-muted" href="/upload/cv.pdf" target="_blank">CV</a>
-                <a class="p-2 text-muted" href="/#contactAdmin">Contact</a>
+                <a class="p-2 text-muted" href="#contactAdmin">Contact</a>
             </nav>
         </div>
     </div>
@@ -143,7 +143,7 @@
             <div class="p-3 mb-3 bg-light rounded">
                 <h4 class="font-italic">Citations</h4>
                 <blockquote class="blockquote">
-                    <p>Si vous vouvez votre vie selon le regard des autres, vous ne vivrez jamais votre propre vie</p>
+                    <p>Si vous vivez votre vie selon le regard des autres, vous ne vivrez jamais votre propre vie.</p>
                     <footer class="blockquote-footer">Franck Nicolas</footer>
                 </blockquote>
             </div>
@@ -178,10 +178,10 @@
 
 {% block emailMe %}{% endblock %}
 
-<p class="text-center mb-5"><a href="#myPage" data-toggle="tooltip">Back to top</a></p>
+<p class="text-center mb-5"><a href="#" >Back to top</a></p>
 
 <footer class="blog-footer">
-    Copyright © 2019 Conception by <a href="contact.html">John Bokassa</a>. <a href="/admin/index">Administration</a>
+    Copyright © {{ Copyright  | date("Y") }} Conception by <a href="contact.html">John Bokassa</a>. <a href="/admin/show-profile">Administration</a>
     <!--<p>Blog template built for <a href="https://getbootstrap.com/">Bootstrap</a> by <a href="https://twitter.com/mdo">@mdo</a>.</p>-->
 </footer>
 
@@ -218,36 +218,6 @@
             });
         }, false);
     })();
-</script>
-
-<!-- smooth navigation -->
-
-<script>
-    $(document).ready(function(){
-        // Add smooth scrolling to all links in navbar + footer link
-        $(".nav-scroller a, a[href='#myPage']").on('click', function(event) {
-
-            // Make sure this.hash has a value before overriding default behavior
-            if (this.hash !== "") {
-
-                // Prevent default anchor click behavior
-                event.preventDefault();
-
-                // Store hash
-                var hash = this.hash;
-
-                // Using jQuery's animate() method to add smooth page scroll
-                // The optional number (900) specifies the number of milliseconds it takes to scroll to the specified area
-                $('html, body').animate({
-                    scrollTop: $(hash).offset().top
-                }, 900, function(){
-
-                    // Add hash (#) to URL when done scrolling (default click behavior)
-                    window.location.hash = hash;
-                });
-            } // End if
-        });
-    })
 </script>
 
 </body>

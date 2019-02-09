@@ -9,7 +9,7 @@
     <div class="blog-post">
         <h3>{{ posts.title }}</h3>
         <p class="blog-post-meta text-body">Rédigé par <strong>{{ posts.user_username }}</strong> le {{ posts.createdAt | date("d/m/Y à H:i") }} </p>
-        <p class="chapo mb-5">{{ posts.sentence }}</p>
+        <p class="chapo mb-5">{{ posts.headline }}</p>
         <p>{{ single.content }}</p>
 
         <hr />
@@ -45,7 +45,7 @@
                     <div class="col-12">
                         <div class="card">
                             <div class="card-body">
-                                    <span class="small text-secondary"><strong>{{ comment.user_username }}</strong> a écrit le {{ comment.createdAt |date("d/m/Y à H:i") }}<br />
+                                    <span class="small text-secondary"><strong>{{ comment.user_username }} </strong> a écrit le {{ comment.createdAt |date("d/m/Y à H:i") }}<br />
                                         "
                                         {{ comment.content }}"</span>
                             </div>
@@ -90,7 +90,7 @@
                     <div class="col-12">
                         <div class="card">
                             <div class="card-body">
-                                    <span class="small text-secondary"><strong>{{ comment.user_username }}</strong>a écrit le {{ comment.createdAt |date("d/m/Y à H:i") }}<br />
+                                    <span class="small text-secondary"><strong>{{ comment.user_username }} </strong>a écrit le {{ comment.createdAt |date("d/m/Y à H:i") }}<br />
                                         "
                                         {{ comment.content }}"</span>
                             </div>

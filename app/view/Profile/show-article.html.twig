@@ -1,4 +1,4 @@
-{%  extends 'AdminLayout.html.twig' %}
+{%  extends 'userLayout.html.twig' %}
 
 {% block title %} Article {% endblock %}
 
@@ -8,21 +8,27 @@
     <div class="container">
         <h4><a href="/profile/new-article">New article</a></h4>
 
+
         {% if posts %}
 
         <table class="table table-hover table-bordered">
             <thead>
             <tr>
                 <th>Title</th>
-                <th>Date</th>
+                <th>Author</th>
+                <th>Date added</th>
                 <th colspan="2" class="text-center">Action</th>
             </tr>
             </thead>
             <tbody>
 
             {% for post in posts %}
+
             <tr>
                 <td>{{ post.title }}</td>
+
+                <td>{{ post.user_username}}</td>
+
                 <td>{{ post.createdAt }}</td>
                 <td>
                     <a href="/profile/{{ post.id }}/edit-article">update</a>
@@ -31,7 +37,9 @@
                     <a href="/profile/{{ post.id }}/delete-article">delete</a>
                 </td>
             </tr>
+
             {% endfor %}
+
             </tbody>
         </table>
 

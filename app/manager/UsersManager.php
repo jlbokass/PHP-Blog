@@ -51,9 +51,9 @@ class UsersManager extends Model
             $hashed_token = $token->getHash();
             $this->activation_token = $token->getValue();
 
-            $sql = 'INSERT INTO user (username, email, password_hash, role
-            ,activation_hash, registeredAt)
-            VALUES (:username, :email, :password_hash,\'user\', :activation_hash, now())';
+            $sql = 'INSERT INTO user (username, email, password_hash,
+            activation_hash, registeredAt)
+            VALUES (:username, :email, :password_hash, :activation_hash, now())';
 
             $db = Model::getDB();
             $stmt = $db->prepare($sql);
@@ -93,10 +93,6 @@ class UsersManager extends Model
         // Password
         if (isset($this->password)) {
 
-            if ($this->password != $this->password_confirmation) {
-              $this->errors[] = 'Password must match confirmation';
-            }
-
             if (strlen($this->password) < 6) {
                 $this->errors[] = 'Please enter at least 6 characters for the password';
             }
@@ -128,6 +124,21 @@ class UsersManager extends Model
            // $this->errors[] = 'Password needs at least one number';
        // }
 
+    }
+
+
+
+    public static function getAll()
+    {
+        $sql = 'SELECT * from user';
+
+        $db = Model::getDB();
+
+        $stmt = $db->query($sql);
+
+        $result = $stmt->fetchAll();
+
+        return $result;
     }
 
     /**
@@ -218,6 +229,22 @@ class UsersManager extends Model
         $db = static::getDB();
         $stmt = $db->prepare($sql);
         $stmt->bindParam(':id', $id, PDO::PARAM_INT);
+
+        $stmt->setFetchMode(PDO::FETCH_CLASS, get_called_class());
+
+        $stmt->execute();
+
+        return $stmt->fetch();
+    }
+
+
+    public static function findByRole($role)
+    {
+        $sql = 'SELECT * FROM user WHERE role = :role';
+
+        $db = static::getDB();
+        $stmt = $db->prepare($sql);
+        $stmt->bindParam(':role', $role, PDO::PARAM_STR);
 
         $stmt->setFetchMode(PDO::FETCH_CLASS, get_called_class());
 

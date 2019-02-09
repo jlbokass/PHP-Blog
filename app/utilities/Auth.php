@@ -98,9 +98,12 @@ class Auth
         }
     }
 
-    public static function getAdmin()
+    public static function getUserRole()
     {
-        //
+        if (isset($_SESSION['role'])) {
+
+            return UsersManager::findByRole($_SESSION['role']);
+        }
     }
 
     public static function rememberPost()

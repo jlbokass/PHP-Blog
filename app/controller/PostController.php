@@ -38,7 +38,7 @@ class PostController extends Controller
 
         $posts = PostManager::getAll($id);
         $single = PostManager::getSingle($id);
-        $comments = CommentManager::getAll($id);
+        $comments = CommentManager::publish($id);
 
         View::renderTemplate('/Posts/single.html.twig', [
             'posts' => $posts,

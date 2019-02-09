@@ -1,4 +1,4 @@
-{%  extends 'AdminLayout.html.twig' %}
+{%  extends 'userLayout.html.twig' %}
 
 {% block title %} delete an article {% endblock %}
 
@@ -11,7 +11,7 @@
             <form class="needs-validation" method="post" action="/profile/delete-article-confirmation" novalidate>
 
                 <div class="mb-3">
-                    <label for="title">Title</label>
+                    <label for="title">Title :</label>
                     <input type="text" class="form-control" id="title" name="title" placeholder="Article title" value="{{ single.title }}" autofocus required>
                     <small id="titleHelp" class="form-text text-muted">less than 50 characters.</small>
                     <div class="invalid-feedback">
@@ -20,20 +20,31 @@
                 </div>
 
                 <div class="mb-3">
-                    <label for="content">Content</label>
-                    <textarea class="form-control" id="content" name="content" rows="5">{{ single.content }}</textarea>
-                    <small id="titleHelp" class="form-text text-muted">less than 50 characters.</small>
-                    <div class="invalid-feedback">
-                        Please enter a valid title.
-                    </div>
+                    <label for="headline">Headline :</label>
+                    <textarea class="form-control" id="headline" name="headline" rows="5">{{ single.headline }}</textarea>
+                </div>
+
+                <div class="form-group">
+                    <label for="listAuthor">Author :</label>
+                    <select class="form-control" id="listAuthor" name="listAuthor">
+                        <option></option>
+                        {% for user in users %}
+                            <option value="">{{ user.username }}</option>
+                        {% endfor %}
+                    </select>
                 </div>
 
                 <div class="mb-3">
-                    <input type="text"  id="id" name="id" value="{{ single.id }}" hidden>
+                    <label for="content">Content :</label>
+                    <textarea class="form-control" id="content" name="content" rows="15">{{ single.content }}</textarea>
                 </div>
 
                 <div class="mb-3">
-                    <input type="text"  id="FK_user_id" name="FK_user_id" value="{{ current_user.id }}" hidden>
+                    <input type="text" class="form-control" id="id" name="id" value="{{ single.id }}" hidden>
+                </div>
+
+                <div class="mb-3">
+                    <input type="text" class="form-control" id="user_id" name="user_id" value="{{ user.id }}" hidden>
                 </div>
 
                 <hr class="mb-4">

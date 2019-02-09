@@ -8,48 +8,134 @@
 
 namespace App\Controller;
 
+use App\Manager\CommentManager;
+use App\Manager\PostManager;
+use App\Manager\UsersManager;
+use App\Utilities\Auth;
 use Core\View;
 
 class AdminController extends AuthenticatedController
 {
+
     public function newAction()
     {
-        // connexion form
-        View::renderTemplate('Admin/new.html.twig');
+        /*
+        if(Auth::getUser()->role === 1)
+        {
+            View::renderTemplate('Admin/new.html.twig');
+        } else {
+
+            echo 'no';
+        }
+        */
+
     }
 
-    public function indexAction()
+    public function showProfileAction()
     {
-        View::renderTemplate('Admin/index.html.twig');
+        if(Auth::getUser()->role)
+        {
+            View::renderTemplate('Admin/show-profile.html.twig', [
+                'user' => Auth::getUser()
+            ]);
+        } else {
+
+            View::renderTemplate('Admin/new.html.twig');
+        }
     }
 
-    public function editProfileAction()
+    public function showArticleAction()
+    {
+        $posts = PostManager::getAll();
+
+        View::renderTemplate('Admin/show-article.html.twig', [
+            'posts' => $posts
+        ]);
+    }
+
+    public function showCommentAction()
+    {
+        $comments = CommentManager::getComment();
+        View::renderTemplate('Admin/show-comment.html.twig', [
+            'comments' => $comments
+        ]);
+
+    }
+
+    public function editCommentAction()
+    {
+        $id = $this->route_params['id'];
+
+        $comments = CommentManager::getComment($id);
+
+        var_dump($comments);
+        die();
+
+        View::renderTemplate('/Admin/publish-comment.html.twig', [
+            'comments' => $comments
+        ]);
+    }
+
+    public function updateCommentAction()
     {
         //
     }
 
-    public function articleAction()
+    public function showUserAction()
     {
-        // show list of article
-        View::renderTemplate('Admin/show.html.twig');
+        $users = UsersManager::getAll();
+        View::renderTemplate('Admin/show-user.html.twig', [
+            'users' => $users
+        ]);
     }
 
-    public function newArticle()
+    public function newArticleAction()
     {
-        // create an article
+        $users = UsersManager::getAll();
+
+        View::renderTemplate('Admin/new-article.html.twig', [
+            'users' => $users
+        ]);
     }
 
-    public function editArticleAction()
+    public function createArticleAction()
     {
-        //edit an article
-        View::renderTemplate('Admin/article.html.twig');
+        $post = new PostManager($_POST);
+
+        if ($post->save()) {
+            $this->redirect('/admin/show-article');
+        }
     }
 
-    public function deleteArticleAction()
+    public function deleteArticle()
     {
-        //
+        $users = UsersManager::getAll();
+        $id = $this->route_params['id'];
+        $single = PostManager::getAll($id);
+
+        View::renderTemplate('/Admin/delete-article.html.twig', [
+            'single' => $single,
+            'users' => $users
+        ]);
     }
 
 
+    /**
+     *
+     */
+    public function deleteArticleConfirmationAction()
+    {
+        $post = new PostManager($_POST);
+        $comment = new CommentManager($_POST);
+
+        if ($post->delete() AND $comment->delete()) {
+
+            $this->redirect('/profile/show-article');
+
+        } else {
+
+            echo 'pb';
+        }
+    }
 
 }

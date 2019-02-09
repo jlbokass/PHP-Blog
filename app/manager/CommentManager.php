@@ -12,12 +12,27 @@ namespace App\Manager;
 use App\Utilities\Auth;
 use Core\Model;
 
+/**
+ * Class CommentManager
+ * @package App\Manager
+ */
 class CommentManager extends Model
 {
+    /**
+     * @var array
+     */
     public $errors = [];
+    /**
+     * @var null
+     */
     public $param;
 
-    public function __construct($data = [], $params)
+    /**
+     * CommentManager constructor.
+     * @param array $data
+     * @param null $params
+     */
+    public function __construct($data = [], $params = null)
     {
         foreach ($data as $key => $value) {
             $this->$key = $value;
@@ -26,13 +41,17 @@ class CommentManager extends Model
         $this->param = $params;
     }
 
+    /**
+     * @param $id
+     * @return array
+     */
     public static function getAll($id)
     {
         $sql = 'SELECT comment.*, u.username as user_username
         FROM comment
         INNER JOIN user u on comment.FK_user_id = u.id
         INNER JOIN post p on comment.FK_post_id = p.id
-        WHERE p.id = :postId
+        WHERE p.id = :postId AND comment.published = 1
         ORDER BY comment.id DESC ';
 
         $db = Model::getDB();
@@ -47,7 +66,31 @@ class CommentManager extends Model
     }
 
 
+    /**
+     * @return array
+     */
+    public static function getComment()
+    {
+        $sql = 'SELECT comment.*, u.username as user_username
+        FROM comment
+        INNER JOIN user u on comment.FK_user_id = u.id
+        INNER JOIN post p on comment.FK_post_id = p.id
+        WHERE comment.published = 0
+        ORDER BY comment.id DESC ';
 
+        $db = Model::getDB();
+
+        $stmt = $db->query($sql);
+
+        $result = $stmt->fetchAll(\PDO::FETCH_ASSOC);
+
+        return $result;
+    }
+
+
+    /**
+     * @return bool
+     */
     public function save()
     {
         $this->validate();
@@ -56,8 +99,8 @@ class CommentManager extends Model
 
 
 
-            $sql = 'INSERT INTO comment(FK_user_id, FK_post_id, content, publish, createdAt)
-                VALUES (:FK_user_id, :FK_post_id, :content, \'yes\', now())';
+            $sql = 'INSERT INTO comment(FK_user_id, FK_post_id, content, published, createdAt)
+                VALUES (:FK_user_id, :FK_post_id, :content, 0, now())';
 
 
             $db = Model::getDB();
@@ -74,6 +117,9 @@ class CommentManager extends Model
         return false;
     }
 
+    /**
+     *
+     */
     public function validate()
     {
         if ($this->content == '') {
@@ -81,6 +127,9 @@ class CommentManager extends Model
         }
     }
 
+    /**
+     * @return mixed
+     */
     public static function getPost()
     {
         if (isset($_SESSION['user_id'])) {
@@ -93,13 +142,69 @@ class CommentManager extends Model
         }
     }
 
+    /**
+     *
+     */
     public static function update()
     {
         //
     }
 
-    public static function delete()
+    /**
+     * @return bool
+     */
+    public function delete()
     {
-        //
+
+        $sql = 'DELETE FROM comment
+          
+                WHERE comment.FK_post_id= :id';
+
+        $db = static::getDB();
+        $stmt = $db->prepare($sql);
+
+        $stmt->bindValue(':id', $this->id, PDO::PARAM_INT);
+
+        return $stmt->execute();
+    }
+
+
+    /**
+     *
+     */
+    public static function publish($id)
+    {
+        $sql = 'SELECT comment.*, u.username as user_username
+        FROM comment
+        INNER JOIN user u on comment.FK_user_id = u.id
+        INNER JOIN post p on comment.FK_post_id = p.id
+        WHERE p.id = :postId AND comment.published = 1
+        ORDER BY comment.id DESC ';
+
+        $db = Model::getDB();
+
+        $stmt = $db->prepare($sql);
+        $stmt->bindValue(':postId', $id, \PDO::PARAM_INT);
+        $stmt->execute();
+
+        $result = $stmt->fetchAll(\PDO::FETCH_ASSOC);
+
+        return $result;
+    }
+
+    public static function validateComment($id)
+    {
+        $sql= 'UPDATE comment set published = 1
+              WHERE id = :id';
+
+        $db = Model::getDB();
+
+        $stmt = $db->prepare($sql);
+        $stmt->bindValue(':postId', $id, \PDO::PARAM_INT);
+        $stmt->execute();
+
+        $result = $stmt->fetchAll(\PDO::FETCH_ASSOC);
+
+        return $result;
     }
 }
