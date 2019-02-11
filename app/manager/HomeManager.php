@@ -10,17 +10,32 @@ namespace App\Manager;
 
 use Config\Config;
 
+/**
+ * Class HomeManager
+ * @package App\Manager
+ */
 class HomeManager
 {
+    /**
+     * @var array
+     */
     public $errors = [];
 
+    /**
+     * HomeManager constructor.
+     * @param array $data
+     */
     public function __construct($data = [])
     {
         foreach ($data as $key => $value) {
+
             $this->$key = $value;
-        };
+        }
     }
 
+    /**
+     * @return bool
+     */
     public function sendEmailToAdmin()
     {
         $this->validate();
@@ -33,6 +48,9 @@ class HomeManager
         return false;
     }
 
+    /**
+     *
+     */
     public function validate()
     {
         // firstName
@@ -57,6 +75,9 @@ class HomeManager
 
     }
 
+    /**
+     *
+     */
     public function emailFromTheBlog()
     {
 

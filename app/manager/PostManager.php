@@ -24,16 +24,17 @@ class PostManager extends Model
     {
         foreach ($data as $key => $value) {
             $this->$key = $value;
-        };
+        }
     }
 
     /**
      * @param null $postId
+     *
      * @return array|mixed
      */
     public static function getAll($postId = null)
     {
-        if($postId) {
+        if ($postId) {
                 $sql = 'SELECT post.id,
                 post.title,
                 post.headline,
@@ -160,18 +161,18 @@ class PostManager extends Model
     public static function getAllFromUser($userId)
     {
 
-            $sql = 'SELECT * FROM post
-                    WHERE post.FK_user_id = :postId';
+        $sql = 'SELECT * FROM post
+                WHERE post.FK_user_id = :postId';
 
-            $db = Model::getDB();
+        $db = Model::getDB();
 
-            $stmt = $db->prepare($sql);
-            $stmt->bindValue(':postId', $userId, PDO::PARAM_INT);
-            $stmt->execute();
+        $stmt = $db->prepare($sql);
+        $stmt->bindValue(':postId', $userId, PDO::PARAM_INT);
+        $stmt->execute();
 
-            $result = $stmt->fetchAll();
+        $result = $stmt->fetchAll();
 
-            return $result;
+        return $result;
 
     }
 
@@ -206,8 +207,8 @@ class PostManager extends Model
 
     public function validate()
     {
-        // title
-        if ($this->title == '') {
+        // title viré les commentaires
+        if (empty($this->title)) {
             $this->errors[] = 'title is required';
         }
 

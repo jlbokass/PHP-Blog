@@ -17,7 +17,7 @@
                 <th>Title</th>
                 <th>Author</th>
                 <th>Date added</th>
-                <th colspan="2" class="text-center">Action</th>
+                <th class="text-center">Action</th>
             </tr>
             </thead>
             <tbody>
@@ -32,9 +32,6 @@
                 <td>{{ post.createdAt }}</td>
                 <td>
                     <a href="/profile/{{ post.id }}/edit-article">update</a>
-                </td>
-                <td>
-                    <a href="/profile/{{ post.id }}/delete-article">delete</a>
                 </td>
             </tr>
 

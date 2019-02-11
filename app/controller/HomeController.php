@@ -8,7 +8,6 @@
 
 namespace App\Controller;
 
-use App\Manager\ContactManager;
 use App\Manager\HomeManager;
 use App\Utilities\Mail;
 use Config\Config;
@@ -30,6 +29,11 @@ class HomeController extends Controller
         View::renderTemplate('/Home/index.html.twig');
     }
 
+    /**
+     * @throws \Twig_Error_Loader
+     * @throws \Twig_Error_Runtime
+     * @throws \Twig_Error_Syntax
+     */
     public function emailAction()
     {
         $emailFromBlog = new HomeManager($_POST);
@@ -51,6 +55,11 @@ class HomeController extends Controller
         }
     }
 
+    /**
+     * @throws \Twig_Error_Loader
+     * @throws \Twig_Error_Runtime
+     * @throws \Twig_Error_Syntax
+     */
     public function successAction()
     {
         View::renderTemplate('Home/success.html.twig');

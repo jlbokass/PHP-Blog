@@ -19,13 +19,25 @@ class CommentController extends AuthenticatedController
 {
     public function createAction()
     {
-        $comment = new CommentManager($_POST, Auth::getUser()->id);
-        $postId = $_POST['post_id'];
+        $comment = new CommentManager($_POST);
+
+
+        //$postId = $_POST['post_id'];
 
         if ($comment->save()) {
 
-            $this->redirect('/post/' . $postId . '/single');
+            //$this->redirect('/post/' . $postId . '/single');
+            $this->redirect('/comment/comment-request');
+
+        } else {
+
+            echo 'no';
         }
+    }
+
+    public function commentRequestAction()
+    {
+        View::renderTemplate('/Posts/comment_request.html.twig');
     }
 
     public function updateAction()

@@ -24,16 +24,6 @@
                     <textarea class="form-control" id="headline" name="headline" rows="5"></textarea>
                 </div>
 
-                <div class="form-group">
-                    <label for="listAuthor">Author :</label>
-                    <select class="form-control" id="listauthor" name="listAuthor">
-                        <option></option>
-                        {% for user in users %}
-                            <option value="">{{ user.username }}</option>
-                        {% endfor %}
-                    </select>
-                </div>
-
                 <div class="mb-3">
                     <label for="content">Content :</label>
                     <textarea class="form-control" id="content" name="content" rows="15"></textarea>

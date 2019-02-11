@@ -12,8 +12,16 @@ namespace App\Manager;
 use App\Utilities\Token;
 use Core\Model;
 
+/**
+ * Class RememberedLogin
+ * @package App\Manager
+ */
 class RememberedLogin extends Model
 {
+    /**
+     * @param $token
+     * @return mixed
+     */
     public static function findByToken($token)
     {
         $token = new Token($token);
@@ -33,16 +41,25 @@ class RememberedLogin extends Model
         return $stmt->fetch();
     }
 
+    /**
+     * @return mixed
+     */
     public function getUser()
     {
         return User::findById($this->user_id);
     }
 
+    /**
+     * @return bool
+     */
     public function hasExpired()
     {
         return strtotime($this->expires_at) < time();
     }
 
+    /**
+     *
+     */
     public function delete()
     {
         $sql = 'DELETE FROM remembered_login

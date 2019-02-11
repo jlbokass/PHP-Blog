@@ -49,9 +49,9 @@
                 <div class="col-3 d-flex justify-content-end align-items-center">
 
                     {% if current_user %}
-                    <a class="btn btn-sm btn-outline-secondary" href="/logout">Disconnect</a>
+                    <a class="btn btn-sm btn-outline-secondary" href="/logout">Sign out</a>
                     {% else %}
-                    <a class="btn btn-sm btn-outline-secondary" href="/login/new">Connexion</a>
+                    <a class="btn btn-sm btn-outline-secondary" href="/login/new">Sign in</a>
                     {% endif %}
 
                 </div>
@@ -87,7 +87,7 @@
                     <a class="nav-link" href="/upload/cv.pdf" target="_blank">CV</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="/">Contact</a>
+                    <a class="nav-link" href="#contactAdmin">Contact</a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" href="/signup/new">Inscription</a>
@@ -158,17 +158,15 @@
                 </ol>
             </div>
 
-            <!--<div class="p-3">
-                <h4 class="font-italic">Archives</h4>
+            <div class="p-3">
+                <h4 class="font-italic">Liens</h4>
                 <ol class="list-unstyled mb-0">
-                    <li><a href="#">Novembre 2018</a></li>
-                    <li><a href="#">Octobre 2018</a></li>
-                    <li><a href="#">Septembre 2018</a></li>
-                    <li><a href="#">Aout 2018</a></li>
-                    <li><a href="#">Juillet 2018</a></li>
-                    <li><a href="#">Juin 2018</a></li>
+                    <li><a href="/">Home</a></li>
+                    <li><a href="/post/index">Blog</a></li>
+                    <li><a href="/upload/cv.pdf" target="_blank">Cv</a></li>
+                    <li><a href="/#contactAdmin">Contact</a></li>
                 </ol>
-            </div>-->
+            </div>
 
         </aside><!-- /.blog-sidebar -->
 
@@ -181,7 +179,7 @@
 <p class="text-center mb-5"><a href="#" >Back to top</a></p>
 
 <footer class="blog-footer">
-    Copyright © {{ Copyright  | date("Y") }} Conception by <a href="contact.html">John Bokassa</a>. <a href="/admin/show-profile">Administration</a>
+    Copyright © {{ Copyright  | date("Y") }} Conception by <a href="contact.html">John Bokassa</a>. <a href="/admin/index">Administration</a>
     <!--<p>Blog template built for <a href="https://getbootstrap.com/">Bootstrap</a> by <a href="https://twitter.com/mdo">@mdo</a>.</p>-->
 </footer>
 

@@ -26,11 +26,11 @@
                         </div>
 
                         <div class="mb-3">
-                            <input type="text" id="user_id" name="user_id"  value="{{ posts.FK_user_id }}" hidden>
+                            <input type="text" id="FK_user_id" name="FK_user_id"  value="{{ current_user.id }}" hidden>
                         </div>
 
                         <div class="mb-3">
-                            <input type="text" id="post_id" name="post_id"  value="{{ posts.id }}" hidden>
+                            <input type="text" id="id" name="id"  value="{{ post.id }}" hidden>
                         </div>
 
                         <button class="btn btn-warning btn-lg btn-block" type="submit">Envoyez</button>
@@ -67,11 +67,11 @@
                             </div>
 
                             <div class="mb-3">
-                                <input type="text" id="user_id" name="user_id"  hidden>
+                                <input type="text" id="FK_user_id" name="FK_user_id"  value="{{ current_user.id }}" hidden>
                             </div>
 
                             <div class="mb-3">
-                                <input type="text" id="post_id" name="post_id"  value="{{ posts.id }}" hidden>
+                                <input type="text" id="id" name="id"  value="{{ post.id }}" hidden>
                             </div>
 
                             <button class="btn btn-warning btn-lg btn-block" type="submit">Envoyez</button>
@@ -82,7 +82,7 @@
 
         {% elseif comments %}
 
-            <p><a href="/signup/new">S'inscrire</a> pour publier un message.</p>
+            <p><a href="/signup/new">S'inscrire</a> ou <a href="/login/new">se connecter</a> pour publier un message.</p>
 
             <h4 class="mt-4 mb-4">Dernier commentaire :</h4>
             {% for comment in comments %}

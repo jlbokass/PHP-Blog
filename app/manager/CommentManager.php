@@ -68,9 +68,12 @@ class CommentManager extends Model
     }
     */
 
+    /**
+     * @return array
+     */
     public static function getAll()
     {
-        $sql = 'SELECT comment.*, u.username as user_username
+        $sql = 'SELECT comment.*, u.username as user_username, p.title as post_title
         FROM comment
         INNER JOIN user u on comment.FK_user_id = u.id
         INNER JOIN post p on comment.FK_post_id = p.id
@@ -86,6 +89,9 @@ class CommentManager extends Model
         return $result;
     }
 
+    /**
+     * @param $postId
+     */
     public static function getSingle($postId)
     {
 
@@ -115,6 +121,7 @@ class CommentManager extends Model
 
 
     /**
+     * insert comment save comment in database, used by post controller in the single page
      * @return bool
      */
     public function save()
@@ -133,8 +140,8 @@ class CommentManager extends Model
 
             $stmt = $db->prepare($sql);
 
-            $stmt->bindValue(':FK_user_id', $this->param, \PDO::PARAM_INT);
-            $stmt->bindValue(':FK_post_id', $this->post_id, \PDO::PARAM_INT);
+            $stmt->bindValue(':FK_user_id', $this->FK_user_id, \PDO::PARAM_INT);
+            $stmt->bindValue(':FK_post_id', $this->id, \PDO::PARAM_INT);
             $stmt->bindValue(':content', $this->content, \PDO::PARAM_STR);
 
             return $stmt->execute();
@@ -144,7 +151,11 @@ class CommentManager extends Model
     }
 
 
-
+    /**
+     * show all post comment, used in post controller
+     * @param $postId
+     * @return array
+     */
     public static function showAll($postId)
     {
         $sql = 'SELECT comment.*, u.username as user_username
@@ -166,6 +177,11 @@ class CommentManager extends Model
     }
 
 
+    /**
+     * show a single comment display in update method, in admin controller
+     * @param $commentId
+     * @return mixed
+     */
     public static function showSingle($commentId)
     {
         $sql = 'SELECT comment.*, u.username as user_username
@@ -212,6 +228,11 @@ class CommentManager extends Model
     }
 
 
+    /**
+     * used in admin controller to validate comments
+     * @param $commentId
+     * @return bool
+     */
     public static function update($commentId)
     {
         $sql = 'UPDATE comment
@@ -226,20 +247,18 @@ class CommentManager extends Model
         return $stmt->execute();
     }
 
-    /**
-     * @return bool
-     */
-    public function delete()
+
+    public static function delete($commentId)
     {
 
         $sql = 'DELETE FROM comment
           
-                WHERE comment.FK_post_id= :id';
+                WHERE comment.id= :commentId';
 
         $db = static::getDB();
         $stmt = $db->prepare($sql);
 
-        $stmt->bindValue(':id', $this->id, PDO::PARAM_INT);
+        $stmt->bindValue(':commentId', $commentId, \PDO::PARAM_INT);
 
         return $stmt->execute();
     }
@@ -268,6 +287,10 @@ class CommentManager extends Model
         return $result;
     }
 
+    /**
+     * @param $id
+     * @return array
+     */
     public static function validateComment($id)
     {
         $sql= 'UPDATE comment set published = 1
