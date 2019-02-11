@@ -20,5 +20,5 @@ You can find all the scripts in resource folder.
 - of corse, you can set your own configuration to redirect to public folder  
 
 # Data base configuration
-Remplace setting connection with your own by using the db.php in the config folder.
+Remplace setting connection with your own by using the Config.php in core folder.
 
