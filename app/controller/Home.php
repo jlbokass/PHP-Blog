@@ -34,12 +34,18 @@ class Home extends Controller
         View::renderTemplate('/Home/index.twig');
     }
 
+    /**
+     *
+     */
     protected function before()
     {
         //echo '(before)';
         //return false;
     }
 
+    /**
+     *
+     */
     protected function after()
     {
        // echo '(after)';

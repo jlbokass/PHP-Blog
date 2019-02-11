@@ -1,0 +1,194 @@
+[16-Jan-2019 02:27:02 Europe/Paris] Uncaught exception: 'Exception' with message 'No route matched.'
+Stack trace: #0 /Applications/MAMP/htdocs/PHP-Blog/public/index.php(66): Core\Router->dispatch('products')
+#1 {main}
+Thrown in '/Applications/MAMP/htdocs/PHP-Blog/core/Router.php' on line 126
+[16-Jan-2019 02:39:09 Europe/Paris] Uncaught exception: 'Exception' with message 'No route matched.'
+Stack trace: #0 /Applications/MAMP/htdocs/PHP-Blog/public/index.php(66): Core\Router->dispatch('posts/css/blog....')
+#1 {main}
+Thrown in '/Applications/MAMP/htdocs/PHP-Blog/core/Router.php' on line 126
+[16-Jan-2019 02:39:09 Europe/Paris] PHP Fatal error:  Uncaught Twig_Error_Loader: Unable to find template "404twig" (looked into: ../app/view). in /Applications/MAMP/htdocs/PHP-Blog/vendor/twig/twig/lib/Twig/Loader/Filesystem.php:234
+Stack trace:
+#0 /Applications/MAMP/htdocs/PHP-Blog/vendor/twig/twig/lib/Twig/Loader/Filesystem.php(143): Twig_Loader_Filesystem->findTemplate('404twig')
+#1 /Applications/MAMP/htdocs/PHP-Blog/vendor/twig/twig/lib/Twig/Environment.php(270): Twig_Loader_Filesystem->getCacheKey('404twig')
+#2 /Applications/MAMP/htdocs/PHP-Blog/vendor/twig/twig/lib/Twig/Environment.php(350): Twig_Environment->getTemplateClass('404twig')
+#3 /Applications/MAMP/htdocs/PHP-Blog/vendor/twig/twig/lib/Twig/Environment.php(289): Twig_Environment->loadTemplate('404twig')
+#4 /Applications/MAMP/htdocs/PHP-Blog/core/View.php(55): Twig_Environment->render('404twig', Array)
+#5 /Applications/MAMP/htdocs/PHP-Blog/core/Error.php(68): Core\View::renderTemplate('404twig')
+#6 [internal function]: Core\Error::exceptionHandler(Object(Exception))
+#7 {main}
+  thrown in /Applications/MAMP/htdocs/PHP-Blog/vendor/twig/twig/lib/Twig/Loader/Filesystem.php on line 234
+[16-Jan-2019 02:39:09 Europe/Paris] Uncaught exception: 'Exception' with message 'No route matched.'
+Stack trace: #0 /Applications/MAMP/htdocs/PHP-Blog/public/index.php(66): Core\Router->dispatch('products')
+#1 {main}
+Thrown in '/Applications/MAMP/htdocs/PHP-Blog/core/Router.php' on line 126
+[16-Jan-2019 02:39:09 Europe/Paris] PHP Fatal error:  Uncaught Twig_Error_Loader: Unable to find template "404twig" (looked into: ../app/view). in /Applications/MAMP/htdocs/PHP-Blog/vendor/twig/twig/lib/Twig/Loader/Filesystem.php:234
+Stack trace:
+#0 /Applications/MAMP/htdocs/PHP-Blog/vendor/twig/twig/lib/Twig/Loader/Filesystem.php(143): Twig_Loader_Filesystem->findTemplate('404twig')
+#1 /Applications/MAMP/htdocs/PHP-Blog/vendor/twig/twig/lib/Twig/Environment.php(270): Twig_Loader_Filesystem->getCacheKey('404twig')
+#2 /Applications/MAMP/htdocs/PHP-Blog/vendor/twig/twig/lib/Twig/Environment.php(350): Twig_Environment->getTemplateClass('404twig')
+#3 /Applications/MAMP/htdocs/PHP-Blog/vendor/twig/twig/lib/Twig/Environment.php(289): Twig_Environment->loadTemplate('404twig')
+#4 /Applications/MAMP/htdocs/PHP-Blog/core/View.php(55): Twig_Environment->render('404twig', Array)
+#5 /Applications/MAMP/htdocs/PHP-Blog/core/Error.php(68): Core\View::renderTemplate('404twig')
+#6 [internal function]: Core\Error::exceptionHandler(Object(Exception))
+#7 {main}
+  thrown in /Applications/MAMP/htdocs/PHP-Blog/vendor/twig/twig/lib/Twig/Loader/Filesystem.php on line 234
+[16-Jan-2019 02:39:11 Europe/Paris] Uncaught exception: 'Exception' with message 'No route matched.'
+Stack trace: #0 /Applications/MAMP/htdocs/PHP-Blog/public/index.php(66): Core\Router->dispatch('product')
+#1 {main}
+Thrown in '/Applications/MAMP/htdocs/PHP-Blog/core/Router.php' on line 126
+[16-Jan-2019 02:39:11 Europe/Paris] PHP Fatal error:  Uncaught Twig_Error_Loader: Unable to find template "404twig" (looked into: ../app/view). in /Applications/MAMP/htdocs/PHP-Blog/vendor/twig/twig/lib/Twig/Loader/Filesystem.php:234
+Stack trace:
+#0 /Applications/MAMP/htdocs/PHP-Blog/vendor/twig/twig/lib/Twig/Loader/Filesystem.php(143): Twig_Loader_Filesystem->findTemplate('404twig')
+#1 /Applications/MAMP/htdocs/PHP-Blog/vendor/twig/twig/lib/Twig/Environment.php(270): Twig_Loader_Filesystem->getCacheKey('404twig')
+#2 /Applications/MAMP/htdocs/PHP-Blog/vendor/twig/twig/lib/Twig/Environment.php(350): Twig_Environment->getTemplateClass('404twig')
+#3 /Applications/MAMP/htdocs/PHP-Blog/vendor/twig/twig/lib/Twig/Environment.php(289): Twig_Environment->loadTemplate('404twig')
+#4 /Applications/MAMP/htdocs/PHP-Blog/core/View.php(55): Twig_Environment->render('404twig', Array)
+#5 /Applications/MAMP/htdocs/PHP-Blog/core/Error.php(68): Core\View::renderTemplate('404twig')
+#6 [internal function]: Core\Error::exceptionHandler(Object(Exception))
+#7 {main}
+  thrown in /Applications/MAMP/htdocs/PHP-Blog/vendor/twig/twig/lib/Twig/Loader/Filesystem.php on line 234
+[16-Jan-2019 02:39:12 Europe/Paris] Uncaught exception: 'Exception' with message 'No route matched.'
+Stack trace: #0 /Applications/MAMP/htdocs/PHP-Blog/public/index.php(66): Core\Router->dispatch('products')
+#1 {main}
+Thrown in '/Applications/MAMP/htdocs/PHP-Blog/core/Router.php' on line 126
+[16-Jan-2019 02:39:12 Europe/Paris] PHP Fatal error:  Uncaught Twig_Error_Loader: Unable to find template "404twig" (looked into: ../app/view). in /Applications/MAMP/htdocs/PHP-Blog/vendor/twig/twig/lib/Twig/Loader/Filesystem.php:234
+Stack trace:
+#0 /Applications/MAMP/htdocs/PHP-Blog/vendor/twig/twig/lib/Twig/Loader/Filesystem.php(143): Twig_Loader_Filesystem->findTemplate('404twig')
+#1 /Applications/MAMP/htdocs/PHP-Blog/vendor/twig/twig/lib/Twig/Environment.php(270): Twig_Loader_Filesystem->getCacheKey('404twig')
+#2 /Applications/MAMP/htdocs/PHP-Blog/vendor/twig/twig/lib/Twig/Environment.php(350): Twig_Environment->getTemplateClass('404twig')
+#3 /Applications/MAMP/htdocs/PHP-Blog/vendor/twig/twig/lib/Twig/Environment.php(289): Twig_Environment->loadTemplate('404twig')
+#4 /Applications/MAMP/htdocs/PHP-Blog/core/View.php(55): Twig_Environment->render('404twig', Array)
+#5 /Applications/MAMP/htdocs/PHP-Blog/core/Error.php(68): Core\View::renderTemplate('404twig')
+#6 [internal function]: Core\Error::exceptionHandler(Object(Exception))
+#7 {main}
+  thrown in /Applications/MAMP/htdocs/PHP-Blog/vendor/twig/twig/lib/Twig/Loader/Filesystem.php on line 234
+[16-Jan-2019 02:39:28 Europe/Paris] Uncaught exception: 'Exception' with message 'No route matched.'
+Stack trace: #0 /Applications/MAMP/htdocs/PHP-Blog/public/index.php(66): Core\Router->dispatch('product')
+#1 {main}
+Thrown in '/Applications/MAMP/htdocs/PHP-Blog/core/Router.php' on line 126
+[16-Jan-2019 02:39:28 Europe/Paris] Uncaught exception: 'Exception' with message 'No route matched.'
+Stack trace: #0 /Applications/MAMP/htdocs/PHP-Blog/public/index.php(66): Core\Router->dispatch('product')
+#1 {main}
+Thrown in '/Applications/MAMP/htdocs/PHP-Blog/core/Router.php' on line 126
+[16-Jan-2019 02:39:29 Europe/Paris] Uncaught exception: 'Exception' with message 'No route matched.'
+Stack trace: #0 /Applications/MAMP/htdocs/PHP-Blog/public/index.php(66): Core\Router->dispatch('products')
+#1 {main}
+Thrown in '/Applications/MAMP/htdocs/PHP-Blog/core/Router.php' on line 126
+[16-Jan-2019 02:39:29 Europe/Paris] Uncaught exception: 'Exception' with message 'No route matched.'
+Stack trace: #0 /Applications/MAMP/htdocs/PHP-Blog/public/index.php(66): Core\Router->dispatch('products')
+#1 {main}
+Thrown in '/Applications/MAMP/htdocs/PHP-Blog/core/Router.php' on line 126
+[16-Jan-2019 02:40:04 Europe/Paris] Uncaught exception: 'Exception' with message 'No route matched.'
+Stack trace: #0 /Applications/MAMP/htdocs/PHP-Blog/public/index.php(66): Core\Router->dispatch('products')
+#1 {main}
+Thrown in '/Applications/MAMP/htdocs/PHP-Blog/core/Router.php' on line 126
+[16-Jan-2019 02:40:05 Europe/Paris] Uncaught exception: 'Exception' with message 'No route matched.'
+Stack trace: #0 /Applications/MAMP/htdocs/PHP-Blog/public/index.php(66): Core\Router->dispatch('products')
+#1 {main}
+Thrown in '/Applications/MAMP/htdocs/PHP-Blog/core/Router.php' on line 126
+[16-Jan-2019 02:40:42 Europe/Paris] Uncaught exception: 'Exception' with message 'No route matched.'
+Stack trace: #0 /Applications/MAMP/htdocs/PHP-Blog/public/index.php(66): Core\Router->dispatch('product')
+#1 {main}
+Thrown in '/Applications/MAMP/htdocs/PHP-Blog/core/Router.php' on line 126
+[16-Jan-2019 02:40:43 Europe/Paris] Uncaught exception: 'Exception' with message 'No route matched.'
+Stack trace: #0 /Applications/MAMP/htdocs/PHP-Blog/public/index.php(66): Core\Router->dispatch('posts/css/blog....')
+#1 {main}
+Thrown in '/Applications/MAMP/htdocs/PHP-Blog/core/Router.php' on line 126
+[16-Jan-2019 02:40:44 Europe/Paris] Uncaught exception: 'Exception' with message 'No route matched.'
+Stack trace: #0 /Applications/MAMP/htdocs/PHP-Blog/public/index.php(66): Core\Router->dispatch('posts')
+#1 {main}
+Thrown in '/Applications/MAMP/htdocs/PHP-Blog/core/Router.php' on line 126
+[16-Jan-2019 02:40:44 Europe/Paris] Uncaught exception: 'Exception' with message 'No route matched.'
+Stack trace: #0 /Applications/MAMP/htdocs/PHP-Blog/public/index.php(66): Core\Router->dispatch('posts')
+#1 {main}
+Thrown in '/Applications/MAMP/htdocs/PHP-Blog/core/Router.php' on line 126
+[16-Jan-2019 02:40:45 Europe/Paris] Uncaught exception: 'Exception' with message 'No route matched.'
+Stack trace: #0 /Applications/MAMP/htdocs/PHP-Blog/public/index.php(66): Core\Router->dispatch('posts/css/blog....')
+#1 {main}
+Thrown in '/Applications/MAMP/htdocs/PHP-Blog/core/Router.php' on line 126
+[16-Jan-2019 02:40:50 Europe/Paris] Uncaught exception: 'Exception' with message 'Method indAction not found in controller App\Controller\Posts'
+Stack trace: #0 /Applications/MAMP/htdocs/PHP-Blog/core/Router.php(114): Core\Controller->__call('ind', Array)
+#1 /Applications/MAMP/htdocs/PHP-Blog/public/index.php(66): Core\Router->dispatch('posts/ind')
+#2 {main}
+Thrown in '/Applications/MAMP/htdocs/PHP-Blog/core/Controller.php' on line 43
+[16-Jan-2019 02:40:50 Europe/Paris] Uncaught exception: 'Exception' with message 'No route matched.'
+Stack trace: #0 /Applications/MAMP/htdocs/PHP-Blog/public/index.php(66): Core\Router->dispatch('posts/css/blog....')
+#1 {main}
+Thrown in '/Applications/MAMP/htdocs/PHP-Blog/core/Router.php' on line 126
+[16-Jan-2019 02:40:51 Europe/Paris] Uncaught exception: 'Exception' with message 'Method indAction not found in controller App\Controller\Posts'
+Stack trace: #0 /Applications/MAMP/htdocs/PHP-Blog/core/Router.php(114): Core\Controller->__call('ind', Array)
+#1 /Applications/MAMP/htdocs/PHP-Blog/public/index.php(66): Core\Router->dispatch('posts/ind')
+#2 {main}
+Thrown in '/Applications/MAMP/htdocs/PHP-Blog/core/Controller.php' on line 43
+[16-Jan-2019 21:18:04 Europe/Paris] Uncaught exception: 'Exception' with message 'No route matched.'
+Stack trace: #0 /Applications/MAMP/htdocs/PHP-Blog/public/index.php(66): Core\Router->dispatch('confirmation-em...')
+#1 {main}
+Thrown in '/Applications/MAMP/htdocs/PHP-Blog/core/Router.php' on line 134
+[16-Jan-2019 21:18:04 Europe/Paris] Uncaught exception: 'Exception' with message 'No route matched.'
+Stack trace: #0 /Applications/MAMP/htdocs/PHP-Blog/public/index.php(66): Core\Router->dispatch('public/js/formV...')
+#1 {main}
+Thrown in '/Applications/MAMP/htdocs/PHP-Blog/core/Router.php' on line 134
+[16-Jan-2019 21:18:04 Europe/Paris] Uncaught exception: 'Exception' with message 'No route matched.'
+Stack trace: #0 /Applications/MAMP/htdocs/PHP-Blog/public/index.php(66): Core\Router->dispatch('confirmation-em...')
+#1 {main}
+Thrown in '/Applications/MAMP/htdocs/PHP-Blog/core/Router.php' on line 134
+[16-Jan-2019 21:18:14 Europe/Paris] Uncaught exception: 'Exception' with message 'No route matched.'
+Stack trace: #0 /Applications/MAMP/htdocs/PHP-Blog/public/index.php(66): Core\Router->dispatch('public/js/formV...')
+#1 {main}
+Thrown in '/Applications/MAMP/htdocs/PHP-Blog/core/Router.php' on line 134
+[16-Jan-2019 21:18:16 Europe/Paris] Uncaught exception: 'Exception' with message 'No route matched.'
+Stack trace: #0 /Applications/MAMP/htdocs/PHP-Blog/public/index.php(66): Core\Router->dispatch('confirmation-em...')
+#1 {main}
+Thrown in '/Applications/MAMP/htdocs/PHP-Blog/core/Router.php' on line 134
+[16-Jan-2019 21:18:17 Europe/Paris] Uncaught exception: 'Exception' with message 'No route matched.'
+Stack trace: #0 /Applications/MAMP/htdocs/PHP-Blog/public/index.php(66): Core\Router->dispatch('public/js/formV...')
+#1 {main}
+Thrown in '/Applications/MAMP/htdocs/PHP-Blog/core/Router.php' on line 134
+[16-Jan-2019 21:19:06 Europe/Paris] Uncaught exception: 'Exception' with message 'No route matched.'
+Stack trace: #0 /Applications/MAMP/htdocs/PHP-Blog/public/index.php(66): Core\Router->dispatch('public/js/formV...')
+#1 {main}
+Thrown in '/Applications/MAMP/htdocs/PHP-Blog/core/Router.php' on line 134
+[16-Jan-2019 21:19:07 Europe/Paris] Uncaught exception: 'Exception' with message 'No route matched.'
+Stack trace: #0 /Applications/MAMP/htdocs/PHP-Blog/public/index.php(66): Core\Router->dispatch('public/js/formV...')
+#1 {main}
+Thrown in '/Applications/MAMP/htdocs/PHP-Blog/core/Router.php' on line 134
+[16-Jan-2019 21:19:10 Europe/Paris] Uncaught exception: 'Exception' with message 'No route matched.'
+Stack trace: #0 /Applications/MAMP/htdocs/PHP-Blog/public/index.php(66): Core\Router->dispatch('confirmation-em...')
+#1 {main}
+Thrown in '/Applications/MAMP/htdocs/PHP-Blog/core/Router.php' on line 134
+[16-Jan-2019 21:19:10 Europe/Paris] Uncaught exception: 'Exception' with message 'No route matched.'
+Stack trace: #0 /Applications/MAMP/htdocs/PHP-Blog/public/index.php(66): Core\Router->dispatch('public/js/formV...')
+#1 {main}
+Thrown in '/Applications/MAMP/htdocs/PHP-Blog/core/Router.php' on line 134
+[16-Jan-2019 21:19:14 Europe/Paris] Uncaught exception: 'Exception' with message 'No route matched.'
+Stack trace: #0 /Applications/MAMP/htdocs/PHP-Blog/public/index.php(66): Core\Router->dispatch('public/js/formV...')
+#1 {main}
+Thrown in '/Applications/MAMP/htdocs/PHP-Blog/core/Router.php' on line 134
+[16-Jan-2019 21:19:14 Europe/Paris] Uncaught exception: 'Exception' with message 'No route matched.'
+Stack trace: #0 /Applications/MAMP/htdocs/PHP-Blog/public/index.php(66): Core\Router->dispatch('public/js/formV...')
+#1 {main}
+Thrown in '/Applications/MAMP/htdocs/PHP-Blog/core/Router.php' on line 134
+[16-Jan-2019 21:19:16 Europe/Paris] Uncaught exception: 'Exception' with message 'No route matched.'
+Stack trace: #0 /Applications/MAMP/htdocs/PHP-Blog/public/index.php(66): Core\Router->dispatch('public/js/formV...')
+#1 {main}
+Thrown in '/Applications/MAMP/htdocs/PHP-Blog/core/Router.php' on line 134
+[16-Jan-2019 21:19:16 Europe/Paris] Uncaught exception: 'Exception' with message 'No route matched.'
+Stack trace: #0 /Applications/MAMP/htdocs/PHP-Blog/public/index.php(66): Core\Router->dispatch('public/js/formV...')
+#1 {main}
+Thrown in '/Applications/MAMP/htdocs/PHP-Blog/core/Router.php' on line 134
+[16-Jan-2019 21:19:17 Europe/Paris] Uncaught exception: 'Exception' with message 'No route matched.'
+Stack trace: #0 /Applications/MAMP/htdocs/PHP-Blog/public/index.php(66): Core\Router->dispatch('confirmation-em...')
+#1 {main}
+Thrown in '/Applications/MAMP/htdocs/PHP-Blog/core/Router.php' on line 134
+[16-Jan-2019 21:19:18 Europe/Paris] Uncaught exception: 'Exception' with message 'No route matched.'
+Stack trace: #0 /Applications/MAMP/htdocs/PHP-Blog/public/index.php(66): Core\Router->dispatch('public/js/formV...')
+#1 {main}
+Thrown in '/Applications/MAMP/htdocs/PHP-Blog/core/Router.php' on line 134
+[16-Jan-2019 21:19:42 Europe/Paris] Uncaught exception: 'Exception' with message 'No route matched.'
+Stack trace: #0 /Applications/MAMP/htdocs/PHP-Blog/public/index.php(66): Core\Router->dispatch('public/js/formV...')
+#1 {main}
+Thrown in '/Applications/MAMP/htdocs/PHP-Blog/core/Router.php' on line 134
+[16-Jan-2019 21:19:44 Europe/Paris] Uncaught exception: 'Exception' with message 'No route matched.'
+Stack trace: #0 /Applications/MAMP/htdocs/PHP-Blog/public/index.php(66): Core\Router->dispatch('public/js/formV...')
+#1 {main}
+Thrown in '/Applications/MAMP/htdocs/PHP-Blog/core/Router.php' on line 134

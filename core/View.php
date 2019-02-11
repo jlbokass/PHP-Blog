@@ -16,9 +16,11 @@ namespace Core;
 class View
 {
 
+
     /**
      * @param $view
      * @param array $args
+     * @throws \Exception
      */
     public static function render($view, $args = [])
     {

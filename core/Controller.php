@@ -9,6 +9,10 @@
 namespace Core;
 
 
+/**
+ * Class Controller
+ * @package Core
+ */
 abstract class Controller
 {
     /**
@@ -29,6 +33,11 @@ abstract class Controller
         $this->route_params = $route_params;
     }
 
+    /**
+     * @param $name
+     * @param $arguments
+     * @throws \Exception
+     */
     public function __call($name, $arguments)
     {
         $method = $name . 'Action';
@@ -44,11 +53,17 @@ abstract class Controller
         }
     }
 
+    /**
+     *
+     */
     protected function before()
     {
 
     }
 
+    /**
+     *
+     */
     protected  function after()
     {
 

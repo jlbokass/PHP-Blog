@@ -39,4 +39,6 @@ class Config
      * @var string
      */
     const DB_PASSWORD = 'root';
+
+    const SHOW_ERRORS = false;
 }
