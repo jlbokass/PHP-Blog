@@ -1,0 +1,174 @@
+{%  extends 'layout.html.twig' %}
+
+{% block title %}Home{% endblock %}
+
+{% block myInfo %}
+
+<div class="row mb-2">
+    <div class="col-md-6">
+        <div class="card flex-md-row mb-4 box-shadow h-md-250">
+            <div class="card-body d-flex flex-column align-items-start">
+                <strong class="d-inline-block mb-2 text-secondary">Qui je suis</strong>
+                <h4 class="mb-0">
+                    <p class="text-dark">Bokassa <br>jean le Grand</p>
+                </h4>
+                <div class="mb-1 text-muted">41 ans</div>
+                <p class="card-text mb-auto">Vie à Bordeaux et anciennement prof de danses latines.</p>
+
+            </div>
+            <img class="card-img-right flex-auto d-none d-lg-block" src="../img/me.jpg" alt="Card image cap">
+        </div>
+    </div>
+    <div class="col-md-6">
+        <div class="card flex-md-row mb-4 box-shadow h-md-250">
+            <div class="card-body d-flex flex-column align-items-start">
+                <strong class="d-inline-block mb-2 text-secondary">Actuellment</strong>
+                <h4 class="mb-0">
+                    <p class="text-dark">En formation développeur PHP</p>
+                </h4>
+                <div class="mb-1 text-muted">Depuis le 11 juin 2018</div>
+                <p class="card-text mb-auto">Avec l'organisme Openclassroom. Je travail actuellement sur le projet 6.<br/>Consulter mon <a href="../upload/cv.pdf" target="_blank">CV</a>.</p>
+            </div>
+            <!--<img class="card-img-right flex-auto d-none d-lg-block" src="img/me.jpg" alt="Card image cap">-->
+        </div>
+    </div>
+</div>
+
+{% endblock %}
+
+{% block subTitle %} Accueil {% endblock %}
+
+{% block body %}
+
+    <h2 class="blog-post-title">À propos</h2>
+
+    <p><strong>Je m'appelle Jean le Grand Bokassa</strong>, j'ai commencé à m'intéresser au développement web et au
+        graphisme en 2008. Mon association avait besoin d'un site web, Je me suis alors lancé dans sa création et depuis,
+        c'est devenu une vrai vocation. J'aime expérimenter, découvrir et apprendre au fur et à mesure de mes projets
+        professionnels et personnels.</p>
+
+    <p><strong>Mon projet : </strong>Aujourd’hui je souhaite en faire mon métier et approfondir mes compétences.
+        Je suis actuellement la formation développeur PHP/SYMFONY avec Openclassroom et j'ai validé 5 projets sur 9.</p>
+
+    <p><strong>Ce blog</strong> a pour but d'illutrer les compétences que j'ai acquises à mi-chemin de mon parcours.
+        Il est réalisé sans framework.</p>
+
+    <p class="font-weight-bold">Je vous souhaite une bonne visite :) et n'hésitez à me faire des retours.</p>
+
+{% endblock %}
+
+{% block emailMe %}
+
+    <hr/>
+
+    <div class="container mb-4">
+        <div class="footer-wrap">
+
+            <h2 class="mb-4" id="contactAdmin">Contact Me</h2>
+
+            {% if emailFromBlog.errors is not empty %}
+                <p>Errors:</p>
+                <ul>
+                    {% for error in emailFromBlog.errors %}
+                        <li>{{ error }}</li>
+                    {% endfor %}
+                </ul>
+            {% endif %}
+
+            <div class="row text-left">
+                <div class="col-md-6">
+                    <form class="needs-validation ml-4" method="post" action="/home/email" novalidate>
+                        <div class="row">
+                            <div class="col-md-6 mb-3">
+                                <label for="firstName">Prénom :</label>
+                                <input type="text" class="form-control" name="firstName" id="firstName" placeholder="" value="{{ emailFromBlog.firstName }}" required>
+                                <small id="emailHelp" class="form-text text-muted">Donnée confidentielle</small>
+                                <div class="invalid-feedback">
+                                    Valid first name is required.
+                                </div>
+                            </div>
+                            <div class="col-md-6 mb-3">
+                                <label for="lastName">Nom :</label>
+                                <input type="text" class="form-control" name="lastName" id="lastName" placeholder="" value="{{ emailFromBlog.lastName }}" required>
+                                <small id="emailHelp" class="form-text text-muted">Donnée confidentielle</small>
+                                <div class="invalid-feedback">
+                                    Valid last name is required.
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="mb-3">
+                            <label for="email">Email :</label>
+                            <input type="email" class="form-control" name="email" id="email" placeholder="you@example.com" value="{{ emailFromBlog.email }}" required>
+                            <small id="emailHelp" class="form-text text-muted">Votre email ne sera jamais paragé</small>
+                            <div class="invalid-feedback">
+                                Please enter a valid email address for shipping updates.
+                            </div>
+                        </div>
+
+                        <div class="mb-3">
+                            <label for="message">Message :</label>
+                            <textarea class="form-control" name="message" id="message" rows="7" required>{{ emailFromBlog.message }}</textarea>
+                            <small id="compteur" class="form-text text-muted">0 mots | 0 Character / 255</small>
+                            <div class="invalid-feedback">
+                                Please enter a valid message.
+                            </div>
+                        </div>
+
+                        <hr class="mb-4">
+                        <button class="btn btn-primary btn-lg btn-block" type="submit">Envoyez</button>
+                    </form>
+                </div>
+
+                <div class="col-md-6 mt-3">
+                    <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2837.39443637826!2d-0.4905950838174441!3d44.67072257909955!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0xd551857e75f6b73%3A0x64cc4f6441c1c72f!2s1+Route+de+Bigard%2C+33650+Saint-Selve!5e0!3m2!1sfr!2sfr!4v1542365130076" width="100%" height="550" frameborder="0" style="border:0" allowfullscreen></iframe>
+                </div>
+            </div>
+        </div>
+    </div>
+
+{% endblock %}
+
+{% block footer %}
+
+    <script>
+        $(document).ready(function(e) {
+
+            $('#message').keyup(function() {
+
+                var nombreCaractere = $(this).val().length;
+
+                var nombreMots = jQuery.trim($(this).val()).split(' ').length;
+                if($(this).val() === '') {
+                    nombreMots = 0;
+                }
+
+                var msg = ' ' + nombreMots + ' mot(s) | ' + nombreCaractere + ' Caractere(s) / 255';
+                $('#compteur').text(msg);
+                if (nombreCaractere > 255) { $('#compteur').addClass("text-danger"); } else { $('#compteur').removeClass("mauvais"); }
+
+            })
+
+
+
+            $('#message2').keyup(function() {
+
+                var nombreCaractere2 = $(this).val().length;
+                var nombreCaractere2 = 200 - nombreCaractere2;
+
+                var nombreMots2 = jQuery.trim($(this).val()).split(' ').length;
+                if($(this).val() === '') {
+                    nombreMots2 = 0;
+                }
+
+                var msg2 = ' ' + nombreMots2 + ' mot(s) | ' + nombreCaractere2 + ' Caractere(s) restant';
+                $('#compteur2').text(msg2);
+                if (nombreCaractere2 < 1) { $('#compteur2').addClass("mauvais"); } else { $('#compteur2').removeClass("mauvais"); }
+
+            })
+
+
+
+        });
+    </script>
+{% endblock %}

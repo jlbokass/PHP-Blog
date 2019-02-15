@@ -1,0 +1,113 @@
+{%  extends 'layout.html.twig' %}
+
+{% block title %}Single{% endblock %}
+
+{% block subTitle %} Détail du post - <span style="font-size: .6em"><a href="/post/index"> revenir aux blog</a> </span> {% endblock %}
+
+{% block body %}
+
+    <div class="blog-post">
+        <h3>{{ post.title }}</h3>
+        <p class="blog-post-meta text-body">Rédigé par <strong>{{ post.user_username }}</strong> le {{ post.createdAt | date("d/m/Y à H:i") }} </p>
+        <p class="chapo mb-5">{{ post.headline }}</p>
+        <p>{{ post.content }}</p>
+
+        <hr />
+
+
+        {% if comments and current_user %}
+
+            <div class="row mb-3">
+                <div class="col-12">
+                    <form class="needs-validation" method="post" action="/comment/create" novalidate>
+                        <div class="mb-3">
+                            <h5 class="mt-4 mb-4">Publiez un commentaire :</h5>
+                            <textarea class="form-control" id="exampleFormControlTextarea1" name="content" rows="5"></textarea>
+                        </div>
+
+                        <div class="mb-3">
+                            <input type="text" id="FK_user_id" name="FK_user_id"  value="{{ current_user.id }}" hidden>
+                        </div>
+
+                        <div class="mb-3">
+                            <input type="text" id="id" name="id"  value="{{ post.id }}" hidden>
+                        </div>
+
+                        <button class="btn btn-warning btn-lg btn-block" type="submit">Envoyez</button>
+                    </form>
+                </div>
+            </div>
+
+            <h4 class="mt-5 mb-4">Dernier Commentaire :</h4>
+
+            {% for comment in comments %}
+                <div class="row mb-3">
+                    <div class="col-12">
+                        <div class="card">
+                            <div class="card-body">
+                                    <span class="small text-secondary"><strong>{{ comment.user_username }} </strong> a écrit le {{ comment.createdAt |date("d/m/Y à H:i") }}<br />
+                                        "
+                                        {{ comment.content }}"</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            {% endfor %}
+
+            {% elseif current_user %}
+
+                <div class="row mb-3">
+                    <div class="col-12">
+                        <form class="needs-validation" method="post" action="/comment/create" novalidate>
+                            <div class="mb-3">
+                                <h5 class="mt-4 mb-4">Publiez un commentaire :</h5>
+                                <textarea class="form-control" id="exampleFormControlTextarea1" name="content" rows="5"></textarea>
+                            </div>
+
+                            <div class="mb-3">
+                                <input type="text" id="FK_user_id" name="FK_user_id"  value="{{ current_user.id }}" hidden>
+                            </div>
+
+                            <div class="mb-3">
+                                <input type="text" id="id" name="id"  value="{{ post.id }}" hidden>
+                            </div>
+
+                            <button class="btn btn-warning btn-lg btn-block" type="submit">Envoyez</button>
+                        </form>
+                    </div>
+                </div>
+
+
+        {% elseif comments %}
+
+            <p><a href="/signup/new">S'inscrire</a> ou <a href="/login/new">se connecter</a> pour publier un message.</p>
+
+            <h4 class="mt-4 mb-4">Dernier commentaire :</h4>
+            {% for comment in comments %}
+                <div class="row mb-3">
+                    <div class="col-12">
+                        <div class="card">
+                            <div class="card-body">
+                                    <span class="small text-secondary"><strong>{{ comment.user_username }} </strong>a écrit le {{ comment.createdAt |date("d/m/Y à H:i") }}<br />
+                                        "
+                                        {{ comment.content }}"</span>
+                            </div>
+                            <!--<div class="card-footer">Footer</div>-->
+                        </div>
+                    </div>
+                </div>
+            {% endfor %}
+
+            {% else %}
+                <h4 class="mt-4 mb-4">Pas de commentaire. .</h4>
+            <p><a href="/signup/new">S'inscrire</a> ou <a href="/login/new">se connecter</a> pour publier un message.</p>
+
+        {% endif %}
+
+    </div>
+
+{% endblock %}
+
+
+

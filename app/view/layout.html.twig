@@ -1,0 +1,227 @@
+<!doctype html>
+<html lang="fr">
+
+
+<head>
+
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <meta name="author" content="Bokassa jean Le Grand"/>
+    <meta name="copyright" content="©2018, Bokassa Jean Le Grand, All Right Reserved."/>
+    <meta name="description"
+          content="Blog professionnel PHP réalisé par Bokassa jean Le Grand dans le cadre de ma formation DevWeb PHP Symfony avec l'organisme OpenClassroom"/>
+
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css"
+          integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+    <!-- Custom styles for this template -->
+    <link href="https://fonts.googleapis.com/css?family=Playfair+Display:700,900" rel="stylesheet">
+    <link href="/css/blog.css" type="text/css" rel="stylesheet">
+
+    <!-- favicon du site -->
+    <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
+    <link href="https://use.fontawesome.com/b9bdbd120a.js">
+    <link rel="icon" href="">
+
+    <title>Développeur Web | {% block title %}{% endblock %}</title>
+</head>
+
+<body>
+
+<div class="container">
+    <div class="d-none d-sm-block">
+        <header class="blog-header py-3">
+            <div class="row flex-nowrap justify-content-between align-items-center">
+                <div class="col-3 pt-1">
+
+                    {% if current_user %}
+                        Hello <a href="/profile/show-profile">{{ current_user.username }}</a> .
+                    {% else %}
+                    <a class="text-muted" href="/signup/new">S'inscrire</a>
+                    {% endif %}
+
+                </div>
+                <div class="col-6 text-center">
+                    <a class="blog-header-logo text-dark" href="/"><span class="small">John B. |</span> Développeur Web
+                    </a>
+                </div>
+                <div class="col-3 d-flex justify-content-end align-items-center">
+
+                    {% if current_user %}
+                    <a class="btn btn-sm btn-outline-secondary" href="/logout">Sign out</a>
+                    {% else %}
+                    <a class="btn btn-sm btn-outline-secondary" href="/login/new">Sign in</a>
+                    {% endif %}
+
+                </div>
+            </div>
+        </header>
+
+        <div class="nav-scroller py-1 mb-2">
+            <nav class="nav d-flex justify-content-end">
+                <a class="p-2 text-muted" href="/">Accueil</a>
+                <a class="p-2 text-muted" href="/post/index">Blog</a>
+                <a class="p-2 text-muted" href="/upload/cv.pdf" target="_blank">CV</a>
+                <a class="p-2 text-muted" href="#contactAdmin">Contact</a>
+            </nav>
+        </div>
+    </div>
+
+    <!-- Menu pour les mobiles -->
+    <nav class="navbar navbar-expand-md bg-dark navbar-dark d-block d-sm-none mb-4 pb-3 rounded-bottom">
+        <a class="navbar-brand" href="#">Jean le Grand Bokassa | Blog</a>
+        <button class="navbar-toggler float-right" type="button" data-toggle="collapse"
+                data-target="#collapsibleNavbar">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="collapsibleNavbar">
+            <ul class="navbar-nav">
+                <li class="nav-item">
+                    <a class="nav-link" href="/">Accueil</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="/post/index">Blog</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="/upload/cv.pdf" target="_blank">CV</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#contactAdmin">Contact</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="/signup/new">Inscription</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="connexion.html">Connexion</a>
+                </li>
+            </ul>
+        </div>
+    </nav>
+
+    <div class="jumbotron p-3 p-md-5 rounded bg-dark">
+        <div class="col-md-6 px-0 text-body">
+            <h1 class="display-4 font-italic text-body">Développeur web PHP/SYMFONY</h1>
+            <p class="lead my-3 text-body bg-light p-3">Ce n'est pas au nombre de lignes de codes que l'on juge un bon
+                développeur, mais à sa capactié à comprendre le besoin client, rédiger un code lisible et à
+                communiquer.</p>
+            <p class="lead mb-0"><span class="text-body font-weight-bold">work in progress !</span></p>
+        </div>
+    </div>
+
+    {% block myInfo %}{% endblock %}
+
+
+</div>
+
+<main role="main" class="container">
+    <div class="row">
+        <div class="col-md-8 blog-main">
+            <h1 class="pb-3 mb-4 font-italic border-bottom">
+
+                {% block subTitle %}{% endblock %}
+
+            </h1>
+
+
+            <div class="blog-post">
+
+                {% for message in flash_messages %}
+                <div class="alert alert-{{ message.type }} alert-dismissible fade show">
+                    <button type="button" class="close" data-dismiss="alert">&times;</button>
+                    {{ message.body }}
+                </div>
+                {% endfor %}
+
+                {% block body %}{% endblock %}
+
+            </div><!-- /.blog-post -->
+
+        </div><!-- /.blog-main -->
+
+        <aside class="col-md-4 blog-sidebar">
+            <div class="p-3 mb-3 bg-light rounded">
+                <h4 class="font-italic">Citations</h4>
+                <blockquote class="blockquote">
+                    <p>Si vous vivez votre vie selon le regard des autres, vous ne vivrez jamais votre propre vie.</p>
+                    <footer class="blockquote-footer">Franck Nicolas</footer>
+                </blockquote>
+            </div>
+
+            <div class="p-3">
+                <h4 class="font-italic">Suivez moi</h4>
+                <ol class="list-unstyled">
+                    <li><a href="#">GitHub</a></li>
+                    <li><a href="#">LinkedIn</a></li>
+                    <li><a href="#">Twitter</a></li>
+                    <li><a href="#">Facebook</a></li>
+                </ol>
+            </div>
+
+            <div class="p-3">
+                <h4 class="font-italic">Liens</h4>
+                <ol class="list-unstyled mb-0">
+                    <li><a href="/">Home</a></li>
+                    <li><a href="/post/index">Blog</a></li>
+                    <li><a href="/upload/cv.pdf" target="_blank">Cv</a></li>
+                    <li><a href="/#contactAdmin">Contact</a></li>
+                </ol>
+            </div>
+
+        </aside><!-- /.blog-sidebar -->
+
+    </div><!-- /.row -->
+
+</main><!-- /.container -->
+
+{% block emailMe %}{% endblock %}
+
+<p class="text-center mb-5"><a href="#" >Back to top</a></p>
+
+<footer class="blog-footer">
+    Copyright © {{ Copyright  | date("Y") }} Conception by <a href="contact.html">John Bokassa</a>. <a href="/admin/index">Administration</a>
+    <!--<p>Blog template built for <a href="https://getbootstrap.com/">Bootstrap</a> by <a href="https://twitter.com/mdo">@mdo</a>.</p>-->
+</footer>
+
+
+<!-- Optional JavaScript -->
+<!-- jQuery first, then Popper.js, then Bootstrap JS -->
+<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+        integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+        crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js"
+        integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49"
+        crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js"
+        integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy"
+        crossorigin="anonymous"></script>
+<!-- scrolling top -->
+
+<!-- Js validation form -->
+<script>
+    (function () {
+        'use strict';
+        window.addEventListener('load', function () {
+            // Fetch all the forms we want to apply custom Bootstrap validation styles to
+            var forms = document.getElementsByClassName('needs-validation');
+            // Loop over them and prevent submission
+            var validation = Array.prototype.filter.call(forms, function (form) {
+                form.addEventListener('submit', function (event) {
+                    if (form.checkValidity() === false) {
+                        event.preventDefault();
+                        event.stopPropagation();
+                    }
+                    form.classList.add('was-validated');
+                }, false);
+            });
+        }, false);
+    })();
+</script>
+
+{% block footer %} {% endblock %}
+
+</body>
+
+</html>

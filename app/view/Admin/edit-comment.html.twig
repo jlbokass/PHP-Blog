@@ -1,0 +1,43 @@
+{%  extends 'adminLayout.html.twig' %}
+
+{% block title %} Publish a comment {% endblock %}
+
+{% block body %}
+
+    <div class="container">
+
+        <div class="col-md-8 order-md-1">
+
+            <form  method="post" action="/admin/update-comment">
+
+                <fieldset>
+
+                <div class="mb-3">
+                    <label for="title">Author :</label>
+                    <input type="text" class="form-control" id="author" name="author" placeholder="Article title" value="{{ comment.user_username }}">
+                </div>
+
+                <div class="mb-3">
+                    <label for="content">Content :</label>
+                    <textarea class="form-control" id="content" name="content" rows="5">{{ comment.content }}</textarea>
+                </div>
+
+                <div class="mb-3">
+                    <input type="text"  id="comment_id" name="comment_id" value="{{ comment.id }}" hidden>
+                </div>
+
+                </fieldset>
+
+                <hr class="mb-4">
+                <button class="btn btn-warning btn-lg btn-block" type="submit">Publish</button>
+                <button class="btn btn-primary btn-lg btn-block" type="reset">Cancel</button>
+
+
+
+            </form>
+        </div>
+
+    </div>
+
+
+{% endblock %}

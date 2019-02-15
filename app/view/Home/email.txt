@@ -1,0 +1,13 @@
+nouvelle email de votre blog :
+
+    Nom : {{ emailFromBlog.lastName }}
+
+    Prénom : {{ emailFromBlog.firstName }}
+
+    Email : {{ emailFromBlog.email }}
+
+
+Message :
+
+    {{ emailFromBlog.message }}
+
