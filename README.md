@@ -6,7 +6,7 @@ Hollingworth's tutorials and the advice of my mentor Gauthier Burgeat.
 This work is done as part of my PHP web developer training with Openclassroom - project 5.
 
 **Attention, this blog is my reflection: I used the knowledge of different courses that I learned and put them 
-into practice. In no way the errors that if found are the fact of the people cited.**
+into practice. In no way the errors that could be found are the fact of the people cited.**
 
 ## Installation
 
