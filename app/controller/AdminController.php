@@ -37,31 +37,14 @@ class AdminController extends AuthenticatedController
         $user = Auth::getUser();
 
         if (! $user->role) {
-            //$this->redirect('/profile/unauthorized');
-            header('HTTP/1.1 403 Forbidden');
-            echo 'You are not allowed to access that resource.';
-            exit;
+            $this->redirect('/');
+            //header('HTTP/1.1 403 Forbidden');
+            //echo 'You are not allowed to access that resource.';
+            //exit;
         }
 
     }
 
-    public function unauthorizedAction()
-    {
-        View::renderTemplate('Profile/unauthorized.html.twig');
-    }
-
-
-    /**
-     * render admin view
-     *
-     * @throws \Twig_Error_Loader
-     * @throws \Twig_Error_Runtime
-     * @throws \Twig_Error_Syntax
-     */
-    public function newAction()
-    {
-        View::renderTemplate('Admin/new.html.twig');
-    }
 
 
     /**
@@ -74,19 +57,6 @@ class AdminController extends AuthenticatedController
      * @return void
      */
     public function indexAction()
-    {
-        View::renderTemplate('Admin/index.html.twig', [
-            'user' => Auth::getUser()
-        ]);
-    }
-
-
-    /**
-     * @throws \Twig_Error_Loader
-     * @throws \Twig_Error_Runtime
-     * @throws \Twig_Error_Syntax
-     */
-    public function authorizedAction()
     {
         View::renderTemplate('Admin/index.html.twig', [
             'user' => Auth::getUser()
@@ -124,7 +94,9 @@ class AdminController extends AuthenticatedController
 
     public function updateProfileAction()
     {
-        if ($this->user->updateProfile($_POST)) {
+        $user = Auth::getUser();
+
+        if ($user->updateProfile($_POST)) {
 
             Flash::addMessage('Changes saved');
 
@@ -133,7 +105,7 @@ class AdminController extends AuthenticatedController
         } else {
 
             View::renderTemplate('admin/edit.html', [
-                'user' => $this->user
+                'user' => $user
             ]);
 
         }
