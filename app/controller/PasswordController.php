@@ -8,7 +8,6 @@
 
 namespace App\Controller;
 
-
 use App\Manager\UsersManager;
 use Core\Controller;
 use Core\View;
@@ -50,8 +49,6 @@ class PasswordController extends Controller
     {
         $token = $this->route_params['token'];
 
-        $user = $this->getUserOrExit($token);
-
         View::renderTemplate('Password/reset.html.twig', [
             'token' => $token
 
@@ -68,16 +65,12 @@ class PasswordController extends Controller
         $user = $this->getUserOrExit($token);
 
         if ($user->resetPassword($_POST['password'])) {
-
             View::renderTemplate('Password/reset_success.html.twig');
-
         } else {
-
             View::renderTemplate('Password/reset.html.twig', [
                 'token' => $token,
                 'user' => $user
             ]);
-
         }
     }
 
@@ -93,11 +86,8 @@ class PasswordController extends Controller
         $user = UsersManager::findByPasswordReset($token);
 
         if ($user) {
-
             return $user;
-
         } else {
-
             View::renderTemplate('Password/token_expired.html.twig');
             exit;
         }

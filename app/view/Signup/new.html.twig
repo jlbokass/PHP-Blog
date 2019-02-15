@@ -18,11 +18,11 @@
     <div class="blog-post">
         <div class="col-md-8 order-md-1">
 
-            <form class="needs-validation" method="post" action="/signup/create" novalidate>
+            <form class="needs-validation" method="post" action="/signup/create" id="formSignup" novalidate>
 
                 <div class="mb-3">
-                    <label for="username">Username</label>
-                    <input type="text" class="form-control" id="username" name="username" placeholder="my username is John for exemple" value="{{ user.username }}" autofocus required>
+                    <label for="inputUsername">Username</label>
+                    <input type="text" class="form-control" id="inputUsername" name="username" placeholder="my username is John for exemple" value="{{ user.username }}" autofocus required>
                     <small id="usernameHelp" class="form-text text-muted">Something to identify you when you're logged in</small>
                     <div class="invalid-feedback">
                         Please enter a valid username.
@@ -30,9 +30,9 @@
                 </div>
 
                 <div class="mb-3">
-                    <label for="email">Email</label>
-                    <input type="email" class="form-control" id="email" name="email" placeholder="you@example.com" value="{{ user.email }}" required>
-                    <small id="emailHelp" class="form-text text-muted">Your email adress</small>
+                    <label for="inputEmail">Email</label>
+                    <input type="email" class="form-control" id="inputEmail" name="email" placeholder="you@example.com" value="{{ user.email }}" required>
+                    <small id="emailHelp" class="form-text text-muted">email address</small>
                     <div class="invalid-feedback">
                         Please enter a valid email address.
                     </div>
@@ -40,19 +40,31 @@
 
                 <!--<div class="mb-3">
                     <label for="password">Password</label>
-                    <input type="password" class="form-control" id="password" name="password" value="" required>
-                    <small id="passwordlHelp" class="form-text text-muted">More than 6 characters, 1 letter, 1 number</small>
-                    <div class="invalid-feedback">
-                        Please enter a password.
+                    <div class="input-group">
+                        <input type="password" class="form-control" id="inputPassword" name="password" required>
+                        <div class="input-group-append">
+                            <span class="input-group-text">Show</span>
+                        </div>
+                        <div class="invalid-feedback">
+                            Please enter a password.
+                        </div>
+                    </div>
+                    <small id="passwordlHelp" class="form-text text-muted">More than 6 characters, 1 letter, 1 number </small>
+                </div>
+
+                <div class="input-group mb-3">
+                    <input type="password" class="form-control" placeholder="Something you can remember...">
+                    <div class="input-group-append">
+                        <button class="btn btn-primary" type="button" id="inputPassword">Show</button>
                     </div>
                 </div>-->
 
                 <div class="mb-3">
                     <label for="password">Password</label>
-                    <div class="input-group">
-                        <input type="password" class="form-control" id="password" name="password" required>
+                    <div class="input-group" id="show_hide_password">
+                        <input type="password" class="form-control" id="inputPassword" name="password" required>
                         <div class="input-group-append">
-                            <span class="input-group-text">Show</span>
+                            <span class="input-group-text" id="basic-addon1"><a href=""><i class="fa fa-eye-slash" aria-hidden="true"></i></a></span>
                         </div>
                         <div class="invalid-feedback">
                             Please enter a password.
@@ -64,9 +76,34 @@
                 <hr class="mb-4">
                 <button class="btn btn-primary btn-lg btn-block" type="submit">Sign Up</button>
             </form>
+
         </div>
 
     </div>
+
+{% endblock %}
+
+{% block footer %}
+
+    <!-- ajax show password -->
+
+    <script>
+        $(document).ready(function() {
+            $("#show_hide_password a").on('click', function(event) {
+                event.preventDefault();
+                if($('#show_hide_password input').attr("type") == "text"){
+                    $('#show_hide_password input').attr('type', 'password');
+                    $('#show_hide_password i').addClass( "fa-eye-slash" );
+                    $('#show_hide_password i').removeClass( "fa-eye" );
+                }else if($('#show_hide_password input').attr("type") == "password"){
+                    $('#show_hide_password input').attr('type', 'text');
+                    $('#show_hide_password i').removeClass( "fa-eye-slash" );
+                    $('#show_hide_password i').addClass( "fa-eye" );
+                }
+            });
+        });
+    </script>
+
 
 {% endblock %}
 

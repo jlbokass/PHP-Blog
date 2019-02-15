@@ -13,5 +13,9 @@
             "App\\": "app/"
 
         }
+    },
+    "require-dev": {
+        "phploc/phploc": "^4.0",
+        "phpmd/phpmd" : "@stable"
     }
 }

@@ -28,11 +28,11 @@ class View
     {
         extract($args, EXTR_SKIP);
 
-        $file = '../app/view/' . $view; // Relative to core directory;
+        $file = '../app/view/' . $view;
         if (is_readable($file)) {
             require $file;
         } else {
-            //echo $file . ' not found';
+
             throw new \Exception($file . 'not found');
         }
     }
@@ -58,8 +58,7 @@ class View
             $twig = new \Twig_Environment($loader, [
                 'cache' => false
             ]);
-            //$twig->addGlobal('session', $_SESSION);
-            //$twig->addGlobal('is_logged_in', \App\Auth::isLoggedIn());
+
             $twig->addGlobal('current_user', Auth::getUser());
             $twig->addGlobal('flash_messages', Flash::getMessages());
         }

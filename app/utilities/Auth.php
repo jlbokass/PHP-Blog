@@ -28,9 +28,7 @@ class Auth
         $_SESSION['user_id'] = $user->id;
 
         if ($remember_me) {
-
             if ($user->rememberLogin()) {
-
                 setcookie('remember_me', $user->remember_token, $user->expery_timestamp, '/');
             }
         }
@@ -49,7 +47,8 @@ class Auth
         if (ini_get("session.use_cookies")) {
             $params = session_get_cookie_params();
 
-            setcookie(session_name(),
+            setcookie(
+                session_name(),
                 '',
                 time() - 42000,
                 $params["path"],
@@ -89,11 +88,8 @@ class Auth
     public static function getUser()
     {
         if (isset($_SESSION['user_id'])) {
-
             return UsersManager::findById($_SESSION['user_id']);
-
         } else {
-
             return static::loginFromRememberCookie();
         }
     }
@@ -101,7 +97,6 @@ class Auth
     public static function getUserRole()
     {
         if (isset($_SESSION['role'])) {
-
             return UsersManager::findByRole($_SESSION['role']);
         }
     }
@@ -119,11 +114,9 @@ class Auth
         $cookie = $_COOKIE['remember_me'] ?? false;
 
         if ($cookie) {
-
             $remembered_login = RememberedLogin::findByToken($cookie);
 
             if ($remembered_login && ! $remembered_login->hasExpired()) {
-
                 $user = $remembered_login->getUser();
 
                 static::login($user, false);
@@ -139,17 +132,13 @@ class Auth
         $cookie = $_COOKIE['remember_me'] ?? false;
 
         if ($cookie) {
-
             $remembered_login = RememberedLogin::findByToken($cookie);
 
             if ($remembered_login) {
-
                 $remembered_login->delete();
             }
 
             setcookie('remember_me', '', time() - 3600);
         }
     }
-
-
 }

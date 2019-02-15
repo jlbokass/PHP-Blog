@@ -22,6 +22,8 @@
     <link href="/css/blog.css" type="text/css" rel="stylesheet">
 
     <!-- favicon du site -->
+    <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
+    <link href="https://use.fontawesome.com/b9bdbd120a.js">
     <link rel="icon" href="">
 
     <title>Développeur Web | {% block title %}{% endblock %}</title>
@@ -36,7 +38,7 @@
                 <div class="col-3 pt-1">
 
                     {% if current_user %}
-                    Hello <a href="/profile/show-profile">{{ current_user.username }}</a> .
+                        Hello <a href="/profile/show-profile">{{ current_user.username }}</a> .
                     {% else %}
                     <a class="text-muted" href="/signup/new">S'inscrire</a>
                     {% endif %}
@@ -217,6 +219,8 @@
         }, false);
     })();
 </script>
+
+{% block footer %} {% endblock %}
 
 </body>
 

@@ -9,7 +9,7 @@
 namespace Core;
 
 use PDO;
-
+use PDOException;
 use Config\Config;
 
 /**
@@ -36,7 +36,7 @@ abstract class Model
                 // Throw an Exception when errror occurs
                 $db->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 
-            } catch (\PDOException $e) {
+            } catch (PDOException $e) {
                 echo $e->getMessage();
             }
         }

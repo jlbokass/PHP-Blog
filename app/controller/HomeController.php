@@ -20,12 +20,9 @@ use Core\View;
  */
 class HomeController extends Controller
 {
-    /**
-     *
-     */
+
     public function indexAction()
     {
-
         View::renderTemplate('/Home/index.html.twig');
     }
 
@@ -33,13 +30,14 @@ class HomeController extends Controller
      * @throws \Twig_Error_Loader
      * @throws \Twig_Error_Runtime
      * @throws \Twig_Error_Syntax
+     *
+     * @return void
      */
     public function emailAction()
     {
         $emailFromBlog = new HomeManager($_POST);
 
         if ($emailFromBlog->sendEmailToAdmin()) {
-
             $text = View::getTemplate('Home/email.txt', ['emailFromBlog' => $emailFromBlog]);
             $html = View::getTemplate('Home/email.html', ['emailFromBlog' => $emailFromBlog]);
 
@@ -59,10 +57,11 @@ class HomeController extends Controller
      * @throws \Twig_Error_Loader
      * @throws \Twig_Error_Runtime
      * @throws \Twig_Error_Syntax
+     *
+     * @return void
      */
     public function successAction()
     {
         View::renderTemplate('Home/success.html.twig');
     }
-
 }

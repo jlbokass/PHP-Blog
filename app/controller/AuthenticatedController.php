@@ -8,8 +8,6 @@
 
 namespace App\Controller;
 
-
-use App\Utilities\Auth;
 use Core\Controller;
 
 abstract class AuthenticatedController extends Controller
@@ -17,10 +15,5 @@ abstract class AuthenticatedController extends Controller
     protected function before()
     {
         $this->requireLogin();
-    }
-
-    protected static function isAdmin()
-    {
-        return Auth::getUser()->role;
     }
 }

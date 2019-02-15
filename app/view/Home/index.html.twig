@@ -108,8 +108,8 @@
 
                         <div class="mb-3">
                             <label for="message">Message :</label>
-                            <textarea class="form-control" name="message" id="exampleFormControlTextarea1" rows="5" required>{{ emailFromBlog.message }}</textarea>
-                            <small id="emailHelp" class="form-text text-muted">200 characters maximum</small>
+                            <textarea class="form-control" name="message" id="message" rows="7" required>{{ emailFromBlog.message }}</textarea>
+                            <small id="compteur" class="form-text text-muted">0 mots | 0 Character / 255</small>
                             <div class="invalid-feedback">
                                 Please enter a valid message.
                             </div>
@@ -121,10 +121,54 @@
                 </div>
 
                 <div class="col-md-6 mt-3">
-                    <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2837.39443637826!2d-0.4905950838174441!3d44.67072257909955!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0xd551857e75f6b73%3A0x64cc4f6441c1c72f!2s1+Route+de+Bigard%2C+33650+Saint-Selve!5e0!3m2!1sfr!2sfr!4v1542365130076" width="100%" height="500" frameborder="0" style="border:0" allowfullscreen></iframe>
+                    <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2837.39443637826!2d-0.4905950838174441!3d44.67072257909955!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0xd551857e75f6b73%3A0x64cc4f6441c1c72f!2s1+Route+de+Bigard%2C+33650+Saint-Selve!5e0!3m2!1sfr!2sfr!4v1542365130076" width="100%" height="550" frameborder="0" style="border:0" allowfullscreen></iframe>
                 </div>
             </div>
         </div>
     </div>
 
+{% endblock %}
+
+{% block footer %}
+
+    <script>
+        $(document).ready(function(e) {
+
+            $('#message').keyup(function() {
+
+                var nombreCaractere = $(this).val().length;
+
+                var nombreMots = jQuery.trim($(this).val()).split(' ').length;
+                if($(this).val() === '') {
+                    nombreMots = 0;
+                }
+
+                var msg = ' ' + nombreMots + ' mot(s) | ' + nombreCaractere + ' Caractere(s) / 255';
+                $('#compteur').text(msg);
+                if (nombreCaractere > 255) { $('#compteur').addClass("text-danger"); } else { $('#compteur').removeClass("mauvais"); }
+
+            })
+
+
+
+            $('#message2').keyup(function() {
+
+                var nombreCaractere2 = $(this).val().length;
+                var nombreCaractere2 = 200 - nombreCaractere2;
+
+                var nombreMots2 = jQuery.trim($(this).val()).split(' ').length;
+                if($(this).val() === '') {
+                    nombreMots2 = 0;
+                }
+
+                var msg2 = ' ' + nombreMots2 + ' mot(s) | ' + nombreCaractere2 + ' Caractere(s) restant';
+                $('#compteur2').text(msg2);
+                if (nombreCaractere2 < 1) { $('#compteur2').addClass("mauvais"); } else { $('#compteur2').removeClass("mauvais"); }
+
+            })
+
+
+
+        });
+    </script>
 {% endblock %}

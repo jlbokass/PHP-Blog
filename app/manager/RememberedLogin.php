@@ -8,9 +8,9 @@
 
 namespace App\Manager;
 
-
 use App\Utilities\Token;
 use Core\Model;
+use PDO;
 
 /**
  * Class RememberedLogin
@@ -19,8 +19,11 @@ use Core\Model;
 class RememberedLogin extends Model
 {
     /**
-     * @param $token
-     * @return mixed
+     * Find a remembered login model by the token
+     *
+     * @param string $token The remembered login token
+     *
+     * @return mixed Remembered login object if found, false otherwise
      */
     public static function findByToken($token)
     {
@@ -34,7 +37,7 @@ class RememberedLogin extends Model
 
         $stmt->bindValue(':token_hash', $token_hash, \PDO::PARAM_STR);
 
-        $stmt->setFetchMode(\PDO::FETCH_CLASS, get_called_class());
+        $stmt->setFetchMode(PDO::FETCH_CLASS, get_called_class());
 
         $stmt->execute();
 
@@ -42,15 +45,19 @@ class RememberedLogin extends Model
     }
 
     /**
-     * @return mixed
+     * Get the user model associated with this remembered login
+     *
+     * @return User The user model
      */
     public function getUser()
     {
-        return User::findById($this->user_id);
+        return UsersManager::findById($this->user_id);
     }
 
     /**
-     * @return bool
+     * See if the remember token has expired or not, based on the current system time
+     *
+     * @return boolean True if the token has expired, false otherwise
      */
     public function hasExpired()
     {
@@ -58,7 +65,9 @@ class RememberedLogin extends Model
     }
 
     /**
+     * Delete this model
      *
+     * @return void
      */
     public function delete()
     {
@@ -67,7 +76,7 @@ class RememberedLogin extends Model
 
         $db = static::getDB();
         $stmt = $db->prepare($sql);
-        $stmt->bindValue(':token_hash', $this->token_hash, \PDO::PARAM_STR);
+        $stmt->bindValue(':token_hash', $this->token_hash, PDO::PARAM_STR);
 
         $stmt->execute();
     }

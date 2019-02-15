@@ -8,46 +8,41 @@
 
 namespace App\Controller;
 
-
 use App\Manager\CommentManager;
-use App\Manager\PostManager;
-use App\Manager\UsersManager;
-use App\Utilities\Auth;
 use Core\View;
 
+/**
+ * Class CommentController
+ * @package App\Controller
+ */
 class CommentController extends AuthenticatedController
 {
+    /**
+     *
+     */
     public function createAction()
     {
-        $comment = new CommentManager($_POST);
+        $comments = new CommentManager($_POST);
 
+        if ($comments->save()) {
 
-        //$postId = $_POST['post_id'];
-
-        if ($comment->save()) {
-
-            //$this->redirect('/post/' . $postId . '/single');
             $this->redirect('/comment/comment-request');
 
         } else {
 
-            echo 'no';
+            View::renderTemplate('/Post/single.html;twig', [
+                'comment' => $comments
+            ]);
         }
     }
 
+    /**
+     * @throws \Twig_Error_Loader
+     * @throws \Twig_Error_Runtime
+     * @throws \Twig_Error_Syntax
+     */
     public function commentRequestAction()
     {
         View::renderTemplate('/Posts/comment_request.html.twig');
     }
-
-    public function updateAction()
-    {
-        //
-    }
-
-    public function deleteAction()
-    {
-        //
-    }
-
 }

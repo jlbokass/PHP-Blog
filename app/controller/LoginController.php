@@ -10,7 +10,6 @@ namespace App\Controller;
 
 use App\Utilities\Auth;
 use App\Utilities\Flash;
-use App\Model\User;
 use Core\Controller;
 use Core\View;
 use App\Manager\UsersManager;
@@ -43,15 +42,12 @@ class LoginController extends Controller
         $remember_me = isset($_POST['remember_me']);
 
         if ($user) {
-
             Auth::login($user, $remember_me);
 
             Flash::addMessage('Login successful');
 
             $this->redirect(Auth::getReturnToPage());
-
         } else {
-
             Flash::addMessage('Login unsuccessful, please try again', Flash::WARNING);
 
             View::renderTemplate('Login/new.html.twig', [
@@ -60,37 +56,6 @@ class LoginController extends Controller
             ]);
         }
     }
-
-
-
-    public function createAdminAction()
-    {
-        $user = UsersManager::authenticate($_POST['email'], $_POST['password']);
-
-        $remember_me = isset($_POST['remember_me']);
-
-        if ($user AND (Auth::getUser()->role)) {
-
-            Auth::login($user, $remember_me);
-
-            Flash::addMessage('Welcome admin');
-
-            $this->redirect(Auth::getReturnToPage());
-
-        } else {
-
-            Flash::addMessage('Login unsuccessful, please try again', Flash::WARNING);
-
-            View::renderTemplate('Login/new.html.twig', [
-                'email' => $_POST['email'],
-                'remember_me' => $remember_me
-            ]);
-        }
-    }
-
-
-
-
 
 
     /**
@@ -102,7 +67,6 @@ class LoginController extends Controller
 
         $this->redirect('/login/show-logout-message');
     }
-
 
     /**
      *

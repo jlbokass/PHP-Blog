@@ -15,9 +15,21 @@ use App\Utilities\Auth;
 use App\Utilities\Flash;
 use Core\View;
 
+/**
+ * Class AdminController
+ *
+ * PHP version 7.1
+ *
+ * @package App\Controller
+ */
 class AdminController extends AuthenticatedController
 {
 
+    /**
+     * authenticate the admin
+     *
+     * @return void
+     */
     protected function before()
     {
         parent::before();
@@ -25,41 +37,55 @@ class AdminController extends AuthenticatedController
         $user = Auth::getUser();
 
         if (! $user->role) {
-
-            $this->redirect('/');
-            /*header('HTTP/1.1 403 Forbidden');
+            //$this->redirect('/profile/unauthorized');
+            header('HTTP/1.1 403 Forbidden');
             echo 'You are not allowed to access that resource.';
-            exit;*/
+            exit;
         }
+
+    }
+
+    public function unauthorizedAction()
+    {
+        View::renderTemplate('Profile/unauthorized.html.twig');
     }
 
 
+    /**
+     * render admin view
+     *
+     * @throws \Twig_Error_Loader
+     * @throws \Twig_Error_Runtime
+     * @throws \Twig_Error_Syntax
+     */
     public function newAction()
     {
         View::renderTemplate('Admin/new.html.twig');
     }
 
 
+    /**
+     * index admin
+     *
+     * @throws \Twig_Error_Loader
+     * @throws \Twig_Error_Runtime
+     * @throws \Twig_Error_Syntax
+     *
+     * @return void
+     */
     public function indexAction()
     {
-
         View::renderTemplate('Admin/index.html.twig', [
             'user' => Auth::getUser()
         ]);
-        /*
-        if(Auth::getUser()->role)
-        {
-            $this->redirect('admin/login-admin-success');
-
-        } else {
-
-            $this->redirect('admin/unauthorized');
-        }
-        */
     }
 
 
-
+    /**
+     * @throws \Twig_Error_Loader
+     * @throws \Twig_Error_Runtime
+     * @throws \Twig_Error_Syntax
+     */
     public function authorizedAction()
     {
         View::renderTemplate('Admin/index.html.twig', [
@@ -67,13 +93,60 @@ class AdminController extends AuthenticatedController
         ]);
     }
 
+
+    /**
+     * Before filter - called before each action method
+     *
+     * @throws \Twig_Error_Loader
+     * @throws \Twig_Error_Runtime
+     * @throws \Twig_Error_Syntax
+     */
     public function showProfileAction()
     {
         View::renderTemplate('Admin/show-profile.html.twig', [
+            'user' => $this->user
+        ]);
+    }
+
+
+    /**
+     * @throws \Twig_Error_Loader
+     * @throws \Twig_Error_Runtime
+     * @throws \Twig_Error_Syntax
+     */
+    public function editProfileAction()
+    {
+        View::renderTemplate('Admin/edit-profile.html.twig', [
             'user' => Auth::getUser()
         ]);
     }
 
+
+    public function updateProfileAction()
+    {
+        if ($this->user->updateProfile($_POST)) {
+
+            Flash::addMessage('Changes saved');
+
+            $this->redirect('/admin/index');
+
+        } else {
+
+            View::renderTemplate('admin/edit.html', [
+                'user' => $this->user
+            ]);
+
+        }
+    }
+
+
+
+
+    /**
+     * @throws \Twig_Error_Loader
+     * @throws \Twig_Error_Runtime
+     * @throws \Twig_Error_Syntax
+     */
     public function showArticleAction()
     {
         $posts = PostManager::getAll();
@@ -81,6 +154,34 @@ class AdminController extends AuthenticatedController
         View::renderTemplate('Admin/show-article.html.twig', [
             'posts' => $posts
         ]);
+    }
+
+
+    /**
+     * @throws \Twig_Error_Loader
+     * @throws \Twig_Error_Runtime
+     * @throws \Twig_Error_Syntax
+     */
+    public function newArticleAction()
+    {
+        $users = UsersManager::getAll();
+
+        View::renderTemplate('Admin/new-article.html.twig', [
+            'users' => $users
+        ]);
+    }
+
+    /**
+     *
+     */
+    public function createArticleAction()
+    {
+        $post = new PostManager($_POST);
+
+        if ($post->save()) {
+            Flash::addMessage('article created');
+            $this->redirect('/admin/show-article');
+        }
     }
 
 
@@ -110,12 +211,10 @@ class AdminController extends AuthenticatedController
     {
         $post = new PostManager($_POST);
 
-        if ($post->updateAPost($_POST)) {
-
-            Flash::addMessage('changes saved');
+        if ($post->update($_POST)) {
+            Flash::addMessage('the article was updated');
 
             $this->redirect('/admin/show-article');
-
         }
 
         View::renderTemplate('Profile/show-article.html.twig', [
@@ -123,92 +222,16 @@ class AdminController extends AuthenticatedController
         ]);
     }
 
-    public function showCommentAction()
-    {
-        $comments = CommentManager::getAll();
-
-        View::renderTemplate('Admin/show-comment.html.twig', [
-            'comments' => $comments
-        ]);
-
-    }
-
-    public function editCommentAction()
-    {
-        $id = $this->route_params['id'];
-
-        $comment = CommentManager::showSingle($id);
-
-        View::renderTemplate('/Admin/edit-comment.html.twig', [
-            'comment' => $comment
-        ]);
-    }
-
-    public function updateCommentAction()
-    {
-        $commentId = $_POST['comment_id'];
-
-        CommentManager::update($commentId);
-
-        Flash::addMessage('changes saved');
-
-        $this->redirect('/admin/show-comment');
-    }
-
-    public function showUserAction()
-    {
-        $users = UsersManager::getAll();
-        View::renderTemplate('Admin/show-user.html.twig', [
-            'users' => $users
-        ]);
-    }
-
-    public function deleteCommentAction()
-    {
-        $id = $this->route_params['id'];
-
-        $comment = CommentManager::showSingle($id);
-
-        View::renderTemplate('/Admin/delete-comment.html.twig', [
-            'comment' => $comment
-        ]);
-    }
-
-    public function confirmDeleteCommentAction()
-    {
-        $commentId = $_GET['comment_id'];
-
-        CommentManager::delete($commentId);
-
-        Flash::addMessage('changes saved');
-
-        $this->redirect('/admin/show-comment');
-    }
-
-    public function newArticleAction()
-    {
-        $users = UsersManager::getAll();
-
-        View::renderTemplate('Admin/new-article.html.twig', [
-            'users' => $users
-        ]);
-    }
-
-    public function createArticleAction()
-    {
-        $post = new PostManager($_POST);
-
-        if ($post->save()) {
-            Flash::addMessage('changes saved');
-            $this->redirect('/admin/show-article');
-        }
-    }
-
+    /**
+     * @throws \Twig_Error_Loader
+     * @throws \Twig_Error_Runtime
+     * @throws \Twig_Error_Syntax
+     */
     public function deleteArticle()
     {
         $users = UsersManager::getAll();
         $id = $this->route_params['id'];
-        $single = PostManager::getAll($id);
+        $single = PostManager::getSingle($id);
 
         View::renderTemplate('/Admin/delete-article.html.twig', [
             'single' => $single,
@@ -225,13 +248,105 @@ class AdminController extends AuthenticatedController
         $post = new PostManager($_POST);
 
         if ($post->delete()) {
-
-            $this->redirect('/profile/show-article');
-
+            Flash::addMessage('Article deleted');
+            $this->redirect('/admin/show-article');
         } else {
-
             echo 'pb';
         }
     }
+
+
+
+    /**
+     * @throws \Twig_Error_Loader
+     * @throws \Twig_Error_Runtime
+     * @throws \Twig_Error_Syntax
+     */
+    public function showCommentAction()
+    {
+        $comments = CommentManager::getAllComment();
+
+        View::renderTemplate('Admin/show-comment.html.twig', [
+            'comments' => $comments
+        ]);
+    }
+
+    /**
+     * @throws \Twig_Error_Loader
+     * @throws \Twig_Error_Runtime
+     * @throws \Twig_Error_Syntax
+     */
+    public function editCommentAction()
+    {
+        $id = $this->route_params['id'];
+
+        $comment = CommentManager::getAComment($id);
+
+        View::renderTemplate('/Admin/edit-comment.html.twig', [
+            'comment' => $comment
+        ]);
+    }
+
+    /**
+     *
+     */
+    public function updateCommentAction()
+    {
+        $commentId = $_POST['comment_id'];
+
+        CommentManager::update($commentId);
+
+        Flash::addMessage('changes saved');
+
+        $this->redirect('/admin/show-comment');
+    }
+
+    /**
+     * @throws \Twig_Error_Loader
+     * @throws \Twig_Error_Runtime
+     * @throws \Twig_Error_Syntax
+     */
+    public function deleteCommentAction()
+    {
+        $id = $this->route_params['id'];
+
+        $comment = CommentManager::getAComment($id);
+
+        View::renderTemplate('/Admin/delete-comment.html.twig', [
+            'comment' => $comment
+        ]);
+    }
+
+    /**
+     *
+     */
+    public function confirmDeleteCommentAction()
+    {
+        $commentId = $_GET['comment_id'];
+
+        CommentManager::delete($commentId);
+
+        Flash::addMessage('comment deleted');
+
+        $this->redirect('/admin/show-comment');
+    }
+
+    /**
+     * @throws \Twig_Error_Loader
+     * @throws \Twig_Error_Runtime
+     * @throws \Twig_Error_Syntax
+     */
+    public function showUserAction()
+    {
+        $users = UsersManager::getAll();
+        View::renderTemplate('Admin/show-user.html.twig', [
+            'users' => $users
+        ]);
+    }
+
+
+
+
+
 
 }

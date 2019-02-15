@@ -8,14 +8,35 @@
 
 namespace App\Manager;
 
-use Config\Config;
 
 /**
  * Class HomeManager
  * @package App\Manager
+ *
+ * PHP version 7.1
  */
 class HomeManager
 {
+    /**
+     * @var string
+     */
+    public $firstName;
+
+    /**
+     * @var string
+     */
+    public $lastName;
+
+    /**
+     * @var string
+     */
+    public $email;
+
+    /**
+     * @var string
+     */
+    public $message;
+
     /**
      * @var array
      */
@@ -23,12 +44,12 @@ class HomeManager
 
     /**
      * HomeManager constructor.
+     *
      * @param array $data
      */
     public function __construct($data = [])
     {
         foreach ($data as $key => $value) {
-
             $this->$key = $value;
         }
     }
@@ -49,41 +70,29 @@ class HomeManager
     }
 
     /**
+     * Validate current property values, adding validation error messages to the errors array property
      *
+     * @return void
      */
     public function validate()
     {
-        // firstName
+
         if ($this->firstName == '') {
             $this->errors[] = 'firstName is required';
         }
 
-        // lastName
+
         if ($this->lastName == '') {
             $this->errors[] = 'lastName is required';
         }
 
-        // email address
         if (filter_var($this->email, FILTER_VALIDATE_EMAIL) === false) {
             $this->errors[] = 'Invalid email';
         }
 
-        // message
-        if (strlen($this->message) > 10) {
-            $this->errors[] = 'Please enter less than 200 characters for your message';
+        if (strlen($this->message) > 255) {
+            $this->errors[] = 'Please enter less than 255 characters for your message';
         }
-
     }
 
-    /**
-     *
-     */
-    public function emailFromTheBlog()
-    {
-
-        $text = View::getTemplate('Home/email.txt');
-        $html = View::getTemplate('Home/email.html');
-
-        Mail::send(Config::USER_NAME, 'Email from your blog', $text, $html);
-    }
 }

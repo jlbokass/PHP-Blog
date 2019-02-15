@@ -13,7 +13,6 @@ use App\Manager\PostManager;
 use Core\Controller;
 use Core\View;
 
-
 /**
  * Class Posts
  * @package App\Controller
@@ -25,10 +24,11 @@ class PostController extends Controller
      */
     public function indexAction()
     {
-        $posts = PostManager::showAll();
+
+        $posts = PostManager::getAll();
 
         View::renderTemplate('/Posts/index.html.twig', [
-            'posts' => $posts
+            'posts' => $posts,
         ]);
     }
 
@@ -36,46 +36,13 @@ class PostController extends Controller
     {
         $id = $this->route_params['id'];
 
-        $post = PostManager::showSingle($id);
-        $comments = CommentManager::showall($id);
+        $post = PostManager::getSingle($id);
+        $comments = CommentManager::getAllPostComment($id);
 
         View::renderTemplate('/Posts/single.html.twig', [
             'post' => $post,
             'comments' => $comments
         ]);
-    }
-
-    /**
-     *
-     */
-    public function addNewAction()
-    {
-        echo 'hello from the addnew action in the Posts';
-    }
-
-
-    /**
-     *
-     */
-    public function editAction()
-    {
-        echo 'hello from the edit in Posts !';
-        echo '<p><pre>' . htmlspecialchars(print_r($this->route_params, true)) . '</pre></p>';
-    }
-
-    public function updateAction()
-    {
-        //...
-    }
-
-    public function delete()
-    {
-
-    }
-
-    public function headlineAction($posts)
-    {
-         //...
     }
 
 }
