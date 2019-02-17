@@ -24,7 +24,6 @@ class PostController extends Controller
      */
     public function indexAction()
     {
-
         $posts = PostManager::getAll();
 
         View::renderTemplate('/Posts/index.html.twig', [
@@ -44,5 +43,4 @@ class PostController extends Controller
             'comments' => $comments
         ]);
     }
-
 }

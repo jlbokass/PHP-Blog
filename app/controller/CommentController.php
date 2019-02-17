@@ -25,11 +25,8 @@ class CommentController extends AuthenticatedController
         $comments = new CommentManager($_POST);
 
         if ($comments->save()) {
-
             $this->redirect('/comment/comment-request');
-
         } else {
-
             View::renderTemplate('/Post/single.html;twig', [
                 'comment' => $comments
             ]);

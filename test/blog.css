@@ -16,6 +16,30 @@
     background: #262626;
     border-radius: 7px;
 }
+@media screen and (max-width: 992px){
+    .blog-header-logo{
+        font-size: 1.5rem;
+    }
+}
+
+@media screen and (max-width: 768px){
+    .blog-header-logo{
+        font-size: 1.2rem;
+    }
+}
+
+@media screen and (max-width: 576px){
+    .blog-header-logo{
+        font-size: 1rem;
+    }
+}
+
+@media screen and (max-width: 414px){
+    .navbar-brand{
+        font-size: 1rem;
+    }
+}
+
 
 .blog-header-logo:hover {
     text-decoration: none;
@@ -170,10 +194,6 @@ h1, h2, h3, h4, h5, h6 {
 }
 .blog-footer p:last-child {
     margin-bottom: 0;
-}
-
-.tooMuchCharacters {
-    color:#cc0000;
 }
 
 

@@ -65,18 +65,13 @@ class ProfileController extends AuthenticatedController
     public function updateProfileAction()
     {
         if ($this->user->updateProfile($_POST)) {
-
             Flash::addMessage('Changes saved');
 
             $this->redirect('/profile/show-profile');
-
         } else {
-
             View::renderTemplate('Profile/edit.html', [
                 'user' => $this->user
             ]);
-
         }
     }
-
 }

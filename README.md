@@ -19,11 +19,11 @@ See below for more details.
 
 ## Errors
 
-If the `SHOW_ERRORS` configuration setting is set to `true`, full error detail will be shown in the browser if an error or exception occurs. If it's set to `false`, a generic message will be shown using the [App/View/404.html.twig](App/View/404.html.twig) or [App/View/500.html.twig](app/View/500.html.twig) views, depending on the error.
+If the `SHOW_ERRORS` configuration setting is set to `true`, full error detail will be shown in the browser if an error or exception occurs. If it's set to `false`, a generic message will be shown using the [app/view/404.html.twig](app/view/404.html.twig) or [app/view/500.html.twig](app/view/500.html.twig) views, depending on the error.
 
 ## Web server configuration
 
-Pretty URLs are enabled using web server rewrite rules. An [.htaccess](public/.htaccess) file is included in the `public` folder. Equivalent nginx configuration is in the [nginx.txt](ressources/nginx.txt) file.
+Pretty URLs are enabled using web server rewrite rules. An [.htaccess](public/.htaccess) file is included in the `public` folder. Equivalent nginx configuration is in the [nginx.txt](ressource/nginx.txt) file.
 
 ---
 

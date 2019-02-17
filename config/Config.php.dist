@@ -1,12 +1,12 @@
 <?php
 /**
  * Created by PhpStorm.
- * User: jlbokass
+ * UsersManager: jlbokass
  * Date: 15/01/2019
  * Time: 03:03
  */
 
-namespace App;
+namespace Config;
 
 
 /**
@@ -15,28 +15,63 @@ namespace App;
  */
 class Config
 {
+
+
+
     /**
      * Database host
      * @var string
      */
-    const DB_HOST = '';
+    const DB_HOST = 'your-database-host';
 
     /**
      * Database name
      * @var string
      */
-
-    const DB_NAME = '';
+    const DB_NAME = 'your-database-name';
 
     /**
      * Database user
      * @var string
      */
-    const DB_USER = '';
+    const DB_USER = 'your-database-user';
 
     /**
      * Database password
      * @var string
      */
-    const DB_PASSWORD = '';
+    const DB_PASSWORD = 'your-database-password';
+
+    /**
+     * Show or hide error messages on screen
+     * @var boolean
+     */
+    const SHOW_ERRORS = true;
+
+    /**
+     * Secret key for hashing
+     * @var boolean
+     */
+    const SECRET_KEY = '59B149F42ACDFA7B36C7A2FC119D2';
+
+    /**
+     * Username for your mail account
+     */
+    const USER_NAME = '';
+
+    /**
+     * Password for your mail account
+     */
+    const PASSWORD_MAIL = '';
+
+    /**
+     * Your smtp
+     */
+    const SMTP_HOST = 'smtp.gmail.com';
+
+    /**
+     * Your port
+     */
+    const SMTP_PORT = '587';
+
 }

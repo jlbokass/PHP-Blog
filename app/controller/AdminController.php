@@ -42,7 +42,6 @@ class AdminController extends AuthenticatedController
             //echo 'You are not allowed to access that resource.';
             //exit;
         }
-
     }
 
 
@@ -97,17 +96,13 @@ class AdminController extends AuthenticatedController
         $user = Auth::getUser();
 
         if ($user->updateProfile($_POST)) {
-
             Flash::addMessage('Changes saved');
 
             $this->redirect('/admin/index');
-
         } else {
-
             View::renderTemplate('admin/edit.html', [
                 'user' => $user
             ]);
-
         }
     }
 
@@ -315,10 +310,4 @@ class AdminController extends AuthenticatedController
             'users' => $users
         ]);
     }
-
-
-
-
-
-
 }

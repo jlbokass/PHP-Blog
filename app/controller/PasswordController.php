@@ -49,6 +49,8 @@ class PasswordController extends Controller
     {
         $token = $this->route_params['token'];
 
+        $user = $this->getUserOrExit($token);
+
         View::renderTemplate('Password/reset.html.twig', [
             'token' => $token
 

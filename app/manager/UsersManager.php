@@ -116,7 +116,6 @@ class UsersManager extends Model
     }
 
 
-
     public static function getAll()
     {
         $sql = 'SELECT * from user';
@@ -131,7 +130,7 @@ class UsersManager extends Model
     /**
      * See if a user record already exists with the specified email
      *
-     * @param string $email email address to search for
+     * @param string $email     email address to search for
      * @param string $ignore_id Return false anyway if the record found has this ID
      *
      * @return boolean  True if a record already exists with the specified email, false otherwise
@@ -140,10 +139,10 @@ class UsersManager extends Model
     {
         $user = static::findByEmail($email);
 
-        if ($user && ($user->id !=$ignore_id)) {
+        if ($user && ($user->id != $ignore_id)) {
             //if ($user->id !=$ignore_id) {
-                return true;
-            }
+            return true;
+        }
 
         return false;
     }
@@ -174,7 +173,7 @@ class UsersManager extends Model
     /**
      * Authenticate a user by email and password. User account has to be active.
      *
-     * @param string $email email address
+     * @param string $email    email address
      * @param string $password password
      *
      * @return mixed  The user object or false if authentication fails
@@ -183,9 +182,9 @@ class UsersManager extends Model
     {
         $user = static::findByEmail($email);
 
-        if ($user && $user->is_active && (password_verify($password, $user->password_hash)) ) {
+        if ($user && $user->is_active && (password_verify($password, $user->password_hash))) {
             //if (password_verify($password, $user->password_hash)) {
-                return $user;
+            return $user;
         }
 
         return false;
@@ -212,7 +211,6 @@ class UsersManager extends Model
 
         return $stmt->fetch();
     }
-
 
 
     /**
@@ -258,18 +256,15 @@ class UsersManager extends Model
     {
         $user = static::findByEmail($email);
 
-        if ($user && ($user->startPasswordReset())) {
-            //if ($user->startPasswordReset()) {
+        if ($user) {
+            if ($user->startPasswordReset()) {
                 $user->sendPasswordResetEmail();
-
+            }
         }
     }
 
-    /**
-     * Start the password reset process by generating a new token and expiry
-     *
-     * @return mixed
-     */
+
+
     protected function startPasswordReset()
     {
         $token = new Token();
@@ -342,8 +337,7 @@ class UsersManager extends Model
 
         if ($user && (strtotime($user->password_reset_expires_at) > time())) {
             //if (strtotime($user->password_reset_expires_at) > time()) {
-                return $user;
-
+            return $user;
         }
     }
 
@@ -471,5 +465,4 @@ class UsersManager extends Model
 
         return false;
     }
-
 }

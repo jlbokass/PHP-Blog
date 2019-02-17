@@ -20,7 +20,6 @@ use Core\View;
  */
 class HomeController extends Controller
 {
-
     public function indexAction()
     {
         View::renderTemplate('/Home/index.html.twig');
@@ -44,9 +43,7 @@ class HomeController extends Controller
             Mail::send(Config::USER_NAME, 'Blog PHP-MVC', $text, $html);
 
             $this->redirect('/home/success');
-
         } else {
-
             View::renderTemplate('Home/index.html.twig', [
                 'emailFromBlog' => $emailFromBlog
             ]);

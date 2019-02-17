@@ -8,7 +8,6 @@
 
 namespace App\Manager;
 
-
 /**
  * Class HomeManager
  * @package App\Manager
@@ -62,7 +61,6 @@ class HomeManager
         $this->validate();
 
         if (empty($this->errors)) {
-
             return true;
         }
 
@@ -76,7 +74,6 @@ class HomeManager
      */
     public function validate()
     {
-
         if ($this->firstName == '') {
             $this->errors[] = 'firstName is required';
         }
@@ -94,5 +91,4 @@ class HomeManager
             $this->errors[] = 'Please enter less than 255 characters for your message';
         }
     }
-
 }

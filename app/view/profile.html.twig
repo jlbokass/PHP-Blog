@@ -1,0 +1,34 @@
+<!doctype html>
+{% include '_include/head.html.twig' %}
+<link href="/css/admin.css" rel="stylesheet">
+<body>
+<nav class="navbar navbar-dark fixed-top bg-dark flex-md-nowrap p-0 shadow">
+    <a class="navbar-brand col-sm-3 col-md-2 mr-0" href="/">Back Home</a>
+    <ul class="navbar-nav px-3">
+        <li class="nav-item text-nowrap">
+            <a class="nav-link" href="/login/destroy">Sign out</a>
+        </li>
+    </ul>
+</nav>
+<div class="container-fluid">
+    <div class="row">
+        <nav class="col-md-2 d-none d-md-block bg-light sidebar">
+            {% include '_include/linkProfile.html.twig' %}
+        </nav>
+        <main role="main" class="col-md-9 ml-sm-auto col-lg-10 px-4">
+            <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
+                <h1 class="h2">{% block title %}{% endblock %}</h1>
+            </div>
+            {% for message in flash_messages %}
+                <div class="alert alert-{{ message.type }} alert-dismissible fade show">
+                    <button type="button" class="close" data-dismiss="alert">&times;</button>
+                    {{ message.body }}
+                </div>
+            {% endfor %}
+            <div>{% block body %}{% endblock %}</div>
+        </main>
+    </div>
+</div>
+{% include '_include/scriptJS.html.twig' %}
+</body>
+</html>

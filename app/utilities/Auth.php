@@ -18,8 +18,12 @@ use App\Manager\UsersManager;
 class Auth
 {
     /**
-     * @param $user
-     * @param $remember_me
+     * Login the user
+     *
+     * @param User $user The user model
+     * @param boolean $remember_me Remember the login if true
+     *
+     * @return void
      */
     public static function login($user, $remember_me)
     {
@@ -35,7 +39,9 @@ class Auth
     }
 
     /**
+     * Logout the user
      *
+     * @return void
      */
     public static function logout()
     {
@@ -65,7 +71,9 @@ class Auth
     }
 
     /**
+     * Remember the originally-requested page in the session
      *
+     * @return void
      */
     public static function rememberRequestedPage()
     {
@@ -74,7 +82,9 @@ class Auth
 
 
     /**
-     * @return string
+     * Get the originally-requested page to return to after requiring login, or default to the homepage
+     *
+     * @return void
      */
     public static function getReturnToPage()
     {
@@ -83,7 +93,9 @@ class Auth
 
 
     /**
-     * @return mixed
+     * Get the current logged-in user, from the session or the remember-me cookie
+     *
+     * @return mixed The user model or null if not logged in
      */
     public static function getUser()
     {
@@ -94,20 +106,12 @@ class Auth
         }
     }
 
-    public static function getUserRole()
-    {
-        if (isset($_SESSION['role'])) {
-            return UsersManager::findByRole($_SESSION['role']);
-        }
-    }
 
-    public static function rememberPost()
-    {
-        //
-    }
 
     /**
-     * @return mixed
+     * Login the user from a remembered login cookie
+     *
+     * @return mixed The user model if login cookie found; null otherwise
      */
     protected static function loginFromRememberCookie()
     {
@@ -126,7 +130,11 @@ class Auth
         }
     }
 
-
+    /**
+     * Forget the remembered login, if present
+     *
+     * @return void
+     */
     protected static function forgotLogin()
     {
         $cookie = $_COOKIE['remember_me'] ?? false;
