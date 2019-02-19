@@ -1,3 +1,5 @@
+[![Codacy Badge](https://api.codacy.com/project/badge/Grade/5722f6607614462e892897b06304a59f)](https://www.codacy.com/app/jlbokass/PHP-Blog?utm_source=github.com&amp;utm_medium=referral&amp;utm_content=jlbokass/PHP-Blog&amp;utm_campaign=Badge_Grade)
+
 # Welcome to my PHP MVC framework
 
 This is a simple MVC framework for building my blog in PHP. I did this work thanks to Dave 
