@@ -15,23 +15,27 @@ use Core\View;
 /**
  * Class Password
  * @package App\Controller
+ *
+ * PHP version 7.1
  */
 class PasswordController extends Controller
 {
+
     /**
-     * @throws \Twig_Error_Loader
-     * @throws \Twig_Error_Runtime
-     * @throws \Twig_Error_Syntax
+     * Show the forgotten password page
+     *
+     * @return void
      */
     public function forgotAction()
     {
         View::renderTemplate('Password/forgot.html.twig');
     }
 
+
     /**
-     * @throws \Twig_Error_Loader
-     * @throws \Twig_Error_Runtime
-     * @throws \Twig_Error_Syntax
+     * Send the password reset link to the supplied email
+     *
+     * @return void
      */
     public function requestResetAction()
     {
@@ -40,14 +44,20 @@ class PasswordController extends Controller
         View::renderTemplate('Password/reset_requested.html.twig');
     }
 
+
+
     /**
-     * @throws \Twig_Error_Loader
-     * @throws \Twig_Error_Runtime
-     * @throws \Twig_Error_Syntax
+     * Show the reset password form
+     *
+     * @return void
+     *
+     * @throws \Exception
      */
     public function resetAction()
     {
         $token = $this->route_params['token'];
+
+        $user = $this->getUserOrExit($token);
 
         View::renderTemplate('Password/reset.html.twig', [
             'token' => $token
@@ -56,7 +66,11 @@ class PasswordController extends Controller
     }
 
     /**
+     * Reset the user's password
      *
+     * @return void
+     *
+     * @throws \Exception
      */
     public function resetPasswordAction()
     {
@@ -65,8 +79,11 @@ class PasswordController extends Controller
         $user = $this->getUserOrExit($token);
 
         if ($user->resetPassword($_POST['password'])) {
+
             View::renderTemplate('Password/reset_success.html.twig');
+
         } else {
+
             View::renderTemplate('Password/reset.html.twig', [
                 'token' => $token,
                 'user' => $user
@@ -74,20 +91,25 @@ class PasswordController extends Controller
         }
     }
 
+
     /**
-     * @param $token
-     * @return mixed
-     * @throws \Twig_Error_Loader
-     * @throws \Twig_Error_Runtime
-     * @throws \Twig_Error_Syntax
+     * Find the user model associated with the password reset token, or end the request with a message
+     *
+     * @param string $token Password reset token sent to user
+     *
+     * @return mixed User object if found and the token hasn't expired, null otherwise
+     * @throws \Exception
      */
     protected function getUserOrExit($token)
     {
         $user = UsersManager::findByPasswordReset($token);
 
         if ($user) {
+
             return $user;
+
         } else {
+
             View::renderTemplate('Password/token_expired.html.twig');
             exit;
         }

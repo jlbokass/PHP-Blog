@@ -30,7 +30,7 @@
                         </div>
 
                         <div class="mb-3">
-                            <input type="text" id="id" name="id"  value="{{ post.id }}" hidden>
+                            <input type="text" id="FK_post_id" name="FK_post_id"  value="{{ post.id }}" hidden>
                         </div>
 
                         <button class="btn btn-warning btn-lg btn-block" type="submit">Envoyez</button>
@@ -55,28 +55,28 @@
 
             {% endfor %}
 
-            {% elseif current_user %}
+        {% elseif current_user %}
 
-                <div class="row mb-3">
-                    <div class="col-12">
-                        <form class="needs-validation" method="post" action="/comment/create" novalidate>
-                            <div class="mb-3">
-                                <h5 class="mt-4 mb-4">Publiez un commentaire :</h5>
-                                <textarea class="form-control" id="exampleFormControlTextarea1" name="content" rows="5"></textarea>
-                            </div>
+            <div class="row mb-3">
+                <div class="col-12">
+                    <form class="needs-validation" method="post" action="/comment/create" novalidate>
+                        <div class="mb-3">
+                            <h5 class="mt-4 mb-4">Publiez un commentaire :</h5>
+                            <textarea class="form-control" id="exampleFormControlTextarea1" name="content" rows="5"></textarea>
+                        </div>
 
-                            <div class="mb-3">
-                                <input type="text" id="FK_user_id" name="FK_user_id"  value="{{ current_user.id }}" hidden>
-                            </div>
+                        <div class="mb-3">
+                            <input type="text" id="FK_user_id" name="FK_user_id"  value="{{ current_user.id }}" hidden>
+                        </div>
 
-                            <div class="mb-3">
-                                <input type="text" id="id" name="id"  value="{{ post.id }}" hidden>
-                            </div>
+                        <div class="mb-3">
+                            <input type="text" id="FK_post_id" name="FK_post_id"  value="{{ post.id }}" hidden>
+                        </div>
 
-                            <button class="btn btn-warning btn-lg btn-block" type="submit">Envoyez</button>
-                        </form>
-                    </div>
+                        <button class="btn btn-warning btn-lg btn-block" type="submit">Envoyez</button>
+                    </form>
                 </div>
+            </div>
 
 
         {% elseif comments %}
@@ -99,8 +99,8 @@
                 </div>
             {% endfor %}
 
-            {% else %}
-                <h4 class="mt-4 mb-4">Pas de commentaire. .</h4>
+        {% else %}
+            <h4 class="mt-4 mb-4">Pas de commentaire. .</h4>
             <p><a href="/signup/new">S'inscrire</a> ou <a href="/login/new">se connecter</a> pour publier un message.</p>
 
         {% endif %}

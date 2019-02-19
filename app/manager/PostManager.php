@@ -22,6 +22,7 @@ class PostManager extends Model
      */
     public $errors = [];
 
+
     /**
      * PostManager constructor.
      *
@@ -33,7 +34,6 @@ class PostManager extends Model
             $this->$key = $value;
         }
     }
-
 
     /**
      * if true, return all articles
@@ -59,7 +59,6 @@ class PostManager extends Model
         return $stmt->fetchAll(PDO::FETCH_ASSOC);
     }
 
-
     /**
      * @param $limit
      * @param $offset
@@ -68,17 +67,8 @@ class PostManager extends Model
      */
     public static function getPage($limit, $offset)
     {
-        $sql = 'SELECT post.id,
-                post.title,
-                post.headline,
-                post.content,
-                post.createdAt,
-                u.username AS user_username
-                FROM post
-                INNER JOIN user u on post.FK_user_id = u.id
-                ORDER BY post.id DESC 
-                LIMIT :limit
-                OFFSET :offset';
+        $sql = 'SELECT * from post order by id DESC  
+                LIMIT :limit OFFSET :offset';
 
         $db = Model::getDB();
 
@@ -102,11 +92,15 @@ class PostManager extends Model
      */
     public static function getSingle($postId)
     {
-        $sql = 'SELECT id, title,
-                headline,
-                content,
-                createdAt
+        $sql = 'SELECT post.id,
+                post.FK_user_id,
+                post.title,
+                post.headline,
+                post.content,
+                post.createdAt,
+                u.username AS user_username
                 FROM post
+                INNER JOIN user u on post.FK_user_id = u.id
                 WHERE post.id = :postId';
 
         $db = Model::getDB();
@@ -129,6 +123,7 @@ class PostManager extends Model
         $this->validate();
 
         if (empty($this->errors)) {
+
             $sql = 'INSERT INTO post(FK_user_id, title, headline, content, createdAt)
                 VALUES (:FK_user_id, :title, :headline, :content, now())';
 

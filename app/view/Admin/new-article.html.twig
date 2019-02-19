@@ -1,4 +1,4 @@
-{%  extends 'adminLayout.html.twig' %}
+{%  extends 'admin.html.twig' %}
 
 {% block title %} New article {% endblock %}
 
@@ -21,7 +21,8 @@
 
                 <div class="mb-3">
                     <label for="headline">Headline :</label>
-                    <textarea class="form-control" id="headline" name="headline" rows="5"></textarea>
+                    <textarea class="form-control" id="message" name="headline" rows="5"></textarea>
+                    <small id="compteur" class="form-text text-muted">0 mots | 0 Character / 255</small>
                 </div>
 
                 <div class="mb-3">

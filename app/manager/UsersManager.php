@@ -16,6 +16,7 @@ use Core\Model;
 
 /**
  * Class UsersManager
+ *
  * @package App\Model
  *
  * PHP version 7.1
@@ -44,15 +45,19 @@ class UsersManager extends Model
     }
 
     /**
-     * save the user model with the current property values
+     * Save the user model with the current property values
      *
-     * @return bool True if the user was saved, false othewise
+     * @return bool
+     * @throws \Exception
+     *
+     * @return boolean  True if the user was saved, false otherwise
      */
     public function save()
     {
         $this->validate();
 
         if (empty($this->errors)) {
+
             $password_hash = password_hash($this->password, PASSWORD_DEFAULT);
 
             $token = new Token();
@@ -84,23 +89,21 @@ class UsersManager extends Model
      */
     public function validate()
     {
-        // Username
         if ($this->username == '') {
             $this->errors[] = 'username is required';
         }
 
-        // email address
         if (filter_var($this->email, FILTER_VALIDATE_EMAIL) === false) {
             $this->errors[] = 'Invalid email';
         }
 
-        if (static::emailExists($this->email, $this->id ?? null)) {
+        if (self::emailExists($this->email, $this->id ?? null)) {
             $this->errors[] = 'email already taken';
         }
 
-
         // Password
         if (isset($this->password)) {
+
             if (strlen($this->password) < 6) {
                 $this->errors[] = 'Please enter at least 6 characters for the password';
             }
@@ -115,8 +118,11 @@ class UsersManager extends Model
         }
     }
 
-
-
+    /**
+     * Get all the users in database
+     *
+     * @return array of user object
+     */
     public static function getAll()
     {
         $sql = 'SELECT * from user';
@@ -131,7 +137,7 @@ class UsersManager extends Model
     /**
      * See if a user record already exists with the specified email
      *
-     * @param string $email email address to search for
+     * @param string $email     email address to search for
      * @param string $ignore_id Return false anyway if the record found has this ID
      *
      * @return boolean  True if a record already exists with the specified email, false otherwise
@@ -140,14 +146,16 @@ class UsersManager extends Model
     {
         $user = static::findByEmail($email);
 
-        if ($user && ($user->id !=$ignore_id)) {
-            //if ($user->id !=$ignore_id) {
+        if ($user) {
+
+            if ($user->id != $ignore_id) {
+
                 return true;
             }
+        }
 
         return false;
     }
-
 
     /**
      * Find a user model by email address
@@ -162,7 +170,7 @@ class UsersManager extends Model
 
         $db = Model::getDB();
         $stmt = $db->prepare($sql);
-        $stmt->bindParam(':email', $email, PDO::PARAM_STR);
+        $stmt->bindValue(':email', $email, PDO::PARAM_STR);
 
         $stmt->setFetchMode(PDO::FETCH_CLASS, get_called_class());
 
@@ -174,7 +182,7 @@ class UsersManager extends Model
     /**
      * Authenticate a user by email and password. User account has to be active.
      *
-     * @param string $email email address
+     * @param string $email    email address
      * @param string $password password
      *
      * @return mixed  The user object or false if authentication fails
@@ -183,9 +191,12 @@ class UsersManager extends Model
     {
         $user = static::findByEmail($email);
 
-        if ($user && $user->is_active && (password_verify($password, $user->password_hash)) ) {
-            //if (password_verify($password, $user->password_hash)) {
+        if ($user && $user->is_active) {
+
+            if ((password_verify($password, $user->password_hash))) {
+
                 return $user;
+            }
         }
 
         return false;
@@ -204,7 +215,7 @@ class UsersManager extends Model
 
         $db = static::getDB();
         $stmt = $db->prepare($sql);
-        $stmt->bindParam(':id', $id, PDO::PARAM_INT);
+        $stmt->bindValue(':id', $id, PDO::PARAM_INT);
 
         $stmt->setFetchMode(PDO::FETCH_CLASS, get_called_class());
 
@@ -213,13 +224,13 @@ class UsersManager extends Model
         return $stmt->fetch();
     }
 
-
-
     /**
      * Remember the login by inserting a new unique token into the remembered_logins table
      * for this user record
      *
      * @return boolean  True if the login was remembered successfully, false otherwise
+     *
+     * @throws \Exception
      */
     public function rememberLogin()
     {
@@ -227,7 +238,7 @@ class UsersManager extends Model
         $hashed_token = $token->getHash();
         $this->remember_token = $token->getValue();
 
-        $this->expery_timestamp = time() + 60 * 60 * 24 * 30; // 30 days
+        $this->expiry_timestamp = time() + 60 * 60 * 24 * 30; // 30 days
 
         $sql = 'INSERT INTO remembered_login (token_hash, user_id, expires_at)
         VALUE (:token_hash, :user_id, :expires_at)';
@@ -239,13 +250,12 @@ class UsersManager extends Model
         $stmt->bindValue(':user_id', $this->id, PDO::PARAM_INT);
         $stmt->bindValue(
             ':expires_at',
-            date('Y-m-d H:i:s', $this->expery_timestamp),
+            date('Y-m-d H:i:s', $this->expiry_timestamp),
             PDO::PARAM_STR
         );
 
         return $stmt->execute();
     }
-
 
     /**
      * Send password reset instructions to the user specified
@@ -258,17 +268,20 @@ class UsersManager extends Model
     {
         $user = static::findByEmail($email);
 
-        if ($user && ($user->startPasswordReset())) {
-            //if ($user->startPasswordReset()) {
-                $user->sendPasswordResetEmail();
+        if ($user) {
 
+            if ($user->startPasswordReset()) {
+
+                $user->sendPasswordResetEmail();
+            }
         }
     }
 
     /**
      * Start the password reset process by generating a new token and expiry
      *
-     * @return mixed
+     * @return bool
+     * @throws \Exception
      */
     protected function startPasswordReset()
     {
@@ -278,7 +291,7 @@ class UsersManager extends Model
 
         $expiry_timestamp = time() + 60 * 60 * 2; // 2 hours from now
 
-        $sql ='UPDATE user
+        $sql = 'UPDATE user
         SET password_reset_hash = :token_hash,
         password_reset_expires_at = :expires_at
         WHERE id = :id';
@@ -313,20 +326,21 @@ class UsersManager extends Model
         Mail::send($this->email, 'Password reset', $text, $html);
     }
 
-
     /**
      * Find a user model by password reset token and expiry
      *
      * @param string $token Password reset token sent to user
      *
      * @return mixed User object if found and the token hasn't expired, null otherwise
+     *
+     * @throws \Exception
      */
     public static function findByPasswordReset($token)
     {
         $token = new Token($token);
         $hashed_token = $token->getHash();
 
-        $sql ='SELECT * FROM user
+        $sql = 'SELECT * FROM user
               where password_reset_hash = :token_hash';
 
         $db = static::getDB();
@@ -340,9 +354,14 @@ class UsersManager extends Model
 
         $user = $stmt->fetch();
 
-        if ($user && (strtotime($user->password_reset_expires_at) > time())) {
-            //if (strtotime($user->password_reset_expires_at) > time()) {
+        if ($user) {
+
+            // Check password reset token hasn't expired
+            if (strtotime($user->password_reset_expires_at) > time()) {
+
                 return $user;
+
+            }
 
         }
     }
@@ -381,7 +400,6 @@ class UsersManager extends Model
         return false;
     }
 
-
     /**
      * Send an email to the user containing the activation link
      *
@@ -402,6 +420,8 @@ class UsersManager extends Model
      *
      * @param string $value Activation token from the URL
      *
+     * @throws \Exception
+     *
      * @return void
      */
     public static function activate($value)
@@ -410,7 +430,7 @@ class UsersManager extends Model
         $hashed_token = $token->getHash();
 
         $sql = 'UPDATE user
-                SET is_active =1,
+                SET is_active = 1,
                 activation_hash = null
                 WHERE activation_hash = :hashed_token';
 
@@ -436,12 +456,14 @@ class UsersManager extends Model
 
         // Only validate and update the password if a value provided
         if ($data['password'] != '') {
+
             $this->password = $data['password'];
         }
 
         $this->validate();
 
         if (empty($this->errors)) {
+
             $sql = 'UPDATE user
                     SET username = :username,
                         email = :email';
@@ -471,5 +493,4 @@ class UsersManager extends Model
 
         return false;
     }
-
 }

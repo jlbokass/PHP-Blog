@@ -14,12 +14,18 @@ use App\Manager\UsersManager;
 /**
  * Class Auth
  * @package App
+ *
+ * PHP version 7.1
  */
 class Auth
 {
     /**
-     * @param $user
-     * @param $remember_me
+     * Login the user
+     *
+     * @param User $user The user model
+     * @param boolean $remember_me Remember the login if true
+     *
+     * @return void
      */
     public static function login($user, $remember_me)
     {
@@ -28,14 +34,18 @@ class Auth
         $_SESSION['user_id'] = $user->id;
 
         if ($remember_me) {
+
             if ($user->rememberLogin()) {
-                setcookie('remember_me', $user->remember_token, $user->expery_timestamp, '/');
+
+                setcookie('remember_me', $user->remember_token, $user->expiry_timestamp, '/');
             }
         }
     }
 
     /**
+     * Log out the user
      *
+     * @return void
      */
     public static function logout()
     {
@@ -65,7 +75,9 @@ class Auth
     }
 
     /**
+     * Remember the originally-requested page in the session
      *
+     * @return void
      */
     public static function rememberRequestedPage()
     {
@@ -74,7 +86,9 @@ class Auth
 
 
     /**
-     * @return string
+     * Get the originally-requested page to return to after requiring login, or default to the homepage
+     *
+     * @return void
      */
     public static function getReturnToPage()
     {
@@ -83,40 +97,38 @@ class Auth
 
 
     /**
-     * @return mixed
+     * Get the current logged-in user, from the session or the remember-me cookie
+     *
+     * @return mixed The user model or null if not logged in
      */
     public static function getUser()
     {
         if (isset($_SESSION['user_id'])) {
+
             return UsersManager::findById($_SESSION['user_id']);
-        } else {
-            return static::loginFromRememberCookie();
+
         }
+
+        return static::loginFromRememberCookie();
     }
 
-    public static function getUserRole()
-    {
-        if (isset($_SESSION['role'])) {
-            return UsersManager::findByRole($_SESSION['role']);
-        }
-    }
 
-    public static function rememberPost()
-    {
-        //
-    }
 
     /**
-     * @return mixed
+     * Login the user from a remembered login cookie
+     *
+     * @return mixed The user model if login cookie found; null otherwise
      */
     protected static function loginFromRememberCookie()
     {
         $cookie = $_COOKIE['remember_me'] ?? false;
 
         if ($cookie) {
+
             $remembered_login = RememberedLogin::findByToken($cookie);
 
             if ($remembered_login && ! $remembered_login->hasExpired()) {
+
                 $user = $remembered_login->getUser();
 
                 static::login($user, false);
@@ -126,19 +138,25 @@ class Auth
         }
     }
 
-
+    /**
+     * Forget the remembered login, if present
+     *
+     * @return void
+     */
     protected static function forgotLogin()
     {
         $cookie = $_COOKIE['remember_me'] ?? false;
 
         if ($cookie) {
+
             $remembered_login = RememberedLogin::findByToken($cookie);
 
             if ($remembered_login) {
+
                 $remembered_login->delete();
             }
 
-            setcookie('remember_me', '', time() - 3600);
+            setcookie('remember_me', '', time() - 3600); // set to expire in the past
         }
     }
 }

@@ -23,7 +23,6 @@ spl_autoload_register(function ($class) {
     }
 });
 
-//TODO : faire fonctionner l'autoloader de composer
 
 /*
  * Error and Exception handling
@@ -39,10 +38,7 @@ set_exception_handler('core\Error::exceptionHandler');
 
 session_start();
 
-
 $router = new \Core\Router();
-
-//echo get_class($route);
 
 // Add the routes
 $router->add('', ['controller' => 'Home', 'action' => 'index']);

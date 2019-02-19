@@ -8,45 +8,32 @@
 
 namespace App\Manager;
 
-
 /**
  * Class HomeManager
+ *
  * @package App\Manager
  *
  * PHP version 7.1
  */
 class HomeManager
 {
-    /**
-     * @var string
-     */
+
+
+
     public $firstName;
 
-    /**
-     * @var string
-     */
     public $lastName;
 
-    /**
-     * @var string
-     */
     public $email;
 
-    /**
-     * @var string
-     */
     public $message;
 
-    /**
-     * @var array
-     */
     public $errors = [];
 
-    /**
-     * HomeManager constructor.
-     *
-     * @param array $data
-     */
+
+
+
+
     public function __construct($data = [])
     {
         foreach ($data as $key => $value) {
@@ -54,9 +41,8 @@ class HomeManager
         }
     }
 
-    /**
-     * @return bool
-     */
+
+
     public function sendEmailToAdmin()
     {
         $this->validate();
@@ -69,11 +55,8 @@ class HomeManager
         return false;
     }
 
-    /**
-     * Validate current property values, adding validation error messages to the errors array property
-     *
-     * @return void
-     */
+
+
     public function validate()
     {
 

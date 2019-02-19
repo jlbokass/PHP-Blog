@@ -1,4 +1,4 @@
-nouvelle email de votre blog :
+Email from your blog :
 
     Nom : {{ emailFromBlog.lastName }}
 

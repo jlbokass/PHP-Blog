@@ -10,7 +10,7 @@
         {% for post in posts %}
 
             <h3>{{ post.title }}</h3>
-            <p class="blog-post-meta text-body">Rédigé par <strong>{{ post.user_username }}</strong> le {{ post.createdAt | date("d/m/Y à H:i") }} </p>
+            <p class="blog-post-meta text-body">Rédigé le {{ post.createdAt | date("d/m/Y à H:i") }} </p>
 
             <p>{{ post.headline }}<br>
             <a href="/post/{{ post.id }}/single"> Lire la suite ...</a><br>

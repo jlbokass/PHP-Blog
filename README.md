@@ -23,7 +23,7 @@ If the `SHOW_ERRORS` configuration setting is set to `true`, full error detail w
 
 ## Web server configuration
 
-Pretty URLs are enabled using web server rewrite rules. An [.htaccess](public/.htaccess) file is included in the `public` folder. Equivalent nginx configuration is in the [nginx.txt](ressources/nginx.txt) file.
+Pretty URLs are enabled using web server rewrite rules. An [.htaccess](public/.htaccess) file is included in the `public` folder. Equivalent nginx configuration is in the [nginx.txt](ressource/nginx.txt) file.
 
 ---
 

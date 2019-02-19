@@ -1,4 +1,4 @@
-{%  extends 'userLayout.html.twig' %}
+{%  extends 'profile.html.twig' %}
 
 {% block title %} Edit {% endblock %}
 
@@ -39,10 +39,10 @@
 
             <div class="mb-3">
                 <label for="password">Password</label>
-                <div class="input-group">
-                    <input type="password" class="form-control" id="password" name="password" placeholder="Password">
+                <div class="input-group" id="show_hide_password">
+                    <input type="password" class="form-control" id="inputPassword" name="password">
                     <div class="input-group-append">
-                        <span class="input-group-text">Show</span>
+                        <span class="input-group-text" id="basic-addon1"><a href=""><i class="fa fa-eye-slash" aria-hidden="true"></i></a></span>
                     </div>
                     <div class="invalid-feedback">
                         Please enter a password.
@@ -53,7 +53,7 @@
 
             <hr class="mb-4">
             <button class="btn btn-warning btn-lg btn-block" type="submit">Save</button>
-            <button class="btn btn-secondary btn-lg btn-block" type="reset">Cancel</button>
+            <a class="btn btn-primary btn-lg btn-block" href="/profile/show-profile">Cancel</a>
         </form>
     </div>
 
