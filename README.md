@@ -29,4 +29,4 @@ Pretty URLs are enabled using web server rewrite rules. An [.htaccess](public/.h
 
 ---
 
-You can see the project online at this address [my professional Blog](http://www.jlgb.fr/blog) .
+
