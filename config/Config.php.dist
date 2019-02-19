@@ -15,9 +15,6 @@ namespace Config;
  */
 class Config
 {
-
-
-
     /**
      * Database host
      * @var string
