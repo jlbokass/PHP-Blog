@@ -17,23 +17,27 @@ use App\Manager\UsersManager;
 /**
  * Class Login
  * @package App\Controller
+ *
+ * PHP version 7.1
  */
 class LoginController extends Controller
 {
+
     /**
-     * @throws \Twig_Error_Loader
-     * @throws \Twig_Error_Runtime
-     * @throws \Twig_Error_Syntax
+     * show the login page
+     *
+     * @return void
      */
     public function newAction()
     {
         View::renderTemplate('Login/new.html.twig');
     }
 
+
     /**
-     * @throws \Twig_Error_Loader
-     * @throws \Twig_Error_Runtime
-     * @throws \Twig_Error_Syntax
+     * Log in a user
+     *
+     * @return void
      */
     public function createAction()
     {
@@ -42,24 +46,28 @@ class LoginController extends Controller
         $remember_me = isset($_POST['remember_me']);
 
         if ($user) {
+
             Auth::login($user, $remember_me);
 
             Flash::addMessage('Login successful');
 
             $this->redirect(Auth::getReturnToPage());
-        } else {
-            Flash::addMessage('Login unsuccessful, please try again', Flash::WARNING);
 
-            View::renderTemplate('Login/new.html.twig', [
-                'email' => $_POST['email'],
-                'remember_me' => $remember_me
-            ]);
         }
+
+        Flash::addMessage('Login unsuccessful, please try again', Flash::WARNING);
+
+        View::renderTemplate('Login/new.html.twig', [
+            'email' => $_POST['email'],
+            'remember_me' => $remember_me
+        ]);
     }
 
 
     /**
+     * Log out a user
      *
+     * @return void
      */
     public function destroyAction()
     {
@@ -69,7 +77,11 @@ class LoginController extends Controller
     }
 
     /**
+     * Show a "logged out" flash message and redirect to the homepage. Necessary to use the flash messages
+     * as they use the session and at the end of the logout method (destroyAction) the session is destroyed
+     * so a new action needs to be called in order to use the session.
      *
+     * @return void
      */
     public function showLogoutMessageAction()
     {

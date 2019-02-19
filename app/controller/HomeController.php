@@ -9,6 +9,7 @@
 namespace App\Controller;
 
 use App\Manager\HomeManager;
+use App\Model\Message;
 use App\Utilities\Mail;
 use Config\Config;
 use Core\Controller;
@@ -34,18 +35,21 @@ class HomeController extends Controller
      */
     public function emailAction()
     {
-        $emailFromBlog = new HomeManager($_POST);
+        $email = new HomeManager($_POST);
 
-        if ($emailFromBlog->sendEmailToAdmin()) {
-            $text = View::getTemplate('Home/email.txt', ['emailFromBlog' => $emailFromBlog]);
-            $html = View::getTemplate('Home/email.html', ['emailFromBlog' => $emailFromBlog]);
+        if ($email->sendEmailToAdmin()) {
+
+            $text = View::getTemplate('Home/email.txt', ['emailFromBlog' => $email]);
+            $html = View::getTemplate('Home/email.html', ['emailFromBlog' => $email]);
 
             Mail::send(Config::USER_NAME, 'Blog PHP-MVC', $text, $html);
 
             $this->redirect('/home/success');
+
         } else {
+
             View::renderTemplate('Home/index.html.twig', [
-                'emailFromBlog' => $emailFromBlog
+                'emailFromBlog' => $email
             ]);
         }
     }

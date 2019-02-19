@@ -15,11 +15,13 @@ class Post
     public $title;
     public $headline;
     public $content;
+    public $published;
     public $createdAt;
     public $updateAt;
 
 
-    public function __construct(array $data)
+
+    public function __construct($data)
     {
         $this->hydrate($data);
     }
@@ -27,9 +29,11 @@ class Post
     public function hydrate(array $data)
     {
         foreach ($data as $key => $value) {
+
             $method = 'set'.ucfirst($key);
 
             if (method_exists($this, $method)) {
+
                 $this->$method($value);
             }
         }

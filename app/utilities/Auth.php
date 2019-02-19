@@ -14,6 +14,8 @@ use App\Manager\UsersManager;
 /**
  * Class Auth
  * @package App
+ *
+ * PHP version 7.1
  */
 class Auth
 {
@@ -32,14 +34,16 @@ class Auth
         $_SESSION['user_id'] = $user->id;
 
         if ($remember_me) {
+
             if ($user->rememberLogin()) {
-                setcookie('remember_me', $user->remember_token, $user->expery_timestamp, '/');
+
+                setcookie('remember_me', $user->remember_token, $user->expiry_timestamp, '/');
             }
         }
     }
 
     /**
-     * Logout the user
+     * Log out the user
      *
      * @return void
      */
@@ -100,10 +104,12 @@ class Auth
     public static function getUser()
     {
         if (isset($_SESSION['user_id'])) {
+
             return UsersManager::findById($_SESSION['user_id']);
-        } else {
-            return static::loginFromRememberCookie();
+
         }
+
+        return static::loginFromRememberCookie();
     }
 
 
@@ -118,9 +124,11 @@ class Auth
         $cookie = $_COOKIE['remember_me'] ?? false;
 
         if ($cookie) {
+
             $remembered_login = RememberedLogin::findByToken($cookie);
 
             if ($remembered_login && ! $remembered_login->hasExpired()) {
+
                 $user = $remembered_login->getUser();
 
                 static::login($user, false);
@@ -140,13 +148,15 @@ class Auth
         $cookie = $_COOKIE['remember_me'] ?? false;
 
         if ($cookie) {
+
             $remembered_login = RememberedLogin::findByToken($cookie);
 
             if ($remembered_login) {
+
                 $remembered_login->delete();
             }
 
-            setcookie('remember_me', '', time() - 3600);
+            setcookie('remember_me', '', time() - 3600); // set to expire in the past
         }
     }
 }

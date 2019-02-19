@@ -19,6 +19,8 @@ use Core\View;
 /**
  * Class ProfileController
  * @package App\Controller
+ *
+ * PHP version 7.1
  */
 class ProfileController extends AuthenticatedController
 {
@@ -35,11 +37,9 @@ class ProfileController extends AuthenticatedController
     }
 
     /**
-     * Before filter - called before each action method
+     * Show the profile
      *
-     * @throws \Twig_Error_Loader
-     * @throws \Twig_Error_Runtime
-     * @throws \Twig_Error_Syntax
+     * @return void
      */
     public function showProfileAction()
     {
@@ -50,9 +50,9 @@ class ProfileController extends AuthenticatedController
 
 
     /**
-     * @throws \Twig_Error_Loader
-     * @throws \Twig_Error_Runtime
-     * @throws \Twig_Error_Syntax
+     * Show the form for editing the profile
+     *
+     * @return void
      */
     public function editProfileAction()
     {
@@ -61,14 +61,21 @@ class ProfileController extends AuthenticatedController
         ]);
     }
 
-
+    /**
+     * Update the profile
+     *
+     * @return void
+     */
     public function updateProfileAction()
     {
         if ($this->user->updateProfile($_POST)) {
+
             Flash::addMessage('Changes saved');
 
             $this->redirect('/profile/show-profile');
+
         } else {
+
             View::renderTemplate('Profile/edit.html', [
                 'user' => $this->user
             ]);

@@ -8,6 +8,7 @@
 
 namespace App\Manager;
 
+use App\Model\Comment;
 use Core\Model;
 use PDO;
 
@@ -27,18 +28,14 @@ class CommentManager extends Model
     public $errors = [];
 
 
-    /**
-     * CommentManager constructor.
-     *
-     * @param array $data
-     * @param null $params
-     */
+    /*
     public function __construct($data = [])
     {
         foreach ($data as $key => $value) {
             $this->$key = $value;
         }
     }
+    */
 
     /**
      * get all comments from the blog
@@ -61,32 +58,31 @@ class CommentManager extends Model
         return $stmt->fetchAll(PDO::FETCH_ASSOC);
     }
 
-    /**
-     * insert save comment in database, used by post controller in the single page
-     *
-     * @return bool
-     */
-    public function save()
+
+    public function save(Comment $comment)
     {
-        $this->validate();
-
-        if (empty($this->errors)) {
-            $sql = 'INSERT INTO comment(FK_user_id, FK_post_id, content, published, createdAt)
-                VALUES (:FK_user_id, :FK_post_id, :content, 0, now())';
+        $sql = 'INSERT INTO comment(FK_user_id, FK_post_id, content, createdAt)
+                VALUES (:FK_user_id, :FK_post_id, :content, now())';
 
 
-            $db = Model::getDB();
+        $db = Model::getDB();
 
-            $stmt = $db->prepare($sql);
+        $stmt = $db->prepare($sql);
 
-            $stmt->bindValue(':FK_user_id', $this->FK_user_id, PDO::PARAM_INT);
-            $stmt->bindValue(':FK_post_id', $this->id, PDO::PARAM_INT);
-            $stmt->bindValue(':content', $this->content, PDO::PARAM_STR);
+        $stmt->bindValue(':FK_user_id', $comment->FK_user_id, PDO::PARAM_INT);
+        $stmt->bindValue(':FK_post_id', $comment->FK_post_id, PDO::PARAM_INT);
+        $stmt->bindValue(':content', $comment->content, PDO::PARAM_STR);
 
-            return $stmt->execute();
-        }
+        $stmt->execute();
 
-        return false;
+
+        $comment->hydrate([
+            'id' => $db->lastInsertId(),
+            'published' => 0,
+            'updatedAt' => 'null'
+        ]);
+
+        return $stmt;
     }
 
 

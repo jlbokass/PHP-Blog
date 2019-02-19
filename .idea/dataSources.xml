@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="DataSourceManagerImpl" format="xml" multifile-model="true">
-    <data-source source="LOCAL" name="blogphp2@localhost" uuid="93ae2a35-0190-4539-90af-52dfaf03945e">
+    <data-source source="LOCAL" name="blogphp1@localhost" uuid="9c062a5e-cef1-4488-bc1d-c692435125f7">
       <driver-ref>mysql</driver-ref>
       <synchronize>true</synchronize>
       <jdbc-driver>com.mysql.jdbc.Driver</jdbc-driver>
-      <jdbc-url>jdbc:mysql://localhost:8889/blogphp2</jdbc-url>
+      <jdbc-url>jdbc:mysql://localhost:8889/blogphp1</jdbc-url>
       <driver-properties>
         <property name="autoReconnect" value="true" />
         <property name="zeroDateTimeBehavior" value="convertToNull" />
@@ -15,11 +15,11 @@
         <property name="yearIsDateType" value="false" />
       </driver-properties>
     </data-source>
-    <data-source source="LOCAL" name="blogphp1@localhost" uuid="9c062a5e-cef1-4488-bc1d-c692435125f7">
+    <data-source source="LOCAL" name="blog@localhost" uuid="2f345d47-84de-44d1-9d9f-ddcb9fb49d07">
       <driver-ref>mysql</driver-ref>
       <synchronize>true</synchronize>
       <jdbc-driver>com.mysql.jdbc.Driver</jdbc-driver>
-      <jdbc-url>jdbc:mysql://localhost:8889/blogphp1</jdbc-url>
+      <jdbc-url>jdbc:mysql://localhost:8889/blog</jdbc-url>
       <driver-properties>
         <property name="autoReconnect" value="true" />
         <property name="zeroDateTimeBehavior" value="convertToNull" />

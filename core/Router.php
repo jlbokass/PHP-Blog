@@ -72,10 +72,14 @@ class Router
     public function match($url)
     {
         foreach ($this->routes as $route => $params) {
+
             if (preg_match($route, $url, $matches)) {
+
                 // Get named capture group values
                 foreach ($matches as $key => $match) {
+
                     if (is_string($key)) {
+
                         $params[$key] = $match;
                     }
                 }
@@ -204,7 +208,7 @@ class Router
      */
     protected function getNamespace()
     {
-        $namespace = 'app\Controller\\';
+        $namespace = 'App\Controller\\';
 
         if (array_key_exists('namespace', $this->params)) {
             $namespace .= $this->params['namespace'] . '\\';

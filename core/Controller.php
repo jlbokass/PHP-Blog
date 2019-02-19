@@ -35,11 +35,21 @@ abstract class Controller
         $this->route_params = $route_params;
     }
 
+
     /**
-     * @param $name
-     * @param $arguments
+     * Magic method called when a non-existent or inaccessible method is
+     * called on an object of this class. Used to execute before and after
+     * filter methods on action methods. Action methods need to be named
+     * with an "Action" suffix, e.g. indexAction, showAction etc.
+     *
+     * @param string $name  Method name
+     * @param $arguments pass to the method
+     *
+     * @return void
+     *
      * @throws \Exception
      */
+
     public function __call($name, $arguments)
     {
         $method = $name . 'Action';
@@ -54,33 +64,47 @@ abstract class Controller
 
         } else {
 
-            //echo 'Method ' . $method . 'not found in controller ' . get_class($this);
             throw new \Exception('Method ' . $method . ' not found in controller ' . get_class($this));
         }
     }
 
     /**
+     * Before filter - called before an action method.
      *
+     * @return void
      */
     protected function before()
     {
-
     }
 
     /**
+     * After filter - called after an action method.
      *
+     * @return void
      */
-    protected  function after()
+    protected function after()
     {
-
     }
 
+    /**
+     * Redirect to a different page
+     *
+     * @param string $url  The relative URL
+     *
+     * @return void
+     */
     public function redirect($url)
     {
         header('Location: http://' . $_SERVER['HTTP_HOST'] . $url, true, 303);
         exit;
     }
 
+    /**
+     * Require the user to be logged in before giving access to the requested page.
+     * Remember the requested page for later, then redirect to the login page.
+     *
+     * @return void
+     */
     public function requireLogin()
     {
         if (! Auth::getUser()) {

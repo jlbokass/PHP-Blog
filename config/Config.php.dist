@@ -50,9 +50,10 @@ class Config
 
     /**
      * Secret key for hashing
+     *https://randomkeygen.com
      * @var boolean
      */
-    const SECRET_KEY = '59B149F42ACDFA7B36C7A2FC119D2';
+    const SECRET_KEY = '';
 
     /**
      * Username for your mail account
@@ -67,11 +68,11 @@ class Config
     /**
      * Your smtp
      */
-    const SMTP_HOST = 'smtp.gmail.com';
+    const SMTP_HOST = '';
 
     /**
      * Your port
      */
-    const SMTP_PORT = '587';
+    const SMTP_PORT = '';
 
 }

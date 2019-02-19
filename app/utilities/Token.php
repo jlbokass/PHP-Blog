@@ -14,6 +14,8 @@ use Config\Config;
  * Class Token
  *
  * @package App\Utilities
+ *
+ * PHP version 7.1
  */
 class Token
 {
@@ -36,10 +38,15 @@ class Token
     public function __construct($token_value = null)
     {
         if ($token_value) {
+
             $this->token = $token_value;
+
+        } else {
+
+            $this->token = bin2hex(random_bytes(16)); // 16 bytes = 128 bits = 32 hex characters, convert to ASCII string
+
         }
 
-        $this->token = bin2hex(random_bytes(16)); // 16 bytes = 128 bits = 32 hex characters
     }
 
     /**

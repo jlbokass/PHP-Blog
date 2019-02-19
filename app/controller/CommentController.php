@@ -9,6 +9,7 @@
 namespace App\Controller;
 
 use App\Manager\CommentManager;
+use App\Model\Comment;
 use Core\View;
 
 /**
@@ -22,12 +23,18 @@ class CommentController extends AuthenticatedController
      */
     public function createAction()
     {
-        $comments = new CommentManager($_POST);
+        $comments = new Comment($_POST);
 
-        if ($comments->save()) {
+        $commentManager = new CommentManager();
+
+
+        if ($commentManager->save($comments)) {
+
             $this->redirect('/comment/comment-request');
+
         } else {
-            View::renderTemplate('/Post/single.html;twig', [
+
+            View::renderTemplate('/Posts/single.html.twig', [
                 'comment' => $comments
             ]);
         }

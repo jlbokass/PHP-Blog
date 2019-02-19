@@ -37,10 +37,8 @@ class AdminController extends AuthenticatedController
         $user = Auth::getUser();
 
         if (! $user->role) {
+
             $this->redirect('/');
-            //header('HTTP/1.1 403 Forbidden');
-            //echo 'You are not allowed to access that resource.';
-            //exit;
         }
     }
 
@@ -48,10 +46,6 @@ class AdminController extends AuthenticatedController
 
     /**
      * index admin
-     *
-     * @throws \Twig_Error_Loader
-     * @throws \Twig_Error_Runtime
-     * @throws \Twig_Error_Syntax
      *
      * @return void
      */
@@ -66,9 +60,6 @@ class AdminController extends AuthenticatedController
     /**
      * Before filter - called before each action method
      *
-     * @throws \Twig_Error_Loader
-     * @throws \Twig_Error_Runtime
-     * @throws \Twig_Error_Syntax
      */
     public function showProfileAction()
     {
@@ -79,9 +70,7 @@ class AdminController extends AuthenticatedController
 
 
     /**
-     * @throws \Twig_Error_Loader
-     * @throws \Twig_Error_Runtime
-     * @throws \Twig_Error_Syntax
+     *
      */
     public function editProfileAction()
     {
@@ -106,13 +95,8 @@ class AdminController extends AuthenticatedController
         }
     }
 
-
-
-
     /**
-     * @throws \Twig_Error_Loader
-     * @throws \Twig_Error_Runtime
-     * @throws \Twig_Error_Syntax
+     *
      */
     public function showArticleAction()
     {
@@ -123,11 +107,8 @@ class AdminController extends AuthenticatedController
         ]);
     }
 
-
     /**
-     * @throws \Twig_Error_Loader
-     * @throws \Twig_Error_Runtime
-     * @throws \Twig_Error_Syntax
+     *
      */
     public function newArticleAction()
     {
@@ -153,9 +134,7 @@ class AdminController extends AuthenticatedController
 
 
     /**
-     * @throws \Twig_Error_Loader
-     * @throws \Twig_Error_Runtime
-     * @throws \Twig_Error_Syntax
+     *
      */
     public function editArticleAction()
     {
@@ -170,9 +149,7 @@ class AdminController extends AuthenticatedController
     }
 
     /**
-     * @throws \Twig_Error_Loader
-     * @throws \Twig_Error_Runtime
-     * @throws \Twig_Error_Syntax
+     *
      */
     public function updateArticleAction()
     {
@@ -190,9 +167,7 @@ class AdminController extends AuthenticatedController
     }
 
     /**
-     * @throws \Twig_Error_Loader
-     * @throws \Twig_Error_Runtime
-     * @throws \Twig_Error_Syntax
+     *
      */
     public function deleteArticle()
     {
@@ -225,9 +200,7 @@ class AdminController extends AuthenticatedController
 
 
     /**
-     * @throws \Twig_Error_Loader
-     * @throws \Twig_Error_Runtime
-     * @throws \Twig_Error_Syntax
+     *
      */
     public function showCommentAction()
     {
@@ -239,9 +212,7 @@ class AdminController extends AuthenticatedController
     }
 
     /**
-     * @throws \Twig_Error_Loader
-     * @throws \Twig_Error_Runtime
-     * @throws \Twig_Error_Syntax
+     *
      */
     public function editCommentAction()
     {
@@ -269,9 +240,7 @@ class AdminController extends AuthenticatedController
     }
 
     /**
-     * @throws \Twig_Error_Loader
-     * @throws \Twig_Error_Runtime
-     * @throws \Twig_Error_Syntax
+     *
      */
     public function deleteCommentAction()
     {
@@ -299,9 +268,7 @@ class AdminController extends AuthenticatedController
     }
 
     /**
-     * @throws \Twig_Error_Loader
-     * @throws \Twig_Error_Runtime
-     * @throws \Twig_Error_Syntax
+     *
      */
     public function showUserAction()
     {
