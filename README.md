@@ -3,7 +3,7 @@
 # Welcome to my PHP MVC framework
 
 This is a simple MVC framework for building my blog in PHP. I did this work thanks to Dave 
-Hollingworth's tutorials and the advice of my mentor Gauthier Burgeat.
+Hollingworth's tutorials and the advice of my mentor Gauthier B.
 
 This work is done as part of my PHP web developer training with Openclassroom - project 5.
 
